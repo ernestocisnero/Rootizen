@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct UnionifyApp: App {
+    
+    @State private var appState = AppState()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppRootView()
+                .environment(appState)
         }
     }
 }
