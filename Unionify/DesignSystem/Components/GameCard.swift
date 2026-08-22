@@ -24,17 +24,17 @@ struct GameCard: View {
                 
                 // Image area
                 ZStack {
-                    Color(.red).opacity(0.3)
+                    Color(AppColor.secondaryBackground)
                     
                     image
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 60, height: 80)
+                        .frame(width: 60, height: 60)
                 }
                 .frame(height: 120)
                 
                 // Information area
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 4) {
                     Text(title)
                         .primaryTitle()
                     

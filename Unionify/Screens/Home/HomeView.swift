@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(QuizManager.self) private var quizManager
+    @State private var startQuiz: Bool = false
+    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 20){
@@ -16,34 +19,48 @@ struct HomeView: View {
             ScrollView(){
                 
                 VStack(spacing: 20){
-                    HStack(alignment: .top){
-                        GameCard(
-                            title: "Quiz",
-                            secondTitle: "10 questions",
-                            thirdTitle: "Multiple selection",
-                            image: Image(systemName: "book.closed.fill"),
-                            action: { print("Quiz") }
-                        )
-                        
-                        GameCard(
-                            title: "Flashcards",
-                            secondTitle: "10 questions",
-                            thirdTitle: "True / False",
-                            image: Image(systemName: "book.closed.fill"),
-                            action: { print("Flashcard") }
-                        )
-                    }
-                    .padding(.vertical,10)
                     
-                    Text("Flashcard Card")
+                    StreakCard(streakCount: 4, userName: "Ernesto")
+
+                    VStack(alignment: .leading, spacing: 0){
+                        
+                        Text("Practice")
+                            .primaryTitle()
+
+                        HStack(alignment: .top){
+                            GameCard(
+                                title: "Quiz",
+                                secondTitle: "10 questions",
+                                thirdTitle: "Multiple selection",
+                                image: Image(systemName: "book.closed.fill"),
+                                action: { startQuiz = true }
+                            )
+                            
+                            GameCard(
+                                title: "Flashcards",
+                                secondTitle: "10 questions",
+                                thirdTitle: "True / False",
+                                image: Image(systemName: "bolt.fill"),
+                                action: { print("Flashcard") }
+                            )
+                        }
+                        .padding(.vertical,10)
+                        
+                    }
+
                 }
             }
         }
         .padding()
+        
+        .fullScreenCover(isPresented: $startQuiz){
+            QuizFlowView(isPresented: $startQuiz)
+        }
     }
 }
 
 #Preview {
     HomeView()
         .environment(AppState())
+        .environment(QuizManager(q2025version))
 }

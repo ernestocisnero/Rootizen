@@ -11,11 +11,13 @@ import SwiftUI
 struct UnionifyApp: App {
     
     @State private var appState = AppState()
+    @State private var quizManager = QuizManager([])
     
     var body: some Scene {
         WindowGroup {
             AppRootView()
                 .environment(appState)
+                .environment(quizManager)
         }
     }
 }
