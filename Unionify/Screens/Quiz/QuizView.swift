@@ -10,12 +10,18 @@ import SwiftUI
 struct QuizView: View {
     
     @Binding var path: [QuizDestination]
+    @Environment(QuizManager.self) private var quizManager
+    
     let onClose: () -> Void
     
     
     var body: some View {
         VStack {
             Text("Quiz View")
+            Text("Question")
+            Text("\(quizManager.questions[0].question)")
+            Text("Score")
+            Text("\(quizManager.score)")
             
             Button("Navigate to result"){
                 path.append(.results)
@@ -30,4 +36,5 @@ struct QuizView: View {
 
 #Preview {
     QuizView(path: .constant([]), onClose: {})
+        .environment(QuizManager(questions: q2025version))
 }

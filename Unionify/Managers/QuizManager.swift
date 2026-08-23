@@ -16,23 +16,22 @@ final class QuizManager {
     private(set) var selectedAnswer: String?
     private(set) var isFinished = false
     
-    init(_ questions: [Question]){
-        startQuizSession(questions)
+    init(questions: [Question]){
+        startQuizSession(questionsVersion: questions)
     }
     
     var currentQuestion: Question {
         questions[currentIndex]
     }
     
-    func startQuizSession(_ questionsVersion: [Question]){
+    func startQuizSession(questionsVersion: [Question]){
         //Load questions
-        questions = questionsVersion
+        questions = Array(questionsVersion.shuffled().prefix(10)) //load questions here
         currentIndex = 0
         score = 0
         selectedAnswer = nil
         isFinished = false
     }
-    
     
     func selectAnswer(_ answer: String) {
         guard selectedAnswer == nil else { return }

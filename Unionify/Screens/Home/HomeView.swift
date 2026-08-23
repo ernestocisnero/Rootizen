@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(QuizManager.self) private var quizManager
+    @Environment(AppState.self) private var appState
     @State private var startQuiz: Bool = false
     
     var body: some View {
         
         VStack(alignment: .leading, spacing: 20){
+            
             TopHomeBar()
             
             ScrollView(){
@@ -21,12 +22,12 @@ struct HomeView: View {
                 VStack(spacing: 20){
                     
                     StreakCard(streakCount: 4, userName: "Ernesto")
-
+                    
                     VStack(alignment: .leading, spacing: 0){
                         
                         Text("Practice")
                             .primaryTitle()
-
+                        
                         HStack(alignment: .top){
                             GameCard(
                                 title: "Quiz",
@@ -47,14 +48,21 @@ struct HomeView: View {
                         .padding(.vertical,10)
                         
                     }
-
+                    
                 }
             }
+            
+            #if DEBUG
+            
+            Button("Reset onboarding"){
+                appState.resetOnboarding()
+            }
+            #endif
         }
         .padding()
         
         .fullScreenCover(isPresented: $startQuiz){
-            QuizFlowView(isPresented: $startQuiz)
+            QuizFlowView(isPresented: $startQuiz, questionVersion: appState.questionVersion)
         }
     }
 }
@@ -62,5 +70,4 @@ struct HomeView: View {
 #Preview {
     HomeView()
         .environment(AppState())
-        .environment(QuizManager(q2025version))
 }

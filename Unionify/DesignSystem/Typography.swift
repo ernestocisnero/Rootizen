@@ -11,7 +11,7 @@ struct PrimaryTitle: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 21, weight: .bold, design: .rounded))
+            .font(.system(size: 21, weight: .bold))
             .foregroundStyle(AppColor.primaryText)
     }
 }
@@ -20,7 +20,7 @@ struct SecondaryTitle: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 15, weight: .semibold, design: .rounded))
+            .font(.system(size: 15, weight: .semibold))
             .tracking(0.8)
             .foregroundStyle(AppColor.secondaryText)
     }
@@ -30,7 +30,7 @@ struct ThirdTitle: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 12, weight: .semibold, design: .rounded))
+            .font(.system(size: 12, weight: .semibold))
             .tracking(0.8)
             .foregroundStyle(AppColor.secondaryText)
     }
@@ -41,7 +41,7 @@ struct QuestionRow: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 12, weight: .semibold, design: .rounded))
+            .font(.system(size: 12, weight: .semibold))
             .tracking(0.8)
             .foregroundStyle(AppColor.primaryText)
     }

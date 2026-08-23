@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AppRootView: View {
     @Environment(AppState.self) private var appState
+    @Environment(QuizManager.self) private var quizManager
     
     var body: some View {
          
@@ -51,4 +52,5 @@ struct MainTabView: View {
 #Preview {
     AppRootView()
         .environment(AppState())
+        .environment(QuizManager(questions: q2025version))
 }

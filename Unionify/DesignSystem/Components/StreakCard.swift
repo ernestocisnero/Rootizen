@@ -51,7 +51,7 @@ struct StreakCard: View {
 
             // Big streak number
             Text("\(streakCount)")
-                .font(.system(size: 72, weight: .bold, design: .rounded))
+                .font(.system(size: 70, weight: .bold, design: .rounded))
                 .foregroundStyle(
                     LinearGradient(
                         colors: [Color.black, Color.black.opacity(0.75)],
@@ -59,19 +59,18 @@ struct StreakCard: View {
                         endPoint: .bottom
                     )
                 )
-                .offset(y: -20)
+                .offset(y: -25)
 
             VStack(spacing: 6){
                 // Title
-                Text("Week Streak")
+                Text("Daily Streak")
                     .font(.system(size: 28, weight: .heavy, design: .rounded))
                     .foregroundColor(.primary)
                     .offset(y: -12)
 
                 // Subtitle
                 Text("You are doing really great, \(userName)!")
-                    .font(.system(size: 16, weight: .regular))
-                    .foregroundColor(.secondary)
+                    .secondaryTitle()
                     .offset(y: -8)
             }
             
@@ -94,6 +93,6 @@ struct StreakCard: View {
 }
 
 #Preview {
-    StreakCard(streakCount: 4, userName: "Ernesto")
+    StreakCard(streakCount: 5, userName: "Ernesto")
         .padding()
 }

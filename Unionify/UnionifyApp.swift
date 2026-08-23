@@ -11,7 +11,7 @@ import SwiftUI
 struct UnionifyApp: App {
     
     @State private var appState = AppState()
-    @State private var quizManager = QuizManager([])
+    @State private var quizManager = QuizManager(questions: [])
     
     var body: some Scene {
         WindowGroup {
