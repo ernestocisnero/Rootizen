@@ -70,4 +70,5 @@ struct HomeView: View {
 #Preview {
     HomeView()
         .environment(AppState())
+        .environment(QuizManager(questions: []))
 }

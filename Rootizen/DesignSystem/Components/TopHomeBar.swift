@@ -25,7 +25,7 @@ struct TopHomeBar: View {
                     .secondaryTitle()
                 
                 Text("Keep it up, \(appState.userName)")
-                    .font(.system(size: 15, weight: .bold))
+                    .font(.system(size: 15, weight: .bold, design: .rounded))
                     .foregroundStyle(AppColor.primaryText)
             }
             
@@ -35,7 +35,8 @@ struct TopHomeBar: View {
                 Image(systemName: "star.fill")
                     .foregroundStyle(AppColor.accent)
                 Text("320 XP")
-                    .bold()
+                    .font(.system(size: 18, weight: .medium, design: .rounded))
+
             }
             .font(.callout)
             .padding(.horizontal, 8)
