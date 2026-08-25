@@ -1,6 +1,6 @@
 //
-//  ContentView.swift
-//  Unionify
+//  RootizenApp.swift
+//  RootizenApp
 //
 //  Created by Ernesto Cisnero on 8/20/26.
 //

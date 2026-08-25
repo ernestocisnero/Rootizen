@@ -1,6 +1,6 @@
 //
 //  GameCard.swift
-//  Unionify
+//  Rootizen
 //
 //  Created by Ernesto Cisnero on 8/21/26.
 //
@@ -31,7 +31,7 @@ struct GameCard: View {
                         .scaledToFit()
                         .frame(width: 60, height: 60)
                 }
-                .frame(height: 120)
+                .frame(height: 100)
                 
                 // Information area
                 VStack(alignment: .leading, spacing: 4) {

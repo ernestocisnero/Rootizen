@@ -1,6 +1,6 @@
 //
 //  TopHomeBar.swift
-//  Unionify
+//  Rootizen
 //
 //  Created by Ernesto Cisnero on 8/21/26.
 //
@@ -13,18 +13,12 @@ struct TopHomeBar: View {
     var body: some View {
         
         HStack(spacing: 8){
-
-            Image(systemName: "person")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
             
             VStack(alignment: .leading, spacing: 6){
                 Text("Welcome back!")
                     .secondaryTitle()
                 
-                Text("Keep it up, \(appState.userName)")
+                Text("\(appState.userName)")
                     .font(.system(size: 15, weight: .bold, design: .rounded))
                     .foregroundStyle(AppColor.primaryText)
             }
@@ -32,8 +26,17 @@ struct TopHomeBar: View {
             Spacer()
             
             HStack(spacing: 6){
-                Image(systemName: "star.fill")
-                    .foregroundStyle(AppColor.accent)
+                Image(systemName: "flame.fill")
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [
+                                Color(red: 1.0, green: 0.65, blue: 0.35),
+                                Color(red: 0.95, green: 0.4, blue: 0.15)
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
                 Text("320 XP")
                     .font(.system(size: 18, weight: .medium, design: .rounded))
 

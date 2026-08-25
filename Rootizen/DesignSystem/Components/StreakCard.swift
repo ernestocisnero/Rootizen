@@ -1,7 +1,7 @@
 
 //
 //  StreakCard.swift
-//  Unionify
+//  Rootizen
 //
 //  Created by Ernesto Cisnero on 8/21/26.
 //
@@ -30,12 +30,12 @@ struct StreakCard: View {
                             endRadius: 90
                         )
                     )
-                    .frame(width: 100)
+                    .frame(width: 80)
 
                 Image(systemName: "flame.fill")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 70, height: 70)
+                    .frame(width: 50, height: 50)
                     .foregroundStyle(
                         LinearGradient(
                             colors: [
@@ -51,7 +51,7 @@ struct StreakCard: View {
 
             // Big streak number
             Text("\(streakCount)")
-                .font(.system(size: 70, weight: .bold, design: .rounded))
+                .font(.system(size: 50, weight: .bold, design: .rounded))
                 .foregroundStyle(
                     LinearGradient(
                         colors: [Color.black, Color.black.opacity(0.75)],
@@ -59,12 +59,12 @@ struct StreakCard: View {
                         endPoint: .bottom
                     )
                 )
-                .offset(y: -25)
+                .offset(y: -20)
 
             VStack(spacing: 6){
                 // Title
                 Text("Daily Streak")
-                    .font(.system(size: 28, weight: .heavy, design: .rounded))
+                    .primaryTitle()
                     .foregroundColor(.primary)
                     .offset(y: -12)
 

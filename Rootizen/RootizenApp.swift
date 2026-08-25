@@ -1,6 +1,6 @@
 //
-//  UnionifyApp.swift
-//  Unionify
+//  RootizenApp.swift
+//  Rootizen
 //
 //  Created by Ernesto Cisnero on 8/20/26.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct UnionifyApp: App {
+struct RootizenApp: App {
     
     @State private var appState = AppState()
     @State private var quizManager = QuizManager(questions: [])

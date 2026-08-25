@@ -1,6 +1,6 @@
 //
 //  ResourcesView.swift
-//  Unionify
+//  Rootizen
 //
 //  Created by Ernesto Cisnero on 8/21/26.
 //
