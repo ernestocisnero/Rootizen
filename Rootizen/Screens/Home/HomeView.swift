@@ -25,15 +25,14 @@ struct HomeView: View {
                     
                     VStack(alignment: .leading, spacing: 0){
                         
-                        Text("Practice")
-                            .primaryTitle()
+                        
                         
                         HStack(alignment: .top){
                             GameCard(
                                 title: "Quiz",
                                 secondTitle: "10 questions",
                                 thirdTitle: "Multiple selection",
-                                image: Image(systemName: "book.closed.fill"),
+                                image: Image(systemName: "book"),
                                 action: { startQuiz = true }
                             )
                             
@@ -41,7 +40,7 @@ struct HomeView: View {
                                 title: "Flashcards",
                                 secondTitle: "10 questions",
                                 thirdTitle: "True / False",
-                                image: Image(systemName: "bolt.fill"),
+                                image: Image(systemName: "bookmark"),
                                 action: { print("Flashcard") }
                             )
                         }
@@ -51,13 +50,6 @@ struct HomeView: View {
                     
                 }
             }
-            
-            #if DEBUG
-            
-            Button("Reset onboarding"){
-                appState.resetOnboarding()
-            }
-            #endif
         }
         .padding()
         

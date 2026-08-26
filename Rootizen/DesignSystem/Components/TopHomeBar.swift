@@ -12,40 +12,22 @@ struct TopHomeBar: View {
     
     var body: some View {
         
-        HStack(spacing: 8){
+        HStack(spacing: 24){
+
+            StreakCapsule(streakDays: 1)
             
-            VStack(alignment: .leading, spacing: 6){
-                Text("Welcome back!")
-                    .secondaryTitle()
-                
-                Text("\(appState.userName)")
-                    .font(.system(size: 15, weight: .bold, design: .rounded))
-                    .foregroundStyle(AppColor.primaryText)
-            }
+            ExpPointsCapsule(xpPoints: 10)
             
             Spacer()
             
-            HStack(spacing: 6){
-                Image(systemName: "flame.fill")
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [
-                                Color(red: 1.0, green: 0.65, blue: 0.35),
-                                Color(red: 0.95, green: 0.4, blue: 0.15)
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
-                Text("320 XP")
-                    .font(.system(size: 18, weight: .medium, design: .rounded))
-
+            HStack(spacing: 24){
+                Text("EC")
             }
-            .font(.callout)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
-            .background(AppColor.secondaryBackground.opacity(0.8))
-            .clipShape(Capsule())
+            .padding(8)
+            .foregroundStyle(AppColor.success)
+            .padding(8)
+            .background(AppColor.successMuted)
+            .clipShape(Circle())
             
         }
     }

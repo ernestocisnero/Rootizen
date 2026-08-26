@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameCard: View {
-    
+
     let title: String
     let secondTitle: String
     let thirdTitle: String
@@ -22,41 +22,41 @@ struct GameCard: View {
         }label: {
             VStack(spacing: 0) {
                 
-                // Image area
-                ZStack {
-                    Color(AppColor.secondaryBackground)
-                    
+                HStack {
                     image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 60, height: 60)
+                        .foregroundStyle(title == "Quiz" ? AppColor.info : AppColor.highlight)
+                        .primaryTitle()
+                    
+                    Spacer()
                 }
-                .frame(height: 100)
+                .padding()
                 
                 // Information area
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 6) {
                     Text(title)
+                        .foregroundStyle(title == "Quiz" ? AppColor.info : AppColor.highlight)
                         .primaryTitle()
                     
                     Text("\(secondTitle)")
+                        .foregroundStyle(title == "Quiz" ? AppColor.info : AppColor.highlight)
                         .secondaryTitle()
                         .textCase(.uppercase)
                     
                     Text("\(thirdTitle)")
+                        .foregroundStyle(title == "Quiz" ? AppColor.info : AppColor.highlight)
                         .thirdTitle()
                 }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 20)
+                .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .background(Color(.systemBackground))
+            .background(title == "Quiz" ? AppColor.infoMuted : AppColor.highlightMuted)
             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
                     .stroke(Color.black.opacity(0.08), lineWidth: 1)
             }
             .shadow(
-                color: .black.opacity(0.10),
+                color: title == "Quiz" ? AppColor.info : AppColor.highlight,
                 radius: 0,
                 x: 0,
                 y: 5
@@ -71,7 +71,7 @@ struct GameCard: View {
         title: "Quiz",
         secondTitle: "10 questions",
         thirdTitle: "Multiple selection",
-        image: Image(systemName: "book.closed.fill"),
+        image: Image(systemName: "book"),
         action: {}
     )
     .frame(width: 210)

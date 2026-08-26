@@ -7,14 +7,36 @@
 
 import SwiftUI
 enum AppColor {
-    
+
+    // MARK: - Backgrounds
     static let background = Color(.systemBackground)
     static let secondaryBackground = Color(.secondarySystemBackground)
-    static let primaryText = Color(.label)
-    static let secondaryText = Color(.secondaryLabel)
 
-    static let success = Color(.green.opacity(0.6))
-    static let error = Color(.red.opacity(0.6))
-    static let accent = Color(.yellow.opacity(0.6))
-    
+    // MARK: - Text
+    static let primaryText = Color(.black)
+    static let secondaryText = Color(.white)
+    static let thirdText = Color(.secondaryLabel)
+
+    // MARK: - Semantic
+    static let success = Color(red: 0.39, green: 0.60, blue: 0.13)   // #639922 green
+    static let successMuted = Color(red: 0.92, green: 0.95, blue: 0.87) // #EAF3DE
+
+    static let error = Color(red: 0.85, green: 0.35, blue: 0.19)     // #D85A30 coral
+    static let errorMuted = Color(red: 0.98, green: 0.92, blue: 0.91) // #FAECE7
+
+    static let accent = Color(red: 0.94, green: 0.62, blue: 0.15)    // #EF9F27 amber
+    static let accentMuted = Color(red: 0.98, green: 0.93, blue: 0.85) // #FAEEDA
+
+    // MARK: - Extra category colors (used for cards, tags, achievements)
+    static let info = Color(red: 0.09, green: 0.37, blue: 0.65)      // #185FA5 blue
+    static let infoMuted = Color(red: 0.90, green: 0.95, blue: 0.98) // #E6F1FB
+
+    static let highlight = Color(red: 0.60, green: 0.21, blue: 0.34) // #993556 pink
+    static let highlightMuted = Color(red: 0.98, green: 0.92, blue: 0.94) // #FBEAF0
+
+    // MARK: - Streak / gamification
+    static let streak = error        // coral flame color reused
+    static let xp = accent           // amber gem color reused
+    static let league = accent
+
 }

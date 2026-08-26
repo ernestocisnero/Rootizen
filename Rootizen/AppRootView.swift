@@ -12,7 +12,6 @@ struct AppRootView: View {
     @Environment(QuizManager.self) private var quizManager
     
     var body: some View {
-         
         if appState.isOnboardingComplete{
             MainTabView()
         }else{
@@ -42,7 +41,7 @@ struct MainTabView: View {
                     Label("Me", systemImage: "person.circle")
                 }
         }
-        .tint(AppColor.error)
+        .tint(AppColor.success)
         
     }
 }
