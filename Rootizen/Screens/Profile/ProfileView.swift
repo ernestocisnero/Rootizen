@@ -5,30 +5,113 @@
 //  Created by Ernesto Cisnero on 8/21/26.
 //
 
+enum Options: String, Identifiable{
+    case getPro
+    case questionVersion
+    case name
+    case language
+    case notification
+    case faqs
+    case rateApp
+
+    var id: String { rawValue }
+}
+
+
 import SwiftUI
 
 struct ProfileView: View {
+    
     @Environment(AppState.self) private var appState
+    @State private var whichOption: Options?
+    
+    let streakCount: Int = 4
+    let totalXP: Int = 100
+    let coursesCount: Int = 10
     
     var body: some View {
         
-        VStack{
+        ScrollView {
             
-            Text("Profile")
-#if DEBUG
-            
-            Button("Reset onboarding"){
-                appState.resetOnboarding()
+            VStack(spacing: 24){
+                
+                //User Name
+                UserInitialHeaders(userName: appState.userName)
+                
+                //User Stats
+                RowStats(items: [
+                    StatItem(value: "\(streakCount)", label: "day streak"),
+                    StatItem(value: "\(coursesCount)", label: "courses"),
+                    StatItem(value: "\(totalXP)", label: "points")
+                ])
+
+                VStack(spacing: 18){
+                    
+                    ProfileRow(icon: "crown", title: "Get Pro", showChevron: false) {
+                        whichOption = .getPro
+                    }
+                    
+                    ProfileRow(icon: "book.pages", title: "Questions Version", showChevron: false) {
+                        whichOption = .questionVersion
+                    }
+                    
+                    ProfileRow(icon: "person", title: "Name") {
+                        whichOption = .name
+                    }
+                    
+                    ProfileRow(icon: "a.square", title: "Language") {
+                        whichOption = .language
+                    }
+                    
+                    ProfileRow(icon: "bell", title: "Notifications") {
+                        whichOption = .notification
+                    }
+                   
+                    ProfileRow(icon: "person.fill.questionmark", title: "FAQs") {
+                        whichOption = .faqs
+                    }
+                    
+                    ProfileRow(icon: "star", title: "Rate this App") {
+                        whichOption = .rateApp
+                    }
+                    
+                    #if DEBUG
+                    ProfileRow(icon: "arrow.counterclockwise", title: "Reset onboarding", tint: AppColor.error, showChevron: false) {
+                        appState.resetOnboarding()
+                    }
+                    #endif
+                    
+                    
+                }
             }
-#endif
+            
+            
         }
-        
-        
-        
+        .scrollIndicators(.hidden)
+        .sheet(item: $whichOption){ sheet in
+            switch sheet {
+                
+            case .getPro:
+                Text("Get Pro")
+            case .questionVersion:
+                Text("Questions Version")
+            case .name:
+                Text("Name")
+            case .language:
+                Text("Language")
+            case .notification:
+                Text("Notifications")
+            case .faqs:
+                Text("FAQs")
+            case .rateApp:
+                Text("Rate App")
+            }
+        }
     }
 }
 
 #Preview {
     ProfileView()
+        .padding()
         .environment(AppState())
 }

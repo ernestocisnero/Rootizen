@@ -51,7 +51,7 @@ struct HomeView: View {
                 }
             }
         }
-        .padding()
+        //.padding()
         
         .fullScreenCover(isPresented: $startQuiz){
             QuizFlowView(isPresented: $startQuiz, questionVersion: appState.questionVersion)

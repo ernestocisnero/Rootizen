@@ -14,8 +14,10 @@ struct AppRootView: View {
     var body: some View {
         if appState.isOnboardingComplete{
             MainTabView()
+                .padding(.horizontal)
         }else{
             OnboardingView()
+                .padding(.horizontal)
         }
     }
 }
@@ -33,12 +35,12 @@ struct MainTabView: View {
             
             LearnView()
                 .tabItem {
-                    Label("Learn", systemImage: "book")
+                    Label("Resources", systemImage: "book")
                 }
             
             ProfileView()
                 .tabItem {
-                    Label("Me", systemImage: "person.circle")
+                    Label("Profile", systemImage: "person")
                 }
         }
         .tint(AppColor.success)

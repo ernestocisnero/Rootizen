@@ -59,7 +59,7 @@ struct StreakCard: View {
                 .stroke(Color.black.opacity(0.08), lineWidth: 1)
         }
         .shadow(
-            color: AppColor.success,
+            color: AppColor.successBorder,
             radius: 0,
             x: 0,
             y: 5
