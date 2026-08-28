@@ -42,7 +42,7 @@ struct HomeView: View {
                     
                     HStack(alignment: .top){
                         GameCard(
-                            title: "Quiz",
+                            title: "Top 15 most difficult",
                             secondTitle: "10 questions",
                             thirdTitle: "Multiple selection",
                             image: Image(systemName: "book"),
@@ -50,7 +50,7 @@ struct HomeView: View {
                         )
                         
                         GameCard(
-                            title: "Flashcards",
+                            title: "Senior QUestions",
                             secondTitle: "10 questions",
                             thirdTitle: "True / False",
                             image: Image(systemName: "bookmark"),

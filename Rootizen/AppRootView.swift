@@ -33,7 +33,7 @@ struct MainTabView: View {
                     Label("Home", systemImage: "house")
                 }
             
-            LearnView()
+            ResourcesView()
                 .tabItem {
                     Label("Resources", systemImage: "book")
                 }
