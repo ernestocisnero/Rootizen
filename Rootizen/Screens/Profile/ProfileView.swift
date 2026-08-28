@@ -41,17 +41,17 @@ struct ProfileView: View {
                 //User Stats
                 RowStats(items: [
                     StatItem(value: "\(streakCount)", label: "day streak"),
-                    StatItem(value: "\(coursesCount)", label: "courses"),
-                    StatItem(value: "\(totalXP)", label: "points")
+                    StatItem(value: "\(totalXP)", label: "xp points"),
+                    StatItem(value: "\(coursesCount)", label: "courses")
                 ])
 
                 VStack(spacing: 18){
                     
-                    ProfileRow(icon: "crown", title: "Get Pro", showChevron: false) {
+                    ProfileRow(icon: "crown", title: "Get Pro") {
                         whichOption = .getPro
                     }
                     
-                    ProfileRow(icon: "book.pages", title: "Questions Version", showChevron: false) {
+                    ProfileRow(icon: "book.pages", title: "Questions Version") {
                         whichOption = .questionVersion
                     }
                     
@@ -67,7 +67,7 @@ struct ProfileView: View {
                         whichOption = .notification
                     }
                    
-                    ProfileRow(icon: "person.fill.questionmark", title: "FAQs") {
+                    ProfileRow(icon: "questionmark.app", title: "FAQs") {
                         whichOption = .faqs
                     }
                     
@@ -76,7 +76,7 @@ struct ProfileView: View {
                     }
                     
                     #if DEBUG
-                    ProfileRow(icon: "arrow.counterclockwise", title: "Reset onboarding", tint: AppColor.error, showChevron: false) {
+                    ProfileRow(icon: "arrow.counterclockwise", title: "Reset onboarding", tint: AppColor.error) {
                         appState.resetOnboarding()
                     }
                     #endif
@@ -96,7 +96,7 @@ struct ProfileView: View {
             case .questionVersion:
                 Text("Questions Version")
             case .name:
-                Text("Name")
+                EditNameView(name: appState.userName, onSave: appState.saveUserName)
             case .language:
                 Text("Language")
             case .notification:

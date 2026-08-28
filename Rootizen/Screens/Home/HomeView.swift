@@ -21,32 +21,43 @@ struct HomeView: View {
                 
                 VStack(spacing: 20){
                     
-                    StreakCard(streakCount: 4, userName: "Ernesto")
-                    
-                    VStack(alignment: .leading, spacing: 0){
+                    HStack(alignment: .top){
+                        GameCard(
+                            title: "Quiz",
+                            secondTitle: "10 questions",
+                            thirdTitle: "Multiple selection",
+                            image: Image(systemName: "book"),
+                            action: { startQuiz = true }
+                        )
                         
-                        
-                        
-                        HStack(alignment: .top){
-                            GameCard(
-                                title: "Quiz",
-                                secondTitle: "10 questions",
-                                thirdTitle: "Multiple selection",
-                                image: Image(systemName: "book"),
-                                action: { startQuiz = true }
-                            )
-                            
-                            GameCard(
-                                title: "Flashcards",
-                                secondTitle: "10 questions",
-                                thirdTitle: "True / False",
-                                image: Image(systemName: "bookmark"),
-                                action: { print("Flashcard") }
-                            )
-                        }
-                        .padding(.vertical,10)
-                        
+                        GameCard(
+                            title: "Flashcards",
+                            secondTitle: "10 questions",
+                            thirdTitle: "True / False",
+                            image: Image(systemName: "bookmark"),
+                            action: { print("Flashcard") }
+                        )
                     }
+                    .padding(.vertical,10)
+                    
+                    HStack(alignment: .top){
+                        GameCard(
+                            title: "Quiz",
+                            secondTitle: "10 questions",
+                            thirdTitle: "Multiple selection",
+                            image: Image(systemName: "book"),
+                            action: { startQuiz = true }
+                        )
+                        
+                        GameCard(
+                            title: "Flashcards",
+                            secondTitle: "10 questions",
+                            thirdTitle: "True / False",
+                            image: Image(systemName: "bookmark"),
+                            action: { print("Flashcard") }
+                        )
+                    }
+                    .padding(.vertical,10)
                     
                 }
             }

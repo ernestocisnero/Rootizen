@@ -11,7 +11,7 @@ struct ProfileRow: View {
     let icon: String
     let title: String
     var tint: Color = AppColor.primaryText
-    var showChevron: Bool = true
+    
     var action: () -> Void = {}
 
     var body: some View {
@@ -27,12 +27,6 @@ struct ProfileRow: View {
                     .foregroundColor(tint)
 
                 Spacer()
-
-                if showChevron {
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 13, weight: .semibold))
-                        .foregroundColor(AppColor.thirdText.opacity(0.5))
-                }
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
