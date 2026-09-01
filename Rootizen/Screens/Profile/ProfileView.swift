@@ -8,7 +8,6 @@
 enum Options: String, Identifiable{
     case getPro
     case questionVersion
-    case name
     case language
     case notification
     case faqs
@@ -36,13 +35,13 @@ struct ProfileView: View {
             VStack(spacing: 24){
                 
                 //User Name
-                UserInitialHeaders(userName: appState.userName)
+                UserInitialHeaders()
                 
                 //User Stats
                 RowStats(items: [
                     StatItem(value: "\(streakCount)", label: "day streak"),
                     StatItem(value: "\(totalXP)", label: "xp points"),
-                    StatItem(value: "\(coursesCount)", label: "courses")
+                    //StatItem(value: "\(coursesCount)", label: "courses")
                 ])
 
                 VStack(spacing: 18){
@@ -55,9 +54,6 @@ struct ProfileView: View {
                         whichOption = .questionVersion
                     }
                     
-                    ProfileRow(icon: "person", title: "Name") {
-                        whichOption = .name
-                    }
                     
                     ProfileRow(icon: "a.square", title: "Language") {
                         whichOption = .language
@@ -95,8 +91,6 @@ struct ProfileView: View {
                 Text("Get Pro")
             case .questionVersion:
                 Text("Questions Version")
-            case .name:
-                EditNameView(name: appState.userName, onSave: appState.saveUserName)
             case .language:
                 Text("Language")
             case .notification:

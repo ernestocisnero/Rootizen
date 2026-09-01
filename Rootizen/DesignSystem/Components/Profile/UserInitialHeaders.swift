@@ -9,8 +9,6 @@ import SwiftUI
 
 struct UserInitialHeaders: View {
     
-    let userName: String
-    
     var body: some View {
         
         VStack{
@@ -31,7 +29,7 @@ struct UserInitialHeaders: View {
                 y: 5
             )
             
-            Text(userName)
+            Text("Rootizen")
                 .primaryTitle()
                 .padding()
             
@@ -40,5 +38,5 @@ struct UserInitialHeaders: View {
 }
 
 #Preview {
-    UserInitialHeaders(userName: "Ernesto Cisnero")
+    UserInitialHeaders()
 }

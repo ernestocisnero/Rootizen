@@ -18,7 +18,6 @@ final class AppState {
     // MARK: - Persisted State
 
     private(set) var isOnboardingComplete: Bool
-    private(set) var userName: String
     private(set) var questionVersion: QuestionVersion
 
     // MARK: - Initialization
@@ -30,12 +29,6 @@ final class AppState {
         isOnboardingComplete = defaults.bool(
             forKey: "isOnboardingComplete"
         )
-        
-
-        userName = defaults.string(
-            forKey: "userName"
-        ) ?? "John Doe"
-
         
         let savedVersion = defaults.string(
             forKey: "questionVersion"
@@ -65,14 +58,6 @@ final class AppState {
     }
     #endif
 
-    func saveUserName(_ name: String) {
-        userName = name
-
-        UserDefaults.standard.set(
-            name,
-            forKey: "userName"
-        )
-    }
 
     func setQuestionVersion(_ version: QuestionVersion) {
         questionVersion = version

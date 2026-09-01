@@ -19,7 +19,7 @@ struct QuizView: View {
         VStack {
             Text("Quiz View")
             Text("Question")
-            Text("\(quizManager.questions[0].question)")
+            Text("\(quizManager.questions[9].question)")
             Text("Score")
             Text("\(quizManager.score)")
             

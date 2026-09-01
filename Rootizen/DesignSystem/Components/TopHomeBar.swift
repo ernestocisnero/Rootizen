@@ -15,19 +15,9 @@ struct TopHomeBar: View {
         HStack(spacing: 24){
 
             StreakCapsule(streakDays: 1)
-            
-            ExpPointsCapsule(xpPoints: 10)
-            
             Spacer()
             
-            HStack(spacing: 24){
-                Text("EC")
-            }
-            .padding(8)
-            .foregroundStyle(AppColor.success)
-            .padding(8)
-            .background(AppColor.successMuted)
-            .clipShape(Circle())
+            ExpPointsCapsule(xpPoints: 10)
             
         }
     }

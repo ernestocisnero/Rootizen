@@ -43,7 +43,7 @@ struct MainTabView: View {
                     Label("Profile", systemImage: "person")
                 }
         }
-        .tint(AppColor.success)
+        .tint(AppColor.info)
         
     }
 }

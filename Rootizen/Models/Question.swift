@@ -12,5 +12,5 @@ struct Question: Identifiable {
     let question: String
     let correctAnswer: String
     let incorrectAnswers: [String]
-    //let isSenior: Bool?
+    let isSenior: Bool?
 }
