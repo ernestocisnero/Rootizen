@@ -9,15 +9,22 @@ import SwiftUI
 
 
 struct QuizRow: View {
-    
+    @Environment(QuizManager.self) private var quizManager
     @State private var shake = false
     
-    //var answer: Answer
-    var isCorrect: Bool = true
+    var option: String
     
-    var isSelected: Bool = true
+    var isSelected: Bool {
+        quizManager.selectedAnswer == option
+    }
     
-    var shouldShake: Bool = true
+    var isCorrect: Bool {
+        isSelected && quizManager.answerResult == .isCorrect
+    }
+    
+    var shouldShake: Bool {
+        isSelected && quizManager.answerResult == .isWrong
+    }
     
     
     // Color variations variables
@@ -28,7 +35,7 @@ struct QuizRow: View {
         
         HStack(spacing: 20){
             
-            Text("answer.text")
+            Text(option)
                 .questionRow()
             
             Spacer()
@@ -54,13 +61,14 @@ struct QuizRow: View {
         .shadow(color: isSelected ? (isCorrect ? colorSuccess: colorError): .gray, radius: 0, x: 0.2, y: 5)
         .animation(.easeInOut(duration: 0.08).repeatCount(4, autoreverses: true), value: shouldShake)
         .sensoryFeedback(isCorrect ? .success: .error, trigger: isSelected)
-//        .onTapGesture {
-//            quizManager.selectAnswer(answer.text)
-//        }
+        .onTapGesture {
+            quizManager.selectAnswer(option)
+        }
     }
 }
 
 #Preview {
-    QuizRow()
-        .padding()
+    QuizRow(option: "Florida")
+        .padding(.vertical)
+        .environment(QuizManager(questions: q2025version))
 }

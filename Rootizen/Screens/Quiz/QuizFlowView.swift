@@ -37,6 +37,7 @@ struct QuizFlowView: View {
             }
         }
         .environment(QuizManager(questions: questionVersion == .v2008 ? q2008version : q2025version))
+        .padding()
     }
 }
 

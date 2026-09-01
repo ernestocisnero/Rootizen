@@ -16,21 +16,44 @@ struct QuizView: View {
     
     
     var body: some View {
+        
         VStack {
-            Text("Quiz View")
-            Text("Question")
-            Text("\(quizManager.questions[9].question)")
-            Text("Score")
-            Text("\(quizManager.score)")
-            
-            Button("Navigate to result"){
-                path.append(.results)
+            HStack{
+                Button("Close"){
+                    onClose()
+                }
+                Spacer()
+                Text("Correct answers: \(quizManager.score)")
             }
             
-            Button("Close"){
-                onClose()
+            Text("Question:")
+            Text("\(quizManager.currentQuestion.question)")
+            
+            // MARK: Quiz options
+            
+            Spacer()
+            
+            ForEach(quizManager.quizOptions, id: \.self){ option in
+                QuizRow(option: option)
+                    .padding(.vertical)
             }
+            
+            Spacer()
+            
+            Button{
+                if !quizManager.isFinished{
+                    quizManager.nextQuestion()
+                }
+                else{
+                    path.append(.results)
+                }
+            }label:{
+                Text(!quizManager.isFinished ? "Next question" : "Results")
+            }
+            
+            
         }
+        
     }
 }
 

@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum AnswerResult {
+    case isCorrect
+    case isWrong
+}
+
 @Observable
 final class QuizManager {
     
@@ -15,6 +20,7 @@ final class QuizManager {
     private(set) var score = 0
     private(set) var selectedAnswer: String?
     private(set) var isFinished = false
+    private(set) var answerResult: AnswerResult?
     
     init(questions: [Question]){
         startQuizSession(questionsVersion: questions)
@@ -22,6 +28,10 @@ final class QuizManager {
     
     var currentQuestion: Question {
         questions[currentIndex]
+    }
+    
+    var quizOptions: [String]{
+        questions[currentIndex].incorrectAnswers + [questions[currentIndex].correctAnswer]
     }
     
     func startQuizSession(questionsVersion: [Question]){
@@ -40,6 +50,9 @@ final class QuizManager {
         
         if answer == currentQuestion.correctAnswer {
             score += 1
+            answerResult = .isCorrect
+        }else{
+            answerResult = .isWrong
         }
     }
     
