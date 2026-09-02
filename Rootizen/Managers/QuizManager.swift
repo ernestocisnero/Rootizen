@@ -21,26 +21,25 @@ final class QuizManager {
     private(set) var selectedAnswer: String?
     private(set) var isFinished = false
     private(set) var answerResult: AnswerResult?
+    private(set) var quizOptions: [String] = []
     
     init(questions: [Question]){
         startQuizSession(questionsVersion: questions)
     }
     
     var currentQuestion: Question {
+        
         questions[currentIndex]
     }
     
-    var quizOptions: [String]{
-        questions[currentIndex].incorrectAnswers + [questions[currentIndex].correctAnswer]
-    }
-    
     func startQuizSession(questionsVersion: [Question]){
-        //Load questions
-        questions = Array(questionsVersion.shuffled().prefix(10)) //load questions here
         currentIndex = 0
         score = 0
         selectedAnswer = nil
         isFinished = false
+        
+        questions = Array(questionsVersion.shuffled().prefix(10)) //load questions here
+        quizOptions = (questions[currentIndex].incorrectAnswers + [questions[currentIndex].correctAnswer]).shuffled()
     }
     
     func selectAnswer(_ answer: String) {
@@ -62,6 +61,7 @@ final class QuizManager {
         if currentIndex + 1 < questions.count {
             currentIndex += 1
             selectedAnswer = nil
+            quizOptions = (questions[currentIndex].incorrectAnswers + [questions[currentIndex].correctAnswer]).shuffled()
         } else {
             isFinished = true
         }

@@ -14,9 +14,26 @@ enum QuizDestination: Hashable {
 
 struct QuizFlowView: View {
     @Binding var isPresented: Bool
-    @Environment(QuizManager.self) private var quizManager
     @State private var path: [QuizDestination] = []
+    @State private var quizManager: QuizManager
+    
     let questionVersion: QuestionVersion
+    
+    init(
+        isPresented: Binding<Bool>,
+        questionVersion: QuestionVersion
+    ){
+        self._isPresented = isPresented
+        self.questionVersion = questionVersion
+        
+        let questions = questionVersion == .v2008
+        ? q2008version
+        : q2025version
+        
+        self._quizManager = State(
+            initialValue: QuizManager(questions: questions)
+        )
+    }
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -24,6 +41,7 @@ struct QuizFlowView: View {
                 path: $path,
                 onClose: { isPresented = false }
             )
+            .environment(quizManager)
             .navigationDestination(for: QuizDestination.self) { destination in
                 switch destination {
                 case .results:
@@ -36,7 +54,7 @@ struct QuizFlowView: View {
                 }
             }
         }
-        .environment(QuizManager(questions: questionVersion == .v2008 ? q2008version : q2025version))
+        
         .padding()
     }
 }
@@ -45,5 +63,4 @@ struct QuizFlowView: View {
 
 #Preview {
     QuizFlowView(isPresented: .constant(true), questionVersion: .v2025)
-        .environment(QuizManager(questions: q2008version))
 }

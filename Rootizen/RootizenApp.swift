@@ -11,13 +11,12 @@ import SwiftUI
 struct RootizenApp: App {
     
     @State private var appState = AppState()
-    @State private var quizManager = QuizManager(questions: [])
     
     var body: some Scene {
         WindowGroup {
             AppRootView()
                 .environment(appState)
-                .environment(quizManager)
+                
         }
     }
 }
