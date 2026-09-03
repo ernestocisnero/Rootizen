@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @Environment(AppState.self) private var appState
     @State private var startQuiz: Bool = false
+    @State private var showAllQuestions: Bool = false
     
     var body: some View {
         
@@ -49,7 +50,7 @@ struct HomeView: View {
                         thirdTitle: "Tap to reveal",
                         image: Image(systemName: "bookmark.circle"),
                         cardType: .top15,
-                        action: { startQuiz = true }
+                        action: { print("15 most difficult") }
                     )
                     
                     GameCard(
@@ -79,7 +80,7 @@ struct HomeView: View {
                         thirdTitle: "Read and memorize",
                         image: Image(systemName: "book.closed"),
                         cardType: .allCivics,
-                        action: { print("All Civics Questions") }
+                        action: { showAllQuestions = true }
                     )
                 }
             }
@@ -88,6 +89,9 @@ struct HomeView: View {
         
         .fullScreenCover(isPresented: $startQuiz){
             QuizFlowView(isPresented: $startQuiz, questionVersion: appState.questionVersion)
+        }
+        .fullScreenCover(isPresented: $showAllQuestions){
+            AllQuestionsView(questionsVersion: appState.questionVersion)
         }
     }
 }

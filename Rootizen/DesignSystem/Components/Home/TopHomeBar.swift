@@ -14,10 +14,9 @@ struct TopHomeBar: View {
         
         HStack(spacing: 24){
 
-            StreakCapsule(streakDays: 1)
+            PointsCapsule(capsuleType: .streak, points: 4, textPoints: "Streak Days")
             Spacer()
-            
-            ExpPointsCapsule(xpPoints: 10)
+            PointsCapsule(capsuleType: .xpPoints, points: 10, textPoints: "XP Points")
             
         }
     }
