@@ -12,71 +12,49 @@ enum CapsuleType {
     case xpPoints
 }
 
-
 struct PointsCapsule: View {
-    @State private var extendCapsule: Bool = false
-    @State private var closeTask: Task<Void, Never>?
-    
+
     let capsuleType: CapsuleType
     let points: Int
     let textPoints: String
-    
-    var backgroundBe: Color {
-        capsuleType == .streak
-        ? AppColor.errorMuted
-        :AppColor.accentMuted
+
+    private var accentColor: Color {
+        capsuleType == .streak ? AppColor.streak : AppColor.accent
     }
-    
-    var foregroundBe: Color {
-        capsuleType == .streak
-        ? AppColor.streak
-        :AppColor.accent
+
+    private var iconName: String {
+        capsuleType == .streak ? "flame" : "bolt"
     }
-    
+
     var body: some View {
-        
-        HStack(spacing: 10){
-            Image(systemName: capsuleType == .streak ? "flame" : "bolt")
-                .foregroundStyle(.white)
-                .padding(8)
-                .background(foregroundBe)
-                .clipShape(Circle())
-            
-            if extendCapsule{
-                HStack{
-                    Text(textPoints)
-                        .foregroundStyle(foregroundBe)
-                        .primaryTitle()
-                }
-            }
-            
+        HStack(spacing: 8) {
+            Image(systemName: iconName)
+                .foregroundStyle(accentColor)
+                .font(.system(size: 15, weight: .medium))
+
             Text("\(points)")
-                .foregroundStyle(foregroundBe)
+                .foregroundStyle(AppColor.primaryText)
                 .primaryTitle()
-            
-            
+
+            Text(textPoints)
+                .foregroundStyle(AppColor.secondaryText)
+                .secondaryTitle()
         }
-        .padding(8)
-        .padding(.horizontal, 8)
-        .background(backgroundBe)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 12)
+        .background(AppColor.surface)
         .clipShape(Capsule())
-        .animation(.easeInOut(duration: 0.5), value: extendCapsule)
-        .onTapGesture {
-            closeTask?.cancel()
-            extendCapsule.toggle()
-            
-            if extendCapsule {
-                closeTask = Task {
-                    try? await Task.sleep(for: .seconds(5))
-                    guard !Task.isCancelled else { return }
-                    extendCapsule = false
-                }
-            }
+        .overlay {
+            Capsule()
+                .stroke(AppColor.border, lineWidth: 1)
         }
-        
     }
 }
 
 #Preview {
-    PointsCapsule(capsuleType: .xpPoints, points: 10, textPoints: "XP Points")
+    HStack(spacing: 8) {
+        PointsCapsule(capsuleType: .streak, points: 4, textPoints: "day streak")
+        PointsCapsule(capsuleType: .xpPoints, points: 100, textPoints: "XP")
+    }
+    .padding()
 }

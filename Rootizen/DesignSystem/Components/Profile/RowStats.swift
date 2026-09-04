@@ -40,14 +40,8 @@ struct RowStats: View {
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(Color.black.opacity(0.08), lineWidth: 1)
+                .stroke(AppColor.border, lineWidth: 1)
         }
-        .shadow(
-            color: AppColor.secondaryBackground,
-            radius: 0,
-            x: 0,
-            y: 5
-        )
     }
 }
 

@@ -14,7 +14,7 @@ struct UserInitialHeaders: View {
         VStack{
             HStack(spacing: 24){
                 Text("EC")
-                    .foregroundStyle(AppColor.secondaryText)
+                    .foregroundStyle(AppColor.primaryText)
                     .primaryTitle()
                 
             }
@@ -22,12 +22,6 @@ struct UserInitialHeaders: View {
             .bold()
             .background(AppColor.success)
             .clipShape(Circle())
-            .shadow(
-                color: AppColor.successBorder,
-                radius: 0,
-                x: 0,
-                y: 5
-            )
             
             Text("Rootizen")
                 .primaryTitle()

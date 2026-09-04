@@ -12,7 +12,7 @@ enum Options: String, Identifiable{
     case notification
     case faqs
     case rateApp
-
+    
     var id: String { rawValue }
 }
 
@@ -23,6 +23,7 @@ struct ProfileView: View {
     
     @Environment(AppState.self) private var appState
     @State private var whichOption: Options?
+    @State private var soundEnabled = SoundManager.shared.isEnabled
     
     let streakCount: Int = 4
     let totalXP: Int = 100
@@ -41,42 +42,52 @@ struct ProfileView: View {
                 RowStats(items: [
                     StatItem(value: "\(streakCount)", label: "day streak"),
                     StatItem(value: "\(totalXP)", label: "xp points"),
-                    //StatItem(value: "\(coursesCount)", label: "courses")
                 ])
-
+                
                 VStack(spacing: 18){
-                    
-                    ProfileRow(icon: "crown", title: "Get Pro") {
-                        whichOption = .getPro
+                    PremiumCard( action: { whichOption = .getPro } )
+                }
+                
+                VStack(spacing: 16) {
+                    ProfileSection(
+                        title: "Preferences",
+                        rows: [
+                            ProfileRowItem(icon: "doc.text", title: "Questions version", action: {
+                                whichOption = .questionVersion
+                            }),
+                            ProfileRowItem(icon: "character.bubble", title: "Language", action: {
+                                whichOption = .language
+                            }),
+                            ProfileRowItem(icon: "bell", title: "Notifications", action: {
+                                whichOption = .notification
+                            })
+                        ]
+                    ){
+                        ProfileToggleRow(icon: "speaker.wave.2", title: "Sound effects", isOn: $soundEnabled)
+                            .onChange(of: soundEnabled) { _, newValue in
+                                SoundManager.shared.isEnabled = newValue
+                            }
                     }
                     
-                    ProfileRow(icon: "book.pages", title: "Questions Version") {
-                        whichOption = .questionVersion
-                    }
+                    ProfileSection(
+                        title: "Support",
+                        rows: [
+                            ProfileRowItem(icon: "questionmark.circle", title: "FAQs", action: {
+                                whichOption = .faqs
+                            }),
+                            ProfileRowItem(icon: "star", title: "Rate this app", action: {
+                                whichOption = .rateApp
+                            })
+                        ]
+                    )
+#if DEBUG
                     
-                    
-                    ProfileRow(icon: "a.square", title: "Language") {
-                        whichOption = .language
-                    }
-                    
-                    ProfileRow(icon: "bell", title: "Notifications") {
-                        whichOption = .notification
-                    }
-                   
-                    ProfileRow(icon: "questionmark.app", title: "FAQs") {
-                        whichOption = .faqs
-                    }
-                    
-                    ProfileRow(icon: "star", title: "Rate this App") {
-                        whichOption = .rateApp
-                    }
-                    
-                    #if DEBUG
-                    ProfileRow(icon: "arrow.counterclockwise", title: "Reset onboarding", tint: AppColor.error) {
-                        appState.resetOnboarding()
-                    }
-                    #endif
-                    
+                    ProfileSection(
+                        rows: [
+                            ProfileRowItem(icon: "arrow.counterclockwise", title: "Reset onboarding", tint: AppColor.error, action: { appState.resetOnboarding() })
+                        ]
+                    )
+#endif
                     
                 }
             }

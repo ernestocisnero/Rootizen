@@ -25,7 +25,7 @@ struct AllQuestionsView: View {
                         .primaryTitle()
                     
                     Text("Tap each card to see the answer")
-                        .questionRow()
+                        .bodyText()
                 }
                 
                 Spacer()

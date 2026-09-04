@@ -11,7 +11,6 @@ struct ProfileRow: View {
     let icon: String
     let title: String
     var tint: Color = AppColor.primaryText
-    
     var action: () -> Void = {}
 
     var body: some View {
@@ -19,37 +18,24 @@ struct ProfileRow: View {
             HStack(spacing: 12) {
                 Image(systemName: icon)
                     .font(.system(size: 16, weight: .medium))
-                    .foregroundColor(AppColor.thirdText)
+                    .foregroundStyle(AppColor.thirdText)
                     .frame(width: 22)
 
                 Text(title)
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(tint)
+                    .font(.system(size: 16, weight: .regular))
+                    .foregroundStyle(tint)
 
                 Spacer()
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 14)
-            .background(AppColor.background)
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .stroke(Color.black.opacity(0.08), lineWidth: 1)
-            }
-            .shadow(
-                color: AppColor.secondaryBackground,
-                radius: 0,
-                x: 0,
-                y: 5
-            )
+            .padding(.horizontal, 14)
+            .padding(.vertical, 13)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }
 }
 
 #Preview {
-    VStack(spacing: 15) {
-        ProfileRow(icon: "gearshape", title: "Settings") {}
-    }
-    .padding()
+    ProfileRow(icon: "gearshape", title: "Settings") {}
+        .padding()
 }
