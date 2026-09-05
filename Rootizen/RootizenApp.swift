@@ -11,11 +11,13 @@ import SwiftUI
 struct RootizenApp: App {
     
     @State private var appState = AppState()
+    @State private var userProgress = UserProgress()
     
     var body: some Scene {
         WindowGroup {
             AppRootView()
                 .environment(appState)
+                .environment(userProgress)
                 
         }
     }

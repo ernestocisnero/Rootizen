@@ -22,12 +22,17 @@ import SwiftUI
 struct ProfileView: View {
     
     @Environment(AppState.self) private var appState
+    @Environment(UserProgress.self) private var userProgress
+    
     @State private var whichOption: Options?
     @State private var soundEnabled = SoundManager.shared.isEnabled
     
-    let streakCount: Int = 4
-    let totalXP: Int = 100
-    let coursesCount: Int = 10
+    var streakCount: Int {
+        userProgress.userStreak
+    }
+    var totalXP: Int {
+        userProgress.userXPoints
+    }
     
     var body: some View {
         
@@ -119,4 +124,5 @@ struct ProfileView: View {
     ProfileView()
         .padding()
         .environment(AppState())
+        .environment(UserProgress())
 }

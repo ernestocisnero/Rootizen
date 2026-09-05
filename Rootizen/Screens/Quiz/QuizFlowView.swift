@@ -46,7 +46,7 @@ struct QuizFlowView: View {
                 switch destination {
                 case .results:
                     QuizResults(
-                        onRestart: { path.removeLast(path.count) },
+                        score: quizManager.score, total: 10,
                         onClose: { isPresented = false }
                     )
                     .navigationBarBackButtonHidden(true)

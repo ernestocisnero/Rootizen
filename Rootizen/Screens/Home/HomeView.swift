@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(AppState.self) private var appState
+    @Environment(UserProgress.self) private var userProgress
     @State private var startQuiz: Bool = false
     @State private var showAllQuestions: Bool = false
     
@@ -16,7 +17,13 @@ struct HomeView: View {
         
         VStack(alignment: .leading, spacing: 20){
             
-            TopHomeBar()
+            HStack(spacing: 24){
+
+                PointsCapsule(capsuleType: .streak, points: userProgress.userStreak, textPoints: "Streak Days")
+                Spacer()
+                PointsCapsule(capsuleType: .xpPoints, points: userProgress.userXPoints, textPoints: "XP Points")
+                
+            }
             
             ScrollView(){
                 
@@ -99,4 +106,5 @@ struct HomeView: View {
 #Preview {
     HomeView()
         .environment(AppState())
+        .environment(UserProgress())
 }

@@ -65,7 +65,7 @@ struct QuizRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .stroke(stateBorderColor, lineWidth: isSelected ? 1.5 : 0.5)
+                .stroke(stateBorderColor, lineWidth: isSelected ? 2 : 1)
         }
         .animation(.easeInOut(duration: 0.08).repeatCount(4, autoreverses: true), value: shouldShake)
         .sensoryFeedback(isCorrect ? .success: .error, trigger: isSelected)

@@ -28,8 +28,6 @@ final class SoundManager {
     private var player: AVAudioPlayer?
 
     private init() {
-        // .ambient = respects the silent switch and mixes with other audio,
-        // instead of interrupting music/podcasts like .playback would.
         try? AVAudioSession.sharedInstance().setCategory(.ambient, options: [.mixWithOthers])
     }
 

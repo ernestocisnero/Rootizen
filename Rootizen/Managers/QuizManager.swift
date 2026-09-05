@@ -55,15 +55,23 @@ final class QuizManager {
         }
     }
     
-    func nextQuestion() {
-        guard selectedAnswer != nil else { return }
-        
+    func nextQuestion() -> Bool {
+        guard selectedAnswer != nil else { return false }
+
         if currentIndex + 1 < questions.count {
             currentIndex += 1
             selectedAnswer = nil
-            quizOptions = (questions[currentIndex].incorrectAnswers + [questions[currentIndex].correctAnswer]).shuffled()
+            answerResult = nil
+
+            quizOptions = (
+                questions[currentIndex].incorrectAnswers +
+                [questions[currentIndex].correctAnswer]
+            ).shuffled()
+
+            return false
         } else {
             isFinished = true
+            return true
         }
     }
 }

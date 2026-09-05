@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct AppRootView: View {
+    
     @Environment(AppState.self) private var appState
+
     
     var body: some View {
         if appState.isOnboardingComplete{
@@ -52,4 +54,5 @@ struct MainTabView: View {
 #Preview {
     AppRootView()
         .environment(AppState())
+        .environment(UserProgress())
 }
