@@ -18,10 +18,10 @@ final class QuizManager {
     private(set) var questions: [Question] = []
     private(set) var currentIndex = 0
     private(set) var score = 0
-    private(set) var selectedAnswer: String?
+    private(set) var selectedAnswer: Answer?
     private(set) var isFinished = false
     private(set) var answerResult: AnswerResult?
-    private(set) var quizOptions: [String] = []
+    private(set) var quizOptions: [Answer] = []
     
     init(questions: [Question]){
         startQuizSession(questionsVersion: questions)
@@ -39,15 +39,15 @@ final class QuizManager {
         isFinished = false
         
         questions = Array(questionsVersion.shuffled().prefix(10)) //load questions here
-        quizOptions = (questions[currentIndex].incorrectAnswers + [questions[currentIndex].correctAnswer]).shuffled()
+        quizOptions = (questions[currentIndex].answers).shuffled()
     }
     
-    func selectAnswer(_ answer: String) {
+    func selectAnswer(_ answer: Answer) {
         guard selectedAnswer == nil else { return }
         
         selectedAnswer = answer
         
-        if answer == currentQuestion.correctAnswer {
+        if answer.isCorrect {
             score += 1
             answerResult = .isCorrect
         }else{
@@ -63,10 +63,7 @@ final class QuizManager {
             selectedAnswer = nil
             answerResult = nil
 
-            quizOptions = (
-                questions[currentIndex].incorrectAnswers +
-                [questions[currentIndex].correctAnswer]
-            ).shuffled()
+            quizOptions = (questions[currentIndex].answers).shuffled()
 
             return false
         } else {

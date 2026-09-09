@@ -64,7 +64,7 @@ struct QuizView: View {
                     .textCase(.uppercase)
                     .tracking(0.4)
                 
-                Text(quizManager.currentQuestion.question)
+                Text(quizManager.currentQuestion.question.english)
                     .font(.system(size: 20, weight: .medium))
                     .foregroundStyle(AppColor.primaryText)
                     .fixedSize(horizontal: false, vertical: true)
@@ -75,7 +75,7 @@ struct QuizView: View {
             // MARK: Quiz options
             ScrollView {
                 VStack(spacing: 18) {
-                    ForEach(quizManager.quizOptions, id: \.self) { option in
+                    ForEach(quizManager.quizOptions) { option in
                         QuizRow(option: option)
                     }
                 }
@@ -88,7 +88,7 @@ struct QuizView: View {
                 if quizManager.answerResult == .isCorrect{
                     AnswerFeedbackCard( isCorrect: true, correctAnswer: "")
                 }else{
-                    AnswerFeedbackCard( isCorrect: false, correctAnswer: quizManager.currentQuestion.correctAnswer)
+                    AnswerFeedbackCard( isCorrect: false, correctAnswer: quizManager.currentQuestion.answers.first(where: {$0.isCorrect})?.text.english ?? "")
                 }
                 
             }

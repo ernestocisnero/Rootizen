@@ -12,7 +12,7 @@ struct QuizRow: View {
     @Environment(QuizManager.self) private var quizManager
     @State private var shake = false
 
-    var option: String
+    var option: Answer
 
     var isSelected: Bool {
         quizManager.selectedAnswer == option
@@ -44,7 +44,7 @@ struct QuizRow: View {
 
         HStack(spacing: 20){
 
-            Text(option)
+            Text(option.text.english)
                 .bodyText()
                 .foregroundStyle(AppColor.primaryText)
 
@@ -80,7 +80,7 @@ struct QuizRow: View {
 }
 
 #Preview {
-    QuizRow(option: "Florida")
+    QuizRow(option: Answer(id: UUID(), text: LocalizedText(english: "A holiday to honor people who have served in the U.S. military", spanish: "Un día festivo para honrar a las personas que han servido en las fuerzas militares de los Estados Unidos"), isCorrect: true))
         .padding(.vertical)
         .environment(QuizManager(questions: q2025version))
 }

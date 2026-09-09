@@ -9,8 +9,20 @@ import SwiftUI
 
 struct Question: Identifiable {
     let id: UUID
-    let question: String
-    let correctAnswer: String
-    let incorrectAnswers: [String]
+    let category: String
+    let question: LocalizedText
+    let answers: [Answer]
     let isSenior: Bool?
+}
+
+struct Answer: Identifiable, Equatable {
+    let id: UUID
+    let text: LocalizedText
+    let isCorrect: Bool
+}
+
+struct LocalizedText: Equatable {
+    let english: String
+    let spanish: String
+
 }

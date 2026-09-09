@@ -13,7 +13,7 @@ struct AllQuestionsView: View {
     let questionsVersion: QuestionVersion
     
     var questions: [Question]{
-        questionsVersion != .v2025 ? q2025version : q2008version
+        questionsVersion == .v2025 ? q2025version : q2008version
     }
     
     var body: some View {
