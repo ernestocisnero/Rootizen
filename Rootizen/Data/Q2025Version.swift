@@ -2565,7 +2565,7 @@ let q2025version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "(It states that the) powers not given to the federal government belong to the states or to the people.",
-                    spanish: "(It estados that the) poderes not given parun el federal gobierno belong parun el estados o parun el personaas."
+                    spanish: "(Establece que los) poderes no otorgados al gobierno federal pertenecen a los estados o al pueblo."
                 ),
                 isCorrect: true
             ),
@@ -2623,10 +2623,10 @@ let q2025version: [Question] = [
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Varies by State",
+                    english: "Varies by State.",
                     spanish: "Las respuestas varían según el estado"
                 ),
-                isCorrect: false
+                isCorrect: true
             )
         ],
         isSenior: true
@@ -2642,10 +2642,10 @@ let q2025version: [Question] = [
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Miami",
-                    spanish: "Miami"
+                    english: "Varies by State.",
+                    spanish: "Las respuestas varían según el estado"
                 ),
-                isCorrect: false
+                isCorrect: true
             ),
             Answer(
                 id: UUID(),
@@ -2696,7 +2696,7 @@ let q2025version: [Question] = [
                     english: "Citizens eighteen (18) and older (can vote)",
                     spanish: "Los ciudadanos de 18 años o más pueden votar"
                 ),
-                isCorrect: false
+                isCorrect: true
             ),
             Answer(
                 id: UUID(),
