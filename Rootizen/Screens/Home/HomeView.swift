@@ -37,6 +37,7 @@ struct HomeView: View {
                         thirdTitle: "Multiple selection",
                         image: Image(systemName: "book"),
                         cardType: .quiz,
+                        isPro: false,
                         action: { startQuiz = true }
                     )
                     
@@ -46,27 +47,51 @@ struct HomeView: View {
                         thirdTitle: "True / False",
                         image: Image(systemName: "lanyardcard"),
                         cardType: .flashcard,
+                        isPro: false,
                         action: { print("Flashcard") }
                     )
                     
-                    // MARK: Top 15 and Senior
+                    // MARK: One Nation Journey and Senior
                     
                     GameCard(
-                        title: "Top 15 most difficult",
-                        secondTitle: "15 questions",
-                        thirdTitle: "Tap to reveal",
-                        image: Image(systemName: "bookmark.circle"),
-                        cardType: .top15,
-                        action: { print("15 most difficult") }
+                        title: "One Nation Journey",
+                        secondTitle: "11 days of history",
+                        thirdTitle: "Read and memorize",
+                        image: Image(systemName: "globe.americas.fill"),
+                        cardType: .oneNation,
+                        isPro: true,
+                        action: { print("One Nation Journey") }
                     )
                     
                     GameCard(
                         title: "Senior Questions",
-                        secondTitle: "65/20 questions",
+                        secondTitle: "65/20 Exemption",
                         thirdTitle: "Read and memorize",
                         image: Image(systemName: "magazine"),
                         cardType: .senior,
+                        isPro: false,
                         action: { print("Senior Questions") }
+                    )
+                    
+                    // MARK: Listening questions and Speaking practice questions(Mock up)
+                    GameCard(
+                        title: "Listen the questions",
+                        secondTitle: "Audio format",
+                        thirdTitle: "Listen and memorize",
+                        image: Image(systemName: "headphones"),
+                        cardType: .listenQuestions,
+                        isPro: true,
+                        action: { print("Listen the questions") }
+                    )
+                    
+                    GameCard(
+                        title: "Speak your answers",
+                        secondTitle: "Speaking format",
+                        thirdTitle: "Listen and speak",
+                        image: Image(systemName: "waveform"),
+                        cardType: .speakAnswers,
+                        isPro: true,
+                        action: { print("Listen and speak") }
                     )
                     
                     
@@ -78,6 +103,7 @@ struct HomeView: View {
                         thirdTitle: "Read and memorize",
                         image: Image(systemName: "questionmark.folder"),
                         cardType: .n400,
+                        isPro: false,
                         action: { print("N-400 Questions") }
                     )
                     
@@ -87,6 +113,7 @@ struct HomeView: View {
                         thirdTitle: "Read and memorize",
                         image: Image(systemName: "book.closed"),
                         cardType: .allCivics,
+                        isPro: false,
                         action: { showAllQuestions = true }
                     )
                 }

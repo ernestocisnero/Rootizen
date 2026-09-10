@@ -41,6 +41,19 @@ enum AppColor {
     // Neutral — for categories that aren't semantically colored (e.g. "All Civics Questions")
     static let neutral = Color(red: 0.37, green: 0.37, blue: 0.35)       // #5F5E5A warm gray
     static let neutralMuted = Color(red: 0.94, green: 0.94, blue: 0.93)  // #F0EFED
+    
+    // MARK: - Premium Features
+
+    // MARK: - Premium Features
+
+    static let journey = Color(red: 0.36, green: 0.28, blue: 0.55)       // #5C478C purple
+    static let journeyMuted = Color(red: 0.94, green: 0.92, blue: 0.97)  // #F0EDF7
+
+    static let listen = Color(red: 0.12, green: 0.50, blue: 0.48)        // #1F807B teal
+    static let listenMuted = Color(red: 0.89, green: 0.95, blue: 0.94)   // #E3F2F0
+
+    static let speak = Color(red: 0.78, green: 0.39, blue: 0.18)         // #C7632E orange
+    static let speakMuted = Color(red: 0.98, green: 0.92, blue: 0.88)    // #FAEBE3
 
     // MARK: - Borders
     static let successBorder = Color(red: 0.23, green: 0.43, blue: 0.07)   // #3B6D11

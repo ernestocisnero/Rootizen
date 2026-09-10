@@ -11,22 +11,25 @@ enum CardType: String, Identifiable {
     case quiz
     case flashcard
     case senior
-    case top15
+    case oneNation
+    case listenQuestions
+    case speakAnswers
     case n400
     case allCivics
-
+    
     var id: String { rawValue }
 }
 
 struct GameCard: View {
-
+    
     let title: String
     let secondTitle: String
     let thirdTitle: String
     let image: Image
     let cardType: CardType
+    let isPro: Bool
     let action: () -> Void
-
+    
     private var accentColor: Color {
         switch cardType {
         case .quiz:
@@ -34,41 +37,45 @@ struct GameCard: View {
         case .flashcard:
             AppColor.highlight
         case .senior:
-            AppColor.success
-        case .top15:
             AppColor.neutral
+        case .oneNation:
+            AppColor.journey
+        case .listenQuestions:
+            AppColor.listen
+        case .speakAnswers:
+            AppColor.speak
         case .n400:
             AppColor.error
         case .allCivics:
             AppColor.accent
         }
     }
-
+    
     var body: some View {
-
+        
         Button {
             action()
         } label: {
             HStack(spacing: 0) {
-
+                
                 // Left accent bar — replaces the colored full-card fill
                 Rectangle()
                     .fill(accentColor)
                     .frame(width: 5)
-
-                HStack(alignment: .top, spacing: 12) {
+                
+                HStack(alignment: .center, spacing: 12) {
                     image
                         .foregroundStyle(accentColor)
                         .font(.system(size: 22, weight: .medium))
                         .frame(width: 24, alignment: .center)
                         .padding(.top, 2)
-
+                    
                     // Information area
                     VStack(alignment: .leading, spacing: 3) {
                         Text(title)
                             .foregroundStyle(AppColor.primaryText)
                             .primaryTitle()
-
+                        
                         HStack(spacing: 4) {
                             Text(secondTitle)
                             Text("·")
@@ -78,6 +85,14 @@ struct GameCard: View {
                         .secondaryTitle()
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    if isPro{
+                        Image(systemName: "lock.fill")
+                            .font(.system(size: 22, weight: .semibold))
+                            .foregroundStyle(AppColor.league)
+
+                    }
+                    
                 }
                 .padding(14)
             }
@@ -100,6 +115,7 @@ struct GameCard: View {
             thirdTitle: "Multiple selection",
             image: Image(systemName: "book"),
             cardType: .quiz,
+            isPro: false,
             action: {}
         )
         GameCard(
@@ -108,7 +124,17 @@ struct GameCard: View {
             thirdTitle: "Read and memorize",
             image: Image(systemName: "books.vertical"),
             cardType: .allCivics,
+            isPro: false,
             action: {}
+        )
+        GameCard(
+            title: "Speak your answers",
+            secondTitle: "Speaking format",
+            thirdTitle: "Listen and speak",
+            image: Image(systemName: "waveform"),
+            cardType: .senior,
+            isPro: true,
+            action: { print("Listen and speak") }
         )
     }
     .padding()

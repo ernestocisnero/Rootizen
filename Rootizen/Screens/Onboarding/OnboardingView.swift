@@ -17,18 +17,18 @@ struct OnboardingView: View {
         Text("Hi! I'm Rooty")
         
         Image("Rooty")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 250)
-                    .rotationEffect(.degrees(isWaving ? 3 : -3), anchor: .bottom)
-                    .animation(
-                        .easeInOut(duration: 2)
-                        .repeatForever(autoreverses: true),
-                        value: isWaving
-                    )
-                    .onAppear {
-                        isWaving = true
-                    }
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: 250)
+            .rotationEffect(.degrees(isWaving ? 0.5 : -0.5), anchor: .bottom)
+            .animation(
+                .easeInOut(duration: 2)
+                .repeatForever(autoreverses: true),
+                value: isWaving
+            )
+            .onAppear {
+                isWaving = true
+            }
         
         
         Button("Finish Onboarding"){
