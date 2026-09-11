@@ -10,16 +10,29 @@ import SwiftUI
 struct AppRootView: View {
     
     @Environment(AppState.self) private var appState
-
+    @State private var showingSplash =  true
+    
     
     var body: some View {
-        if appState.isOnboardingComplete{
-            MainTabView()
-                .padding(.horizontal)
-        }else{
-            OnboardingView()
-                .padding(.horizontal)
+        Group{
+            if showingSplash{
+                SplashView(){
+                    withAnimation(.easeInOut(duration: 0.4)){
+                        showingSplash = false
+                    }
+                }
+                .transition(.opacity)
+            }else if appState.isOnboardingComplete{
+                MainTabView()
+                    .padding(.horizontal)
+                    .transition(.opacity)
+            }else{
+                OnboardingView()
+                    .padding(.horizontal)
+                    .transition(.opacity)
+            }
         }
+        
     }
 }
 
@@ -44,7 +57,7 @@ struct MainTabView: View {
                     Label("Profile", systemImage: "person")
                 }
         }
-        .tint(AppColor.info)
+        .tint(AppColor.success)
         
     }
 }

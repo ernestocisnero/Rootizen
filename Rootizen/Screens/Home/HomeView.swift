@@ -36,7 +36,6 @@ struct HomeView: View {
                         secondTitle: "10 questions",
                         thirdTitle: "Multiple selection",
                         image: Image(systemName: "book"),
-                        cardType: .quiz,
                         isPro: false,
                         action: { startQuiz = true }
                     )
@@ -46,7 +45,6 @@ struct HomeView: View {
                         secondTitle: "10 questions",
                         thirdTitle: "True / False",
                         image: Image(systemName: "lanyardcard"),
-                        cardType: .flashcard,
                         isPro: false,
                         action: { print("Flashcard") }
                     )
@@ -58,7 +56,6 @@ struct HomeView: View {
                         secondTitle: "11 days of history",
                         thirdTitle: "Read and memorize",
                         image: Image(systemName: "globe.americas.fill"),
-                        cardType: .oneNation,
                         isPro: true,
                         action: { print("One Nation Journey") }
                     )
@@ -68,7 +65,6 @@ struct HomeView: View {
                         secondTitle: "65/20 Exemption",
                         thirdTitle: "Read and memorize",
                         image: Image(systemName: "magazine"),
-                        cardType: .senior,
                         isPro: false,
                         action: { print("Senior Questions") }
                     )
@@ -79,7 +75,6 @@ struct HomeView: View {
                         secondTitle: "Audio format",
                         thirdTitle: "Listen and memorize",
                         image: Image(systemName: "headphones"),
-                        cardType: .listenQuestions,
                         isPro: true,
                         action: { print("Listen the questions") }
                     )
@@ -89,7 +84,6 @@ struct HomeView: View {
                         secondTitle: "Speaking format",
                         thirdTitle: "Listen and speak",
                         image: Image(systemName: "waveform"),
-                        cardType: .speakAnswers,
                         isPro: true,
                         action: { print("Listen and speak") }
                     )
@@ -102,7 +96,6 @@ struct HomeView: View {
                         secondTitle: "Form questions",
                         thirdTitle: "Read and memorize",
                         image: Image(systemName: "questionmark.folder"),
-                        cardType: .n400,
                         isPro: false,
                         action: { print("N-400 Questions") }
                     )
@@ -112,7 +105,6 @@ struct HomeView: View {
                         secondTitle: "\(appState.questionVersion == .v2008 ? "100 Questions" : "125 Questions")",
                         thirdTitle: "Read and memorize",
                         image: Image(systemName: "book.closed"),
-                        cardType: .allCivics,
                         isPro: false,
                         action: { showAllQuestions = true }
                     )

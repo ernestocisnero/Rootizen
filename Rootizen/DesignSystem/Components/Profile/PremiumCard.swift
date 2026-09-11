@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PremiumCard: View {
     var title: String = "Get Pro"
-    var subtitle: String = "Unlimited practice, no ads"
+    var subtitle: String = "Unlimited quizzes & flashcards"
     var action: () -> Void
 
     var body: some View {
@@ -17,17 +17,17 @@ struct PremiumCard: View {
             HStack(spacing: 12) {
                 Image(systemName: "crown.fill")
                     .font(.system(size: 18, weight: .medium))
-                    .foregroundStyle(AppColor.accentBorder)
+                    .foregroundStyle(AppColor.league)
                     .frame(width: 22)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title)
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundStyle(AppColor.accentBorder)
+                        .foregroundStyle(AppColor.secondaryText)
 
                     Text(subtitle)
                         .font(.system(size: 13, weight: .regular))
-                        .foregroundStyle(AppColor.accent)
+                        .foregroundStyle(AppColor.secondaryText)
                 }
 
                 Spacer()

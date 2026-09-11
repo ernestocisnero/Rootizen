@@ -26,30 +26,9 @@ struct GameCard: View {
     let secondTitle: String
     let thirdTitle: String
     let image: Image
-    let cardType: CardType
     let isPro: Bool
     let action: () -> Void
     
-    private var accentColor: Color {
-        switch cardType {
-        case .quiz:
-            AppColor.info
-        case .flashcard:
-            AppColor.highlight
-        case .senior:
-            AppColor.neutral
-        case .oneNation:
-            AppColor.journey
-        case .listenQuestions:
-            AppColor.listen
-        case .speakAnswers:
-            AppColor.speak
-        case .n400:
-            AppColor.error
-        case .allCivics:
-            AppColor.accent
-        }
-    }
     
     var body: some View {
         
@@ -60,12 +39,12 @@ struct GameCard: View {
                 
                 // Left accent bar — replaces the colored full-card fill
                 Rectangle()
-                    .fill(accentColor)
+                    .fill(AppColor.success)
                     .frame(width: 5)
                 
                 HStack(alignment: .center, spacing: 12) {
                     image
-                        .foregroundStyle(accentColor)
+                        .foregroundStyle(AppColor.success)
                         .font(.system(size: 22, weight: .medium))
                         .frame(width: 24, alignment: .center)
                         .padding(.top, 2)
@@ -114,7 +93,6 @@ struct GameCard: View {
             secondTitle: "10 questions",
             thirdTitle: "Multiple selection",
             image: Image(systemName: "book"),
-            cardType: .quiz,
             isPro: false,
             action: {}
         )
@@ -123,7 +101,6 @@ struct GameCard: View {
             secondTitle: "125 questions",
             thirdTitle: "Read and memorize",
             image: Image(systemName: "books.vertical"),
-            cardType: .allCivics,
             isPro: false,
             action: {}
         )
@@ -132,7 +109,6 @@ struct GameCard: View {
             secondTitle: "Speaking format",
             thirdTitle: "Listen and speak",
             image: Image(systemName: "waveform"),
-            cardType: .senior,
             isPro: true,
             action: { print("Listen and speak") }
         )

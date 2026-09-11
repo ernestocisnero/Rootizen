@@ -39,10 +39,7 @@ struct ProfileView: View {
         ScrollView {
             
             VStack(spacing: 24){
-                
-                //User Name
-                UserInitialHeaders()
-                
+
                 //User Stats
                 RowStats(items: [
                     StatItem(value: "\(streakCount)", label: "day streak"),
