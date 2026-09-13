@@ -66,7 +66,7 @@ final class AppState {
     
     func setLanguage(_ appLang: AppLanguage){
         appLanguage = appLang
-        UserDefaults.standard.set(appLang, forKey: "appLanguage")
+        UserDefaults.standard.set(appLang.rawValue, forKey: "appLanguage")
     }
     
     func setQuestionVersion(_ version: QuestionVersion) {
@@ -86,7 +86,7 @@ final class AppState {
         isOnboardingComplete = false
         UserDefaults.standard.set(false, forKey: "isOnboardingComplete")
     }
-#endif
+#endif // DEBUG
     
     
    

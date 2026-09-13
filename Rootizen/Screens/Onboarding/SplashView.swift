@@ -25,12 +25,12 @@ struct SplashView: View {
 
                 Text("Rootizen")
                     .font(.system(size: 80, weight: .bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.white) 
                     .scaleEffect(textScale)
                     .opacity(textOpacity)
   
                 Circle()
-                    .fill(AppColor.secondaryBackground)
+                    .fill(.white)
                     .frame(width: circleDiameter, height: circleDiameter)
                     .scaleEffect(circleScale)
                     .position(x: geo.size.width / 2, y: geo.size.height / 2)

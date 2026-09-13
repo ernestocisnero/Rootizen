@@ -10,34 +10,69 @@ import SwiftUI
 struct OnboardingView: View {
     
     @Environment(AppState.self) private var appState
-    @State private var isWaving = false
-    
+    @State private var triggerFeedback: Bool = false
+    @State private var currentStep: Int = 0
     var body: some View {
-        Text("Onboarding View")
-        Text("Hi! I'm Rooty")
         
-        Image("Rooty")
-            .resizable()
-            .scaledToFit()
-            .frame(maxWidth: 250)
-            .rotationEffect(.degrees(isWaving ? 0.5 : -0.5), anchor: .bottom)
-            .animation(
-                .easeInOut(duration: 2)
-                .repeatForever(autoreverses: true),
-                value: isWaving
-            )
-            .onAppear {
-                isWaving = true
+        VStack{
+            TabView(selection: $currentStep){
+                
+                OnboardingPresentationView(
+                    onSelect: appState.setLanguage(_:)
+                )
+                .tag(0)
+                
+                OnboardingTestYearView(onSelect: appState.setQuestionVersion(_:))
+                    .tag(1)
             }
-        
-        
-        Button("Finish Onboarding"){
-            appState.completeOnboarding()
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .highPriorityGesture(DragGesture())
+        }
+         
+        HStack{
+            SlideBarCounter(currentSlide: currentStep)
+            Spacer()
+            Button{
+                handlesNext()
+                triggerFeedback.toggle()
+            }label:{
+                HStack{
+                    Text("Next")
+                        .foregroundStyle(AppColor.success)
+                        .primaryTitle()
+                }
+                .padding(.vertical, 8)
+                .padding(.horizontal, 10)
+                .background(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(AppColor.successBorder,
+                            lineWidth: 1
+                        )
+                }
+            }
+            .sensoryFeedback(.selection, trigger: triggerFeedback)
+            .buttonStyle(.plain)
+        }
+    } 
+    
+    private func handlesNext(){
+        if currentStep < 1 {
+            withAnimation(.smooth(duration: 0.4)){
+                currentStep += 1
+            }
+        }else{
+            withAnimation(.smooth(duration: 0.4)){
+                appState.completeOnboarding()
+            }
         }
     }
+    
 }
 
 #Preview {
     OnboardingView()
         .environment(AppState())
+        .padding()
 }

@@ -24,11 +24,11 @@ struct AppRootView: View {
                 .transition(.opacity)
             }else if appState.isOnboardingComplete{
                 MainTabView()
-                    .padding(.horizontal)
+                    .padding(.horizontal,16)
                     .transition(.opacity)
             }else{
                 OnboardingView()
-                    .padding(.horizontal)
+                    .padding(.horizontal, 16)
                     .transition(.opacity)
             }
         }
