@@ -28,7 +28,8 @@ struct OnboardingView: View {
             .tabViewStyle(.page(indexDisplayMode: .never))
             .highPriorityGesture(DragGesture())
         }
-         
+        
+        // MARK: Next button.
         HStack{
             SlideBarCounter(currentSlide: currentStep)
             Spacer()

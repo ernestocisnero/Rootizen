@@ -15,8 +15,8 @@ struct SimpleChatBubble: View {
     
     var body: some View {
         HStack {
-
-            TypewriterText(fullText: message, speed: 0.1)
+            
+            TypewriterText(fullText: message, speed: 0.08)
                 .padding(.horizontal, 28)
                 .padding(.vertical, 28)
                 .foregroundStyle(isFromMe ? .white : textColor)
@@ -37,31 +37,34 @@ struct SimpleChatBubble: View {
 
 struct TypewriterText: View {
     let fullText: String
-    let speed: Double // seconds between each character, e.g. 0.04
-
+    let speed: Double
+    
     @State private var displayedText: String = ""
-    @State private var currentIndex: String.Index?
-
+    @State private var typingTask: Task<Void, Never>?
+    
     var body: some View {
         Text(displayedText)
-            .onAppear {
-                startTyping()
-            }
+            .onAppear { startTyping() }
+            .onChange(of: fullText) { startTyping() }
+            .sensoryFeedback(.impact(weight: .heavy), trigger: fullText)
     }
-
+    
+    
     private func startTyping() {
-        displayedText = ""
-        currentIndex = fullText.startIndex
-
-        // Fires every `speed` seconds, appending one character at a time
-        Timer.scheduledTimer(withTimeInterval: speed, repeats: true) { timer in
-            guard let index = currentIndex, index < fullText.endIndex else {
-                timer.invalidate()
-                return
+        typingTask?.cancel()
+        withAnimation(.easeInOut(duration: 0.2)){
+            displayedText = ""
+        }
+        
+        typingTask = Task {
+            for char in fullText {
+                if Task.isCancelled { return }
+                try? await Task.sleep(for: .seconds(speed))
+                if Task.isCancelled { return }
+                withAnimation(.easeInOut(duration: 0.15)) {
+                    displayedText.append(char)
+                }
             }
-
-            displayedText.append(fullText[index])
-            currentIndex = fullText.index(after: index)
         }
     }
 }

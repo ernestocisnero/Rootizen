@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct ProfileRow: View {
+    @State private var feedbackTrigger = false
     let icon: String
     let title: String
     var tint: Color = AppColor.primaryText
     var action: () -> Void = {}
 
     var body: some View {
-        Button(action: action) {
+        Button{
+            action()
+            feedbackTrigger.toggle()
+        }label:{
             HStack(spacing: 12) {
                 Image(systemName: icon)
                     .font(.system(size: 16, weight: .medium))
@@ -32,6 +36,7 @@ struct ProfileRow: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .sensoryFeedback(.selection, trigger: feedbackTrigger)
     }
 }
 

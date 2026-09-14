@@ -21,7 +21,7 @@ enum CardType: String, Identifiable {
 }
 
 struct GameCard: View {
-    
+    @State private var feedbackTrigger: Bool = false
     let title: String
     let secondTitle: String
     let thirdTitle: String
@@ -34,6 +34,7 @@ struct GameCard: View {
         
         Button {
             action()
+            feedbackTrigger.toggle()
         } label: {
             HStack(spacing: 0) {
                 
@@ -83,6 +84,7 @@ struct GameCard: View {
             }
         }
         .buttonStyle(.plain)
+        .sensoryFeedback(.selection, trigger: feedbackTrigger)
     }
 }
 

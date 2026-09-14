@@ -12,7 +12,6 @@ struct OnboardingPresentationView: View {
     
     @State private var isWaving: Bool = false
     @State private var selectedLanguage: AppLanguage? = nil
-    @State private var displayedText: String = "Hi, I'm Rooty"
     
     let onSelect: (AppLanguage)-> Void
     
@@ -20,29 +19,7 @@ struct OnboardingPresentationView: View {
         
         VStack(spacing: 24){
             
-            VStack(spacing: 0){
-                SimpleChatBubble(message: displayedText, isFromMe: false, bubbleColor: AppColor.success, textColor: .white)
-                    .task {
-                        try? await Task.sleep(for: .seconds(2))
-                        displayedText = "Select a language"
-                    }
-                    .offset(x: 60)
-                
-                Image("Rooty")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 200)
-                    .offset(x: -60)
-                    .rotationEffect(.degrees(isWaving ? 0.8 : -0.8), anchor: .bottom)
-                    .animation(
-                        .easeInOut(duration: 2)
-                        .repeatForever(autoreverses: true),
-                        value: isWaving
-                    )
-                    .onAppear {
-                        isWaving = true
-                    }
-            }
+            RootyTalk(rootyImageName: "Rooty", rootyWidth: 200, rootyTalkPhrases: Phrase.init(rootyTalksCases: .presentation).phrase)
             
             VStack(spacing: 0) {
                 Text("Welcome to Rootizen")

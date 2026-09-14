@@ -39,26 +39,30 @@ struct AppRootView: View {
 //MARK: --- Home Tab View
 
 struct MainTabView: View {
+    @State private var selectedTab = 0
     var body: some View {
         
-        TabView {
+        TabView(selection: $selectedTab) {
             HomeView()
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
+                .tag(0)
             
             ResourcesView()
                 .tabItem {
                     Label("Resources", systemImage: "book")
                 }
+                .tag(1)
             
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }
+                .tag(2)
         }
         .tint(AppColor.success)
-        
+        .sensoryFeedback(.selection, trigger: selectedTab)
     }
 }
 

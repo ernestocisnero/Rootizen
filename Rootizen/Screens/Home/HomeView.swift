@@ -112,10 +112,11 @@ struct HomeView: View {
             }
         }
         .scrollIndicators(.hidden)
-        
+        // MARK: Quiz sheet.
         .fullScreenCover(isPresented: $startQuiz){
             QuizFlowView(isPresented: $startQuiz, questionVersion: appState.questionVersion)
         }
+        // MARK: All Questions sheet.
         .fullScreenCover(isPresented: $showAllQuestions){
             AllQuestionsView(questionsVersion: appState.questionVersion)
         }
