@@ -12,6 +12,7 @@ struct HomeView: View {
     @Environment(UserProgress.self) private var userProgress
     @State private var startQuiz: Bool = false
     @State private var showAllQuestions: Bool = false
+    @State private var showRepsView: Bool = false
     
     var body: some View {
         
@@ -52,12 +53,12 @@ struct HomeView: View {
                     // MARK: One Nation Journey and Senior
                     
                     GameCard(
-                        title: "One Nation Journey",
-                        secondTitle: "11 days of history",
-                        thirdTitle: "Read and memorize",
-                        image: Image(systemName: "globe.americas.fill"),
-                        isPro: true,
-                        action: { print("One Nation Journey") }
+                        title: "Meet your representatives",
+                        secondTitle: "Who your reps are?",
+                        thirdTitle: "Meet and memorize",
+                        image: Image(systemName: "person.2"),
+                        isPro: false,
+                        action: { showRepsView = true }
                     )
                     
                     GameCard(
@@ -119,6 +120,10 @@ struct HomeView: View {
         // MARK: All Questions sheet.
         .fullScreenCover(isPresented: $showAllQuestions){
             AllQuestionsView(questionsVersion: appState.questionVersion)
+        }
+        // MARK: Meet Representatives sheet.
+        .fullScreenCover(isPresented: $showRepsView){
+            RepresentativesView() 
         }
     }
 }

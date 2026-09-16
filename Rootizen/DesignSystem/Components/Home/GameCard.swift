@@ -7,19 +7,6 @@
 
 import SwiftUI
 
-enum CardType: String, Identifiable {
-    case quiz
-    case flashcard
-    case senior
-    case oneNation
-    case listenQuestions
-    case speakAnswers
-    case n400
-    case allCivics
-    
-    var id: String { rawValue }
-}
-
 struct GameCard: View {
     @State private var feedbackTrigger: Bool = false
     let title: String
