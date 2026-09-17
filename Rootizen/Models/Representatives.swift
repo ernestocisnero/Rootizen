@@ -58,6 +58,6 @@ struct CachedRepresentatives: Codable {
     let fetchedAt: Date
 
     var isStale: Bool {
-        Date().timeIntervalSince(fetchedAt) > 30 * 24 * 60 * 60 // 30 days
+        Date().timeIntervalSince(fetchedAt) > 10 * 60 // 30 * 24 * 60 * 60    --> 30 days
     }
 }

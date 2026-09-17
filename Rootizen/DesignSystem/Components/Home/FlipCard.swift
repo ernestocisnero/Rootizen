@@ -10,6 +10,7 @@ import SwiftUI
 struct FlipCard: View {
     let question: Question
     @State private var isFlipped = false
+    @State private var feedbackTrigger: Bool = false
     
     private var correctAnswers: LocalizedText {
         question.answers.first(where: { $0.isCorrect })?.text ?? LocalizedText(english: "", spanish: "")
@@ -37,7 +38,9 @@ struct FlipCard: View {
         .animation(.easeInOut(duration: 0.5), value: isFlipped)
         .onTapGesture {
             isFlipped.toggle()
+            feedbackTrigger.toggle()
         }
+        .sensoryFeedback(.impact, trigger: feedbackTrigger)
     }
 
 }

@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct DismissBtn: View {
+    @State private var feedbackTrigger: Bool = false
     let backgroundColor: Color
     let shadowBorderColor: Color
     let action: () -> Void
 
     var body: some View {
         Button {
+            feedbackTrigger.toggle()
             action()
         } label: {
             Image(systemName: "xmark")
@@ -27,6 +29,7 @@ struct DismissBtn: View {
                         .stroke(AppColor.border, lineWidth: 0.5)
                 }
         }
+        .sensoryFeedback(.impact, trigger: feedbackTrigger)
     }
 }
 

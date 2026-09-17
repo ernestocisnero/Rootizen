@@ -25,6 +25,7 @@ final class AppState {
     private(set) var isOnboardingComplete: Bool
     private(set) var appLanguage: AppLanguage
     private(set) var questionVersion: QuestionVersion
+    private(set) var zipCode: String
     
     // MARK: - Initialization
     
@@ -51,6 +52,8 @@ final class AppState {
         QuestionVersion(rawValue: savedVersion ?? "")
         ?? .v2025
         
+         zipCode = defaults.string(forKey: "zipCode") ?? "33991"
+        
     }
     
     // MARK: - Methods
@@ -76,6 +79,11 @@ final class AppState {
             version.rawValue,
             forKey: "questionVersion"
         )
+    }
+    
+    func setZipCode(_ zip: String){
+        zipCode = zip
+        UserDefaults.standard.set(zip, forKey: "zipCode")
     }
     
     
