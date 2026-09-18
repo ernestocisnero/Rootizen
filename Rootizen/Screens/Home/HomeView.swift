@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @Environment(AppState.self) private var appState
     @Environment(UserProgress.self) private var userProgress
+    @Environment(RepresentativesService.self) private var repService
     
     @State private var startQuiz: Bool = false
     @State private var showAllQuestions: Bool = false
@@ -124,8 +125,9 @@ struct HomeView: View {
         }
         // MARK: Meet Representatives sheet.
         .fullScreenCover(isPresented: $showRepsView){
-            RepresentativesView()
+            RepsFlowView() 
                 .environment(appState)
+                .environment(repService)
         }
     }
 }

@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Logo.png",
+      "filename" : "LogoLight.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "RootizenLogo.png",
+      "filename" : "LogoDark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

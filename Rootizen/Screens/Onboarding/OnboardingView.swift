@@ -49,14 +49,14 @@ struct OnboardingView: View {
                 .overlay {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(AppColor.successBorder,
-                            lineWidth: 1
+                                lineWidth: 1
                         )
                 }
             }
             .sensoryFeedback(.selection, trigger: triggerFeedback)
             .buttonStyle(.plain)
         }
-    } 
+    }
     
     private func handlesNext(){
         if currentStep < 1 {

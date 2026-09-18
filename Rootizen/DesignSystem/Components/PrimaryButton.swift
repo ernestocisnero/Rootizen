@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct PrimaryButton: View {
+    @State private var feedbackTrigger: Bool = false
+    
     let title: String
     let color: Color
     var foreground: Color = .white
     let action: () -> Void
+    
 
     var body: some View {
-        Button(action: action) {
+        Button{
+            feedbackTrigger.toggle()
+            action()
+        }label:{
             Text(title)
-                .font(.system(size: 15, weight: .medium))
+                .font(.system(size: 16, weight: .bold))
                 .foregroundStyle(foreground)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 15)
@@ -24,6 +30,7 @@ struct PrimaryButton: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
         .buttonStyle(.plain)
+        .sensoryFeedback(.impact, trigger: feedbackTrigger)
     }
 }
 

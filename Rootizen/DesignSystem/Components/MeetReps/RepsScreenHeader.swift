@@ -28,7 +28,7 @@ struct RepsScreenHeader: View {
                 Spacer()
                 
                 // MARK: Dismiss button
-                DismissBtn(backgroundColor: AppColor.accentMuted, shadowBorderColor: AppColor.accent, action: { dismiss() })
+                DismissBtn(backgroundColor: AppColor.successMuted, shadowBorderColor: AppColor.success, action: { dismiss() })
             }
             
             HStack{
