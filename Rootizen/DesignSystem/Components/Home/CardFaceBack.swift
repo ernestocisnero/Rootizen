@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardFaceBack: View {
     let answers: LocalizedText
-    let category: String
+    let category: QuestionCategory
     let background: Color
     
     var body: some View {
@@ -24,7 +24,7 @@ struct CardFaceBack: View {
                 Spacer()
                 HStack{
                     Spacer()
-                    Text(category)
+                    Text(category.rawValue)
                         .label()
                 }
             }
@@ -40,5 +40,5 @@ struct CardFaceBack: View {
 }
 
 #Preview {
-    CardFaceBack(answers: LocalizedText(english: "The answer", spanish: "La respuesta"), category: "History", background: AppColor.successMuted)
+    CardFaceBack(answers: LocalizedText(english: "The answer", spanish: "La respuesta"), category: .history1800s, background: AppColor.successMuted)
 }

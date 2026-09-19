@@ -16,7 +16,7 @@ struct FlipCard: View {
         question.answers.first(where: { $0.isCorrect })?.text ?? LocalizedText(english: "", spanish: "")
     }
     
-    private var questionCategory: String {
+    private var questionCategory: QuestionCategory {
         question.category
     }
 
@@ -48,7 +48,7 @@ struct FlipCard: View {
 #Preview {
     FlipCard(question: Question(
         id: UUID(),
-        category: "History",
+        category: .history1800s,
         question: LocalizedText(
             english: "What is Veterans Day?",
             spanish: "¿Qué es el Día de los Veteranos?"

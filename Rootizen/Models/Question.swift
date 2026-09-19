@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Question: Identifiable {
     let id: UUID
-    let category: String
+    let category: QuestionCategory
     let question: LocalizedText
     let answers: [Answer]
     let isSenior: Bool?

@@ -7,10 +7,27 @@
 
 import SwiftUI
 
+
+enum QuestionCategory: String, CaseIterable, Codable, Identifiable {
+    case principlesOfGovernment = "Principles of American Government"
+    case principlesofAmericanDemocracy = "Principles of American Democracy"
+    case systemOfGovernment = "System of Government"
+    case rightsAndResponsibilities = "Rights and Responsibilities"
+    case colonialPeriod = "Colonial Period and Independence"
+    case history1800s = "1800s History"
+    case recentHistory = "Recent American History"
+    case geography = "Geography"
+    case symbols = "Symbols"
+    case holidays = "Holidays"
+
+    var id: String { rawValue }
+}
+
+
 let q2008version: [Question] = [
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "What is the supreme law of the land?",
             spanish: "¿Cuál es la ley suprema de la nación?"
@@ -53,7 +70,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "What does the Constitution do?",
             spanish: "¿Qué hace la Constitución?"
@@ -96,7 +113,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "The idea of self-government is in the first three words of the Constitution. What are these words?",
             spanish: "Las primeras tres palabras de la Constitución contienen la idea del autogobierno (de que el pueblo se gobierna a sí mismo). ¿Cuáles son estas palabras?"
@@ -139,7 +156,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "What is an amendment?",
             spanish: "¿Qué es una enmienda?"
@@ -182,7 +199,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "What do we call the first ten amendments to the Constitution?",
             spanish: "¿Con qué nombre se conocen las primeras diez enmiendas a la Constitución?"
@@ -225,7 +242,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "What is one right or freedom from the First Amendment?",
             spanish: "¿Cuál es un derecho o libertad que la Primera Enmienda garantiza?"
@@ -268,7 +285,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "How many amendments does the Constitution have?",
             spanish: "¿Cuántas enmiendas tiene la Constitución?"
@@ -311,7 +328,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "What did the Declaration of Independence do?",
             spanish: "¿Qué hizo la Declaración de Independencia?"
@@ -354,7 +371,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "What are two rights in the Declaration of Independence?",
             spanish: "¿Cuáles son dos derechos en la Declaración de la Independencia?"
@@ -397,7 +414,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "What is freedom of religion?",
             spanish: "¿En qué consiste la libertad de religión?"
@@ -440,7 +457,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "What is the economic system in the United States?",
             spanish: "¿Cuál es el sistema económico de los Estados Unidos?"
@@ -483,7 +500,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Principles of American Democracy",
+        category: .principlesofAmericanDemocracy,
         question: LocalizedText(
             english: "What is the 'rule of law'?",
             spanish: "¿En qué consiste el “estado de derecho”?"
@@ -526,7 +543,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Name one branch or part of the government.",
             spanish: "Nombre una rama o parte del gobierno."
@@ -569,7 +586,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What stops one branch of government from becoming too powerful?",
             spanish: "¿Qué evita que una rama del gobierno se vuelva demasiado poderosa?"
@@ -612,7 +629,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Who is in charge of the executive branch?",
             spanish: "¿Quién está a cargo de la rama ejecutiva?"
@@ -655,7 +672,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Who makes federal laws?",
             spanish: "¿Quién crea las leyes federales?"
@@ -698,7 +715,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What are the two parts of the U.S. Congress?",
             spanish: "¿Cuáles son las dos partes que integran el Congreso de los Estados Unidos?"
@@ -741,7 +758,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "How many U.S. Senators are there?",
             spanish: "¿Cuántos senadores de los Estados Unidos hay?"
@@ -784,7 +801,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "We elect a U.S. Senator for how many years?",
             spanish: "¿De cuántos años es el término de elección de un senador de los Estados Unidos?"
@@ -827,7 +844,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Who is one of your state’s U.S. Senators now?",
             spanish: "Nombre a uno de los senadores actuales del estado donde usted vive."
@@ -870,7 +887,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "The House of Representatives has how many voting members?",
             spanish: "¿Cuántos miembros votantes tiene la Cámara de Representantes?"
@@ -913,7 +930,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "We elect a U.S. Representative for how many years?",
             spanish: "¿De cuántos años es el término de elección de un representante de los Estados Unidos?"
@@ -956,7 +973,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Name your U.S. Representative.",
             spanish: "Dé el nombre de su representante a nivel nacional."
@@ -999,7 +1016,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Who does a U.S. Senator represent?",
             spanish: "¿A quiénes representa un senador de los Estados Unidos?"
@@ -1042,7 +1059,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Why do some states have more Representatives than other states?",
             spanish: "¿Por qué tienen algunos estados más representantes que otros?"
@@ -1085,7 +1102,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "We elect a President for how many years?",
             spanish: "¿De cuántos años es el término de elección de un presidente?"
@@ -1128,7 +1145,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "In what month do we vote for President?",
             spanish: "¿En qué mes votamos por un nuevo presidente?"
@@ -1171,7 +1188,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What is the name of the President of the United States now?",
             spanish: "¿Cómo se llama el actual Presidente de los Estados Unidos?"
@@ -1214,7 +1231,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What is the name of the Vice President of the United States now?",
             spanish: "¿Cómo se llama el actual Vicepresidente de los Estados Unidos?"
@@ -1257,7 +1274,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "If the President can no longer serve, who becomes President?",
             spanish: "Si el Presidente ya no puede cumplir sus funciones, ¿quién se convierte en Presidente?"
@@ -1300,7 +1317,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "If both the President and the Vice President can no longer serve, who becomes President?",
             spanish: "Si tanto el Presidente como el Vicepresidente ya no pueden cumplir sus funciones, ¿quién se convierte en Presidente?"
@@ -1343,7 +1360,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Who is the Commander in Chief of the military?",
             spanish: "¿Quién es el Comandante en Jefe de las Fuerzas Armadas?"
@@ -1386,7 +1403,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Who signs bills to become laws?",
             spanish: "¿Quién firma los proyectos de ley para convertirlos en ley?"
@@ -1429,7 +1446,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Who vetoes bills?",
             spanish: "¿Quién veta los proyectos de ley?"
@@ -1472,7 +1489,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What does the President’s Cabinet do?",
             spanish: "¿Qué hace el Gabinete del Presidente?"
@@ -1515,7 +1532,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What are two Cabinet-level positions?",
             spanish: "¿Cuáles son dos puestos a nivel de gabinete?"
@@ -1558,7 +1575,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What does the judicial branch do?",
             spanish: "¿Qué hace la rama judicial?"
@@ -1601,7 +1618,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What is the highest court in the United States?",
             spanish: "¿Cuál es el tribunal más alto de los Estados Unidos?"
@@ -1644,7 +1661,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "How many justices are on the Supreme Court?",
             spanish: "¿Cuántos jueces hay en la Corte Suprema?"
@@ -1687,7 +1704,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Who is the Chief Justice of the United States now?",
             spanish: "¿Quién es el presidente actual de la Corte Suprema de los Estados Unidos?"
@@ -1730,7 +1747,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Under our Constitution, some powers belong to the federal government. What is one power of the federal government?",
             spanish: "De acuerdo con nuestra Constitución, algunos poderes pertenecen al gobierno federal. ¿Cuál es un poder del gobierno federal?"
@@ -1773,7 +1790,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Under our Constitution, some powers belong to the states. What is one power of the states?",
             spanish: "De acuerdo con nuestra Constitución, algunos poderes pertenecen a los estados. ¿Cuál es un poder de los estados?"
@@ -1816,7 +1833,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Who is the Governor of your state now?",
             spanish: "¿Quién es el gobernador actual de su estado?"
@@ -1859,7 +1876,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What is the capital of your state?",
             spanish: "¿Cuál es la capital de su estado?"
@@ -1902,7 +1919,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What are the two major political parties in the United States?",
             spanish: "¿Cuáles son los dos principales partidos políticos de los Estados Unidos?"
@@ -1945,7 +1962,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What is the political party of the President now?",
             spanish: "¿Cuál es el partido político del Presidente actual?"
@@ -1988,7 +2005,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What is the name of the Speaker of the House of Representatives now?",
             spanish: "¿Cómo se llama el Presidente actual de la Cámara de Representantes?"
@@ -2031,7 +2048,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "There are four amendments to the Constitution about who can vote. Describe one of them.",
             spanish: "Existen cuatro enmiendas a la Constitución sobre quién puede votar. Describa una de ellas."
@@ -2074,7 +2091,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What is one responsibility that is only for United States citizens?",
             spanish: "¿Cuál es una responsabilidad que corresponde solo a los ciudadanos de los Estados Unidos?"
@@ -2117,7 +2134,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "Name one right only for United States citizens.",
             spanish: "Nombre un derecho que corresponde solo a los ciudadanos de los Estados Unidos."
@@ -2160,7 +2177,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What are two rights of everyone living in the United States?",
             spanish: "¿Cuáles son dos derechos que pueden ejercer todas las personas que viven en los Estados Unidos?"
@@ -2203,7 +2220,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What do we show loyalty to when we say the Pledge of Allegiance?",
             spanish: "¿A qué demostramos nuestra lealtad cuando decimos el Juramento de Lealtad (Pledge of Allegiance)?"
@@ -2246,7 +2263,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What is one promise you make when you become a United States citizen?",
             spanish: "¿Cuál es una promesa que usted hace cuando se convierte en ciudadano de los Estados Unidos?"
@@ -2289,7 +2306,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "How old do citizens have to be to vote for President?",
             spanish: "¿Cuántos años tienen que tener los ciudadanos para votar por el Presidente?"
@@ -2332,7 +2349,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "What are two ways that Americans can participate in their democracy?",
             spanish: "¿Cuáles son dos maneras mediante las cuales los ciudadanos americanos pueden participar en su democracia?"
@@ -2375,7 +2392,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "When is the last day you can send in federal income tax forms?",
             spanish: "¿Cuál es la fecha límite para enviar la declaración federal de impuestos sobre ingresos?"
@@ -2418,7 +2435,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "System of Government",
+        category: .systemOfGovernment,
         question: LocalizedText(
             english: "When must all men register for the Selective Service?",
             spanish: "¿Cuándo deben inscribirse todos los hombres en el Servicio Selectivo?"
@@ -2461,7 +2478,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "What is one reason colonists came to America?",
             spanish: "¿Cuál es una razón por la que los colonos vinieron a América?"
@@ -2504,7 +2521,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "Who lived in America before the Europeans arrived?",
             spanish: "¿Quiénes vivían en lo que hoy conocemos como los Estados Unidos antes de la llegada de los europeos?"
@@ -2547,7 +2564,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "What group of people was taken to America and sold as slaves?",
             spanish: "¿Qué grupo de personas fue traído a los Estados Unidos y vendido como esclavos?"
@@ -2590,7 +2607,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "Why did the colonists fight the British?",
             spanish: "¿Por qué lucharon los colonos contra los británicos?"
@@ -2633,7 +2650,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "Who wrote the Declaration of Independence?",
             spanish: "¿Quién escribió la Declaración de Independencia?"
@@ -2676,7 +2693,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "When was the Declaration of Independence adopted?",
             spanish: "¿Cuándo fue adoptada la Declaración de Independencia?"
@@ -2719,7 +2736,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "There were 13 original states. Name three.",
             spanish: "Había 13 estados originales. Nombre tres."
@@ -2762,7 +2779,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "What happened at the Constitutional Convention?",
             spanish: "¿Qué ocurrió en la Convención Constitucional?"
@@ -2805,7 +2822,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "When was the Constitution written?",
             spanish: "¿Cuándo fue redactada la Constitución?"
@@ -2848,7 +2865,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.",
             spanish: "Los Documentos Federalistas respaldaron la aprobación de la Constitución de los Estados Unidos. Nombre a uno de sus autores."
@@ -2891,7 +2908,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "What is one thing Benjamin Franklin is famous for?",
             spanish: "Mencione una razón por la que es famoso Benjamin Franklin."
@@ -2934,7 +2951,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "Who is the 'Father of Our Country'?",
             spanish: "¿Quién es conocido como el “Padre de Nuestra Nación”?"
@@ -2977,7 +2994,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "Who was the first President?",
             spanish: "¿Quién fue el primer Presidente?"
@@ -3020,7 +3037,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "What territory did the United States buy from France in 1803?",
             spanish: "¿Qué territorio compró Estados Unidos a Francia en 1803?"
@@ -3063,7 +3080,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "Name one war fought by the United States in the 1800s.",
             spanish: "Mencione una guerra en la que peleó Estados Unidos durante los años 1800."
@@ -3106,7 +3123,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "Name the U.S. war between the North and the South.",
             spanish: "Dé el nombre de la guerra entre el Norte y el Sur de los Estados Unidos."
@@ -3149,7 +3166,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "Name one problem that led to the Civil War.",
             spanish: "Mencione un problema que condujo a la Guerra Civil."
@@ -3192,7 +3209,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "What was one important thing that Abraham Lincoln did?",
             spanish: "¿Cuál fue una cosa importante que hizo Abraham Lincoln?"
@@ -3235,7 +3252,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "What did the Emancipation Proclamation do?",
             spanish: "¿Qué hizo la Proclamación de la Emancipación?"
@@ -3278,7 +3295,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Colonial Period and Independence",
+        category: .colonialPeriod,
         question: LocalizedText(
             english: "What did Susan B. Anthony do?",
             spanish: "¿Qué hizo Susan B. Anthony?"
@@ -3321,7 +3338,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Recent American History",
+        category: .recentHistory,
         question: LocalizedText(
             english: "Name one war fought by the United States in the 1900s.",
             spanish: "Mencione una guerra durante los años 1900 en la que peleó Estados Unidos."
@@ -3364,7 +3381,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Recent American History",
+        category: .recentHistory,
         question: LocalizedText(
             english: "Who was President during World War I?",
             spanish: "¿Quién era el presidente durante la Primera Guerra Mundial?"
@@ -3407,7 +3424,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Recent American History",
+        category: .recentHistory,
         question: LocalizedText(
             english: "Who was President during the Great Depression and World War II?",
             spanish: "¿Quién era presidente durante la Gran Depresión y la Segunda Guerra Mundial?"
@@ -3450,7 +3467,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Recent American History",
+        category: .recentHistory,
         question: LocalizedText(
             english: "Who did the United States fight in World War II?",
             spanish: "¿Contra qué países peleó Estados Unidos en la Segunda Guerra Mundial?"
@@ -3493,7 +3510,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Recent American History",
+        category: .recentHistory,
         question: LocalizedText(
             english: "Before he was President, Eisenhower was a general. What war was he in?",
             spanish: "Antes de ser presidente, Eisenhower era general. ¿En qué guerra participó?"
@@ -3536,7 +3553,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Recent American History",
+        category: .recentHistory,
         question: LocalizedText(
             english: "During the Cold War, what was the main concern of the United States?",
             spanish: "Durante la Guerra Fría, ¿cuál era la principal preocupación de los Estados Unidos?"
@@ -3579,7 +3596,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Recent American History",
+        category: .recentHistory,
         question: LocalizedText(
             english: "What movement tried to end racial discrimination?",
             spanish: "¿Qué movimiento trató de poner fin a la discriminación racial?"
@@ -3622,7 +3639,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Recent American History",
+        category: .recentHistory,
         question: LocalizedText(
             english: "What did Martin Luther King, Jr. do?",
             spanish: "¿Qué hizo Martin Luther King, Jr.?"
@@ -3665,7 +3682,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Recent American History",
+        category: .recentHistory,
         question: LocalizedText(
             english: "What major event happened on September 11, 2001, in the United States?",
             spanish: "¿Qué suceso de gran magnitud ocurrió el 11 de septiembre de 2001 en los Estados Unidos?"
@@ -3708,7 +3725,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Recent American History",
+        category: .recentHistory,
         question: LocalizedText(
             english: "Name one American Indian tribe in the United States.",
             spanish: "Mencione una tribu de indios americanos en los Estados Unidos."
@@ -3751,7 +3768,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Geography",
+        category: .geography,
         question: LocalizedText(
             english: "Name one of the two longest rivers in the United States.",
             spanish: "Mencione uno de los dos ríos más largos en los Estados Unidos."
@@ -3794,7 +3811,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Geography",
+        category: .geography,
         question: LocalizedText(
             english: "What ocean is on the West Coast of the United States?",
             spanish: "¿Qué océano está en la costa oeste de los Estados Unidos?"
@@ -3837,7 +3854,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Geography",
+        category: .geography,
         question: LocalizedText(
             english: "What ocean is on the East Coast of the United States?",
             spanish: "¿Qué océano está en la costa este de los Estados Unidos?"
@@ -3880,7 +3897,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Geography",
+        category: .geography,
         question: LocalizedText(
             english: "Name one U.S. territory.",
             spanish: "Dé el nombre de un territorio de los Estados Unidos."
@@ -3923,7 +3940,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Geography",
+        category: .geography,
         question: LocalizedText(
             english: "Name one state that borders Canada.",
             spanish: "Mencione un estado que tiene frontera con Canadá."
@@ -3966,7 +3983,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Geography",
+        category: .geography,
         question: LocalizedText(
             english: "Name one state that borders Mexico.",
             spanish: "Mencione un estado que tiene frontera con México."
@@ -4009,7 +4026,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Geography",
+        category: .geography,
         question: LocalizedText(
             english: "What is the capital of the United States?",
             spanish: "¿Cuál es la capital de los Estados Unidos?"
@@ -4052,7 +4069,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Geography",
+        category: .geography,
         question: LocalizedText(
             english: "Where is the Statue of Liberty?",
             spanish: "¿Dónde está la Estatua de la Libertad?"
@@ -4095,7 +4112,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Symbols",
+        category: .symbols,
         question: LocalizedText(
             english: "Why does the flag have 13 stripes?",
             spanish: "¿Por qué hay 13 franjas en la bandera?"
@@ -4138,7 +4155,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Symbols",
+        category: .symbols,
         question: LocalizedText(
             english: "Why does the flag have 50 stars?",
             spanish: "¿Por qué hay 50 estrellas en la bandera?"
@@ -4181,7 +4198,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Symbols",
+        category: .symbols,
         question: LocalizedText(
             english: "What is the name of the national anthem?",
             spanish: "¿Cómo se llama el himno nacional?"
@@ -4224,7 +4241,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Holidays",
+        category: .holidays,
         question: LocalizedText(
             english: "When do we celebrate Independence Day?",
             spanish: "¿Cuándo celebramos el Día de la Independencia?"
@@ -4267,7 +4284,7 @@ let q2008version: [Question] = [
     ),
     Question(
         id: UUID(),
-        category: "Holidays",
+        category: .holidays,
         question: LocalizedText(
             english: "Name two national U.S. holidays.",
             spanish: "Mencione dos días feriados nacionales de los Estados Unidos."

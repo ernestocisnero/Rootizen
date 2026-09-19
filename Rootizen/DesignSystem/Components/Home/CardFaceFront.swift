@@ -9,33 +9,31 @@ import SwiftUI
 
 struct CardFaceFront: View {
     let question: LocalizedText
-    let category: String
+    let category: QuestionCategory
     let background: Color
     
     private var iconName: String {
         switch category {
-        case "Principles of American Government":
+        case .principlesOfGovernment:
             return "building.columns"
-        case "Principles of American Democracy":
-            return "person.3.sequence"
-        case "Colonial Period and Independence":
+        case .principlesofAmericanDemocracy:
+            return "person.2"
+        case .colonialPeriod:
             return "scroll"
-        case "1800s History":
+        case .history1800s:
             return "clock"
-        case "Rights and Responsibilities":
+        case .rightsAndResponsibilities:
             return "checklist"
-        case "System of Government":
+        case .systemOfGovernment:
             return "building.columns.circle"
-        case "Holidays":
+        case .holidays:
             return "calendar"
-        case "Symbols":
+        case .symbols:
             return "flag"
-        case "Recent American History":
+        case .recentHistory:
             return ""
-        case "Geography":
+        case .geography:
             return "globe.americas"
-        default:
-            return "building.columns"
         }
     }
     
@@ -55,11 +53,11 @@ struct CardFaceFront: View {
                 Spacer()
                 HStack{
                     Spacer()
-                    Text(category)
+                    Text(category.rawValue)
                         .label()
                 }
             }
-            .primaryTitle()
+            .bodyText()
             .padding()
             .multilineTextAlignment(.leading)
         }
@@ -71,5 +69,5 @@ struct CardFaceFront: View {
 }
 
 #Preview {
-    CardFaceFront(question: LocalizedText(english: "The question", spanish: "La pregunta"), category: "Principles of American Government", background: AppColor.neutralMuted)
+    CardFaceFront(question: LocalizedText(english: "The question", spanish: "La pregunta"), category: .principlesofAmericanDemocracy, background: AppColor.neutralMuted)
 }

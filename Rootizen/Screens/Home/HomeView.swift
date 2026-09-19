@@ -21,11 +21,11 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 20){
             
             HStack(spacing: 24){
-
-                PointsCapsule(capsuleType: .streak, points: userProgress.userStreak, textPoints: "Streak Days")
-                Spacer()
-                PointsCapsule(capsuleType: .xpPoints, points: userProgress.userXPoints, textPoints: "XP Points")
-                
+                //User Stats
+                RowStats(items: [
+                    StatItem(value: "\(userProgress.userXPoints)", label: "xp points"),
+                    StatItem(value: "21.3", label: "Category Accuracy")
+                ])
             }
             
             ScrollView(){

@@ -26,10 +26,7 @@ struct ProfileView: View {
     
     @State private var whichOption: Options?
     @State private var soundEnabled = SoundManager.shared.isEnabled
-    
-    var streakCount: Int {
-        userProgress.userStreak
-    }
+
     var totalXP: Int {
         userProgress.userXPoints
     }
@@ -42,8 +39,7 @@ struct ProfileView: View {
 
                 //User Stats
                 RowStats(items: [
-                    StatItem(value: "\(streakCount)", label: "day streak"),
-                    StatItem(value: "\(totalXP)", label: "xp points"),
+                    StatItem(value: "\(totalXP)", label: "xp points")
                 ])
                 
                 VStack(spacing: 18){
