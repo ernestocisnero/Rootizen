@@ -61,7 +61,7 @@ struct TypewriterText: View {
                 if Task.isCancelled { return }
                 try? await Task.sleep(for: .seconds(speed))
                 if Task.isCancelled { return }
-                withAnimation(.easeInOut(duration: 0.15)) {
+                withAnimation(.easeInOut(duration: 0.1)) {
                     displayedText.append(char)
                 }
             }

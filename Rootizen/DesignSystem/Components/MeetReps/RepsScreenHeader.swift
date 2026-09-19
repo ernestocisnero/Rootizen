@@ -14,10 +14,7 @@ struct RepsScreenHeader: View {
     @State private var editZipCode: Bool = false
     let location: String
     let state: String
-    //let action: ()-> Void
-    
-    
-    
+
     var body: some View {
         VStack{
             
@@ -37,8 +34,6 @@ struct RepsScreenHeader: View {
                         .headline()
                     Text("\(location), \(state)")
                         .primaryTitle()
-                    
-                    
                 }
                 
                 Spacer()
@@ -58,7 +53,9 @@ struct RepsScreenHeader: View {
         .sheet(isPresented: $editZipCode){
             ZipPicker()
                 .environment(appState)
-                .presentationDetents([.medium])
+                .presentationDetents([.fraction(0.3)])
+                .presentationDragIndicator(.visible)
+                .presentationBackground(.white)
         }
     }
 }

@@ -11,6 +11,8 @@ struct RepresentativesView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(RepresentativesService.self) private var repsService
     @Environment(AppState.self) private var appState
+    @State private var editZipCode: Bool = false
+    @State private var isWaving: Bool = false
     
     var body: some View {
         Group {
@@ -18,10 +20,10 @@ struct RepresentativesView: View {
                 if repsService.isLoading {
                     //ProgressView("Loading your representatives...")
                     VStack(spacing: 0) {
-                            ForEach(0..<10, id: \.self) { _ in RepRowSkeleton() }
-                        }
-                        .shimmer()
-                        .transition(.opacity)
+                        ForEach(0..<10, id: \.self) { _ in RepRowSkeleton() }
+                    }
+                    .shimmer()
+                    .transition(.opacity)
                     
                 } else if let error = repsService.errorMessage {
                     VStack(spacing: 12) {
@@ -32,16 +34,35 @@ struct RepresentativesView: View {
                         
                         Spacer()
                         
-                        Image(systemName: "exclamationmark.triangle")
-                            .font(.largeTitle)
-                            .foregroundStyle(.secondary)
+                        Image("RootySad")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 200)
+                            .rotationEffect(.degrees(isWaving ? 0.8 : -0.8), anchor: .bottom)
+                            .animation(
+                                .easeInOut(duration: 2)
+                                .repeatForever(autoreverses: true),
+                                value: isWaving
+                            )
+                            .onAppear {
+                                isWaving = true
+                            }
+                         
                         Text(error)
                             .foregroundStyle(.secondary)
                             .primaryTitle()
                             .multilineTextAlignment(.center)
                         
-                        Button("Try Again") {
-                            Task { await repsService.fetchRepresentatives(forZip: appState.zipCode) }
+                        Spacer()
+                        
+                        VStack(spacing: 15){
+                            PrimaryButton(title: "Try Again", color: AppColor.journey, action: {
+                                Task { await repsService.fetchRepresentatives(forZip: appState.zipCode) }
+                            })
+                            
+                            PrimaryButton(title: "Try different zip code", color: AppColor.info, action: {
+                                editZipCode = true
+                            })
                         }
                         
                         Spacer()
@@ -60,14 +81,14 @@ struct RepresentativesView: View {
                                         LeaderRow(leader: leader)
                                     }
                                 }
-                                 
+                                
                                 if !result.stateLeaders.isEmpty {
                                     sectionHeader("\(result.state) State Leaders")
                                     VStack(spacing: 12) {
                                         ForEach(result.stateLeaders) { leader in
                                             LeaderRow(leader: leader)
                                         }
-                                    
+                                        
                                     }
                                 }
                                 sectionHeader("Your Representatives")
@@ -85,6 +106,13 @@ struct RepresentativesView: View {
             }
             .padding(.horizontal)
             
+        }
+        .sheet(isPresented: $editZipCode){
+            ZipPicker()
+                .environment(appState)
+                .presentationDetents([.fraction(0.3)])
+                .presentationDragIndicator(.visible)
+                .presentationBackground(.white)
         }
         .task {
             await repsService.fetchRepresentatives(forZip: appState.zipCode)
