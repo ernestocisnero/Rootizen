@@ -13,8 +13,10 @@ struct HomeView: View {
     @Environment(RepresentativesService.self) private var repService
     
     @State private var startQuiz: Bool = false
-    @State private var showAllQuestions: Bool = false
+    @State private var startFlashcard: Bool = false
     @State private var showRepsView: Bool = false
+    @State private var showAllQuestions: Bool = false
+    
     
     var body: some View {
         
@@ -43,16 +45,16 @@ struct HomeView: View {
                         action: { startQuiz = true }
                     )
                     
-                    GameCard(
+                    GameCard( 
                         title: "Flashcards",
                         secondTitle: "10 questions",
                         thirdTitle: "True / False",
                         image: Image(systemName: "lanyardcard"),
                         isPro: false,
-                        action: { print("Flashcard") }
+                        action: { startFlashcard = true }
                     )
                     
-                    // MARK: One Nation Journey and Senior
+                    // MARK: Representatives and Senior
                     
                     GameCard(
                         title: "Meet your representatives",
@@ -118,6 +120,10 @@ struct HomeView: View {
         // MARK: Quiz sheet.
         .fullScreenCover(isPresented: $startQuiz){
             QuizFlowView(isPresented: $startQuiz, questionVersion: appState.questionVersion)
+        }
+        // MARK: Flashcards
+        .fullScreenCover(isPresented: $startFlashcard){
+            FlashcardFlowView(isPresented: $startFlashcard, questionVersion: appState.questionVersion)
         }
         // MARK: All Questions sheet.
         .fullScreenCover(isPresented: $showAllQuestions){

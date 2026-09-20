@@ -54,7 +54,6 @@ struct QuizFlowView: View {
                 }
             }
         }
-        
         .padding()
     }
 }
