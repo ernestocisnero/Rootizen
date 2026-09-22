@@ -10,6 +10,8 @@ import SwiftUI
 struct StatItem {
     let value: String
     let label: String
+    let imageRow: String
+    let itemColor: Color
 }
 
 struct RowStats: View {
@@ -19,10 +21,13 @@ struct RowStats: View {
         HStack(spacing: 0) {
             ForEach(items.indices, id: \.self) { index in
                 VStack(spacing: 4) {
-                    Text(items[index].value)
-                        .font(.system(size: 22, weight: .bold, design: .rounded))
-                        .foregroundColor(AppColor.primaryText)
-
+                    HStack(spacing: 6){
+                        Image(systemName: items[index].imageRow)
+                        Text(items[index].value)
+                            .font(.system(size: 22, weight: .bold, design: .rounded))
+                    }
+                    .foregroundColor(items[index].itemColor)
+                
                     Text(items[index].label.uppercased())
                         .font(.system(size: 11, weight: .medium))
                         .foregroundColor(AppColor.thirdText)
@@ -47,9 +52,9 @@ struct RowStats: View {
 
 #Preview {
     RowStats(items: [
-        StatItem(value: "14", label: "day streak"),
-        StatItem(value: "32", label: "courses"),
-        StatItem(value: "4.2k", label: "points")
+        StatItem(value: "14", label: "Xp Earned", imageRow: "bolt", itemColor: AppColor.league),
+        StatItem(value: "80", label: "Accuracy", imageRow: "target", itemColor: AppColor.info),
+        StatItem(value: "4", label: "Streak Days", imageRow: "flame", itemColor: AppColor.streak)
     ])
     .padding()
     

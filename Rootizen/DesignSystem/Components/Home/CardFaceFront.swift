@@ -50,7 +50,9 @@ struct CardFaceFront: View {
                 Text(question.english)
                 Divider()
                 Text(question.spanish)
+                
                 Spacer()
+                
                 HStack{
                     Spacer()
                     Text(category.rawValue)

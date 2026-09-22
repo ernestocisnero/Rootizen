@@ -7,6 +7,7 @@
 
 
 import AVFoundation
+import Observation
 
 enum SoundEvent: String {
     case correct
@@ -14,26 +15,30 @@ enum SoundEvent: String {
     case quizComplete
 }
 
-@Observable
 final class SoundManager {
 
     static let shared = SoundManager()
 
-    /// Persisted mute preference — flip this from a settings toggle.
     var isEnabled: Bool {
-        get { UserDefaults.standard.object(forKey: "soundEnabled") as? Bool ?? true }
-        set { UserDefaults.standard.set(newValue, forKey: "soundEnabled") }
+        get {
+            UserDefaults.standard.object(forKey: "soundEnabled") as? Bool ?? true
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "soundEnabled")
+        }
     }
 
     private var player: AVAudioPlayer?
 
-    private init() {
-        try? AVAudioSession.sharedInstance().setCategory(.ambient, options: [.mixWithOthers])
-    }
+    private init() {}
 
     func play(_ event: SoundEvent) {
         guard isEnabled else { return }
-        guard let url = Bundle.main.url(forResource: event.rawValue, withExtension: "wav") else {
+
+        guard let url = Bundle.main.url(
+            forResource: event.rawValue,
+            withExtension: "wav"
+        ) else {
             print("⚠️ Missing sound file: \(event.rawValue).wav")
             return
         }

@@ -20,27 +20,14 @@ struct QuizView: View {
             
             // MARK: Header
             VStack {
-                HStack {
+                HStack(spacing: 12){
                     
-                    HStack(spacing: 6) {
-                        Image(systemName: "checkmark.circle.fill")
-                            .font(.system(size: 13, weight: .medium))
-                            .foregroundStyle(AppColor.success)
-                        
-                        Text("\(quizManager.score) correct")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundStyle(AppColor.secondaryText)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .background(AppColor.surface)
-                    .clipShape(Capsule())
-                    .overlay {
-                        Capsule()
-                            .stroke(AppColor.border, lineWidth: 1)
-                    }
+                    Text("\(quizManager.currentIndex + 1)/10")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundStyle(AppColor.secondaryText)
                     
-                    Spacer()
+                    //Progress bar
+                    ProgressBar(progressValue: CGFloat(quizManager.currentIndex + 1), progressColor: AppColor.info, customHeight: 6, basePercent: 10)
                     
                     DismissBtn(
                         backgroundColor: AppColor.accentMuted,
@@ -50,10 +37,8 @@ struct QuizView: View {
                     }
                     
                 }
-                .padding(.vertical)
                 
-                //Progress bar
-                ProgressBar(progressValue: CGFloat(quizManager.currentIndex + 1), progressColor: AppColor.info, customHeight: 6, basePercent: 10)
+                
             }
             
             // MARK: Question
@@ -112,4 +97,5 @@ struct QuizView: View {
 #Preview {
     QuizView(path: .constant([]), onClose: {})
         .environment(QuizManager(questions: q2025version))
+        .environment(UserProgress())
 }

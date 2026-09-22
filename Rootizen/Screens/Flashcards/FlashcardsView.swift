@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FlashcardsView: View {
     @Binding var path: [FlashDestination]
-    
+    @Environment(FlashcardsManager.self) private var fcManager
     let onClose: () -> Void
     
     var body: some View {
@@ -18,13 +18,12 @@ struct FlashcardsView: View {
         VStack {
             
             HStack(spacing: 12){
-            
-                Text("5/10")
+                
+                Text("Cards remaining: \(fcManager.flashcardsQuestions.count)")
                     .font(.system(size: 14, weight: .medium))
                     .foregroundStyle(AppColor.secondaryText)
                 
-                //Progress bar
-                ProgressBar(progressValue: 2, progressColor: AppColor.info, customHeight: 6, basePercent: 10)
+                Spacer()
                 
                 DismissBtn(
                     backgroundColor: AppColor.accentMuted,
@@ -37,7 +36,12 @@ struct FlashcardsView: View {
             
             Spacer()
             
-            CardStack()
+            CardStack(cards: fcManager.flashcardsQuestions)
+                .onChange(of: fcManager.isFinished) { oldValue, newValue in
+                    if newValue == true{
+                        path.append(.results)
+                    }
+                }
             
             Spacer()
         }
@@ -47,4 +51,6 @@ struct FlashcardsView: View {
 
 #Preview {
     FlashcardsView(path: .constant([]), onClose: {})
+        .environment(FlashcardsManager(flashcardVersionYear: flashCards2025))
+        .environment(UserProgress())
 }

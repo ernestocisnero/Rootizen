@@ -45,7 +45,7 @@ struct QuizFlowView: View {
             .navigationDestination(for: QuizDestination.self) { destination in
                 switch destination {
                 case .results:
-                    QuizResults(
+                    ResultsView(
                         score: quizManager.score, total: 10,
                         onClose: { isPresented = false }
                     )
@@ -62,4 +62,5 @@ struct QuizFlowView: View {
 
 #Preview {
     QuizFlowView(isPresented: .constant(true), questionVersion: .v2025)
+        .environment(UserProgress())
 }

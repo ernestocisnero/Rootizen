@@ -20,7 +20,6 @@ struct RootizenApp: App {
                 .environment(appState)
                 .environment(userProgress)
                 .environment(repsService)
-                
         }
     }
 }

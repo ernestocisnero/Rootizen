@@ -9,8 +9,34 @@ import SwiftUI
 import SwiftData
 
 struct Card: View {
+    @Environment(FlashcardsManager.self) private var fcManager
+    
     let card: FlashCard
-    let remove: () -> Void
+    
+    private var iconName: String {
+        switch card.category {
+        case .principlesOfGovernment:
+            return "building.columns"
+        case .principlesofAmericanDemocracy:
+            return "person.2"
+        case .colonialPeriod:
+            return "scroll"
+        case .history1800s:
+            return "clock"
+        case .rightsAndResponsibilities:
+            return "checklist"
+        case .systemOfGovernment:
+            return "building.columns.circle"
+        case .holidays:
+            return "calendar"
+        case .symbols:
+            return "flag"
+        case .recentHistory:
+            return ""
+        case .geography:
+            return "globe.americas"
+        }
+    }
     
     @State private var offset = CGSize.zero
     private let swipeThreshold: CGFloat = 120
@@ -18,6 +44,7 @@ struct Card: View {
     
     var body: some View {
         ZStack {
+            
             ZStack{
                 Circle()
                     .fill(AppColor.info.opacity(0.2))
@@ -31,6 +58,16 @@ struct Card: View {
                 .shadow(radius: 1)
             
             VStack(alignment: .center, spacing: 8){
+                
+                HStack{
+                    Image(systemName: iconName)
+                        .label()
+                    Text(card.category.rawValue)
+                        .label()
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                }
+                
                 Spacer()
                 
                 Text(card.statement)
@@ -41,7 +78,7 @@ struct Card: View {
                 HStack{
                     VStack{
                         Image(systemName: "xmark.seal.fill")
-
+                        
                         Text("False")
                     }
                     .label(AppColor.error)
@@ -100,6 +137,7 @@ struct Card: View {
         withAnimation(.easeOut(duration: 0.3)) {
             offset.width = answer ? 500 : -500
         } completion: {
+            fcManager.handleSwipe(userAnswer: answer)
             offset = .zero // view resets visual offset
         }
     }
@@ -107,6 +145,7 @@ struct Card: View {
 
 #Preview {
     VStack{
-        Card(card: FlashCard(id: "fc_001", statement: "The Constitution is the supreme law of the land.", isTrue: true)){}
+        Card(card: FlashCard(id: "fc_001", statement: "The Constitution is the supreme law of the land.", isTrue: true, category: .principlesOfGovernment))
+            .environment(FlashcardsManager(flashcardVersionYear: flashCards2025))
     }
 }

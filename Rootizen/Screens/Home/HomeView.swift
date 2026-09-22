@@ -22,14 +22,6 @@ struct HomeView: View {
         
         VStack(alignment: .leading, spacing: 20){
             
-            HStack(spacing: 24){
-                //User Stats
-                RowStats(items: [
-                    StatItem(value: "\(userProgress.userXPoints)", label: "xp points"),
-                    StatItem(value: "21.3", label: "Category Accuracy")
-                ])
-            }
-            
             ScrollView(){
                 
                 VStack(spacing: 20){
@@ -123,7 +115,7 @@ struct HomeView: View {
         }
         // MARK: Flashcards
         .fullScreenCover(isPresented: $startFlashcard){
-            FlashcardFlowView(isPresented: $startFlashcard, questionVersion: appState.questionVersion)
+            FlashcardFlowView(isPresented: $startFlashcard, flashcardsVersion: appState.questionVersion)
         }
         // MARK: All Questions sheet.
         .fullScreenCover(isPresented: $showAllQuestions){

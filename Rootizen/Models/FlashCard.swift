@@ -11,4 +11,5 @@ struct FlashCard: Codable {
     let id: String
     let statement: String
     let isTrue: Bool
+    let category: QuestionCategory
 }

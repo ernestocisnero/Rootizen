@@ -39,7 +39,8 @@ struct ProfileView: View {
 
                 //User Stats
                 RowStats(items: [
-                    StatItem(value: "\(totalXP)", label: "xp points")
+                    StatItem(value: "\(totalXP)", label: "XP Earned", imageRow: "bolt", itemColor: AppColor.league),
+                    StatItem(value: "4", label: "Day streak",imageRow: "flame", itemColor: AppColor.league)
                 ])
                 
                 VStack(spacing: 18){

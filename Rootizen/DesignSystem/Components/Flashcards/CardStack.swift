@@ -8,30 +8,21 @@
 import SwiftUI
 
 struct CardStack: View {
-    static let example = FlashCard(id: "fc_001", statement: "The Constitution is the supreme law of the land.", isTrue: true)
+    @Environment(FlashcardsManager.self) private var fcManager
     
-    // let questionsArrayToCards: [FlashCard]
-    @State private var cards = Array<FlashCard>(repeating: example, count: 10)
+    let cards: [FlashCard]
     
     var body: some View {
         ZStack {
             VStack {
                 ZStack {
                     ForEach(0..<cards.count, id: \.self) { index in
-                        Card(card: cards[index]){
-                            withAnimation {
-                                removeCard(at: index)
-                            }
-                        }
+                        Card(card: cards[index])
                         .stacked(at: index, in: cards.count)
                     }
                 }
             }
         }
-    }
-    
-    func removeCard(at index: Int) {
-        cards.remove(at: index)
     }
     
 }
@@ -45,5 +36,6 @@ extension View {
 }
 
 #Preview {
-    CardStack()
+    CardStack(cards: Array(flashCards2008.shuffled().prefix(10)))
+        .environment(FlashcardsManager(flashcardVersionYear: flashCards2025))
 }

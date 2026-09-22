@@ -15,15 +15,22 @@ struct FlashcardFlowView: View {
     
     @Binding var isPresented: Bool
     @State private var path: [FlashDestination] = []
+    @State private var fcManager: FlashcardsManager
     
-    let questionVersion: QuestionVersion
+    let flashcardsVersion: QuestionVersion
     
     init(
         isPresented: Binding<Bool>,
-        questionVersion: QuestionVersion
+        flashcardsVersion: QuestionVersion
     ){
         self._isPresented = isPresented
-        self.questionVersion = questionVersion
+        self.flashcardsVersion = flashcardsVersion
+        
+        let flashcardsVersionYear = flashcardsVersion == .v2008 ? flashCards2008 : flashCards2025
+        
+        self._fcManager = State(
+            initialValue: FlashcardsManager(flashcardVersionYear: flashcardsVersionYear)
+        )
         
     }
     
@@ -33,12 +40,12 @@ struct FlashcardFlowView: View {
                 path: $path,
                 onClose: { isPresented = false } 
             )
-            //.environment(quizManager)
-            .navigationDestination(for: FlashDestination.self) { destination in
+            .environment(fcManager)
+            .navigationDestination(for: FlashDestination.self) { destination in 
                 switch destination {
                 case .results:
-                    FlashcardsResults(
-                        //score: quizManager.score, total: 10,
+                    ResultsView(
+                        score: fcManager.score, total: 10,
                         onClose: { isPresented = false }
                     )
                     .navigationBarBackButtonHidden(true)
@@ -50,5 +57,7 @@ struct FlashcardFlowView: View {
 }
 
 #Preview {
-    FlashcardFlowView(isPresented: .constant(true), questionVersion: .v2025)
+    FlashcardFlowView(isPresented: .constant(true), flashcardsVersion: .v2025)
+        .environment(UserProgress())
+        
 }
