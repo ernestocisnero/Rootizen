@@ -52,7 +52,7 @@ final class AppState {
         QuestionVersion(rawValue: savedVersion ?? "")
         ?? .v2025
         
-         zipCode = defaults.string(forKey: "zipCode") ?? ""
+         zipCode = defaults.string(forKey: "zipCode") ?? "29301"
         
     }
     

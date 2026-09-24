@@ -16,7 +16,7 @@ struct ProfileToggleRow: View {
         HStack(spacing: 12) {
             Image(systemName: icon)
                 .font(.system(size: 16, weight: .medium))
-                .foregroundStyle(AppColor.thirdText)
+                .foregroundStyle(AppColor.tertiaryText)
                 .frame(width: 18)
 
             Text(title)

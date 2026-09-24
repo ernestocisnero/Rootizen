@@ -18,10 +18,12 @@ import SwiftUI
 final class UserProgress{
 
     private(set) var userXPoints: Int
+    private(set) var userStreak: Int
     private(set) var categoryAccuracy: CGFloat
     
     init(){
         self.userXPoints = 0
+        self.userStreak = 0
         self.categoryAccuracy = 0.0
     }
     

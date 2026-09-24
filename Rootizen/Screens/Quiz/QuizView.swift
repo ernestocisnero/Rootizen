@@ -30,8 +30,8 @@ struct QuizView: View {
                     ProgressBar(progressValue: CGFloat(quizManager.currentIndex + 1), progressColor: AppColor.info, customHeight: 6, basePercent: 10)
                     
                     DismissBtn(
-                        backgroundColor: AppColor.accentMuted,
-                        shadowBorderColor: AppColor.accent
+                        backgroundColor: AppColor.info,
+                        shadowBorderColor: AppColor.secondaryBackground
                     ) {
                         onClose()
                     }

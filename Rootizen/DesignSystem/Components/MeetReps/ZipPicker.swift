@@ -19,7 +19,8 @@ struct ZipPicker: View {
         VStack(spacing: 14){
             TextField("Enter 5-digit Zip Code", text: $zipCode)
                 .padding(12)
-                .background(RoundedRectangle(cornerRadius: 10).fill(AppColor.secondaryBackground))
+                .background(RoundedRectangle(cornerRadius: 10)
+                .fill(AppColor.secondaryBackground))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(AppColor.secondaryBackground, lineWidth: 0.2)
@@ -32,7 +33,7 @@ struct ZipPicker: View {
                     isValid = newValue.count == 5 && newValue.allSatisfy { $0.isNumber }
                 }
             
-            PrimaryButton(title: "Continue", color: AppColor.success, foreground: AppColor.secondaryBackground, action: {
+            PrimaryButton(title: "Continue", color: AppColor.info, foreground: AppColor.secondaryBackground, action: {
                 print(zipCode)
                 appState.setZipCode(zipCode)
                 

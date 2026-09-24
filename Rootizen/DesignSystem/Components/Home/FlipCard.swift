@@ -11,23 +11,21 @@ struct FlipCard: View {
     let question: Question
     @State private var isFlipped = false
     @State private var feedbackTrigger: Bool = false
-    
+
     private var correctAnswers: LocalizedText {
         question.answers.first(where: { $0.isCorrect })?.text ?? LocalizedText(english: "", spanish: "")
     }
-    
+
     private var questionCategory: QuestionCategory {
         question.category
     }
 
     var body: some View {
         ZStack {
-            // Front (question)
-            CardFaceFront(question: question.question, category: questionCategory, background: AppColor.neutralMuted)
-              .opacity(isFlipped ? 0 : 1)
+            CardFaceFront(question: question.question, category: questionCategory)
+                .opacity(isFlipped ? 0 : 1)
 
-            // Back (answer)
-            CardFaceBack(answers: correctAnswers, category: questionCategory, background: .green.opacity(0.15))
+            CardFaceBack(answers: correctAnswers, category: questionCategory)
                 .opacity(isFlipped ? 1 : 0)
                 .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
         }
@@ -42,7 +40,6 @@ struct FlipCard: View {
         }
         .sensoryFeedback(.impact, trigger: feedbackTrigger)
     }
-
 }
 
 #Preview {
@@ -61,4 +58,5 @@ struct FlipCard: View {
         ],
         isSenior: false
     ))
+    .padding()
 }

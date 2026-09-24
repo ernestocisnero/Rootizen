@@ -10,8 +10,7 @@ import SwiftUI
 struct CardFaceFront: View {
     let question: LocalizedText
     let category: QuestionCategory
-    let background: Color
-    
+
     private var iconName: String {
         switch category {
         case .principlesOfGovernment:
@@ -31,45 +30,64 @@ struct CardFaceFront: View {
         case .symbols:
             return "flag"
         case .recentHistory:
-            return ""
+            return "clock.arrow.circlepath"
         case .geography:
             return "globe.americas"
         }
     }
-    
+
     var body: some View {
-        
-        HStack{
-            Image(systemName: iconName)
-                .resizable()
-                .frame(width: 50, height: 50)
-                .padding()
-            
-            VStack(alignment: .leading){
+        VStack(alignment: .leading, spacing: 14) {
+            HStack {
+                Label(category.rawValue, systemImage: iconName)
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+
                 Spacer()
-                Text(question.english)
-                Divider()
-                Text(question.spanish)
-                
-                Spacer()
-                
-                HStack{
-                    Spacer()
-                    Text(category.rawValue)
-                        .label()
-                }
+
+                Image(systemName: "questionmark.circle.fill")
+                    .foregroundStyle(.tertiary)
             }
-            .bodyText()
-            .padding()
-            .multilineTextAlignment(.leading)
+
+            VStack(alignment: .leading, spacing: 10) {
+                Text(question.english)
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(.primary)
+
+                Divider()
+
+                Text(question.spanish)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer(minLength: 0)
+
+            HStack {
+                Spacer()
+                Label("Tap to reveal", systemImage: "hand.tap")
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+            }
         }
-        .frame(minHeight: 200)
-        .background(background, in: RoundedRectangle(cornerRadius: 16))
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        
+        .multilineTextAlignment(.leading)
+        .padding(16)
+        .frame(minHeight: 200, alignment: .topLeading)
+        .frame(maxWidth: .infinity)
+        .background(AppColor.surface, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(AppColor.border, lineWidth: 0.5)
+        )
+        .shadow(color: .black.opacity(0.05), radius: 8, y: 3)
     }
 }
 
 #Preview {
-    CardFaceFront(question: LocalizedText(english: "The question", spanish: "La pregunta"), category: .principlesofAmericanDemocracy, background: AppColor.neutralMuted)
+    CardFaceFront(
+        question: LocalizedText(english: "The question", spanish: "La pregunta"),
+        category: .principlesofAmericanDemocracy
+    )
+    .padding()
 }

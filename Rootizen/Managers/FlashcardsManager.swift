@@ -29,7 +29,7 @@ final class FlashcardsManager: Identifiable {
         score = 0
         isFinished = false
         
-        flashcardsQuestions = Array(flashcards.shuffled().prefix(10)) //load questions here
+        flashcardsQuestions = Array(flashcards.shuffled().prefix(10)) 
     }
     
     func handleSwipe(userAnswer: Bool){

@@ -25,15 +25,15 @@ struct RepsScreenHeader: View {
                 Spacer()
                 
                 // MARK: Dismiss button
-                DismissBtn(backgroundColor: AppColor.successMuted, shadowBorderColor: AppColor.success, action: { dismiss() })
+                DismissBtn(backgroundColor: AppColor.info, shadowBorderColor: AppColor.secondaryBackground, action: { dismiss() })
             }
             
             HStack{
                 HStack(spacing: 8){
                     Image(systemName: "mappin.and.ellipse")
-                        .headline()
+                        .bodyText()
                     Text("\(location), \(state)")
-                        .primaryTitle()
+                        .bodyText()
                 }
                 
                 Spacer()

@@ -29,43 +29,42 @@ struct RepresentativesView: View {
                     VStack(spacing: 12) {
                         HStack{
                             Spacer()
-                            DismissBtn(backgroundColor: AppColor.accentMuted, shadowBorderColor: AppColor.accent, action: { dismiss() })
+                            DismissBtn(backgroundColor: AppColor.info, shadowBorderColor: AppColor.secondaryBackground, action: { dismiss() })
                         }
                         
                         Spacer()
-                        
-                        Image("RootySad")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 200)
-                            .rotationEffect(.degrees(isWaving ? 0.8 : -0.8), anchor: .bottom)
-                            .animation(
-                                .easeInOut(duration: 2)
-                                .repeatForever(autoreverses: true),
-                                value: isWaving
-                            )
-                            .onAppear {
-                                isWaving = true
+                        VStack(spacing: 10){
+                            Image(systemName: "mail.and.text.magnifyingglass")
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                                .foregroundStyle(AppColor.secondaryText)
+                                .padding()
+                                .background(AppColor.secondaryBackground, in: Circle())
+
+                            Text(error)
+                                .multilineTextAlignment(.center)
+                                .foregroundStyle(AppColor.secondaryText)
+                            
+                            HStack(spacing: 6){
+                                Image(systemName: "mappin")
+                                    .foregroundStyle(AppColor.error)
+                                Text("Zip code: \(appState.zipCode)")
+                                    .foregroundStyle(AppColor.secondaryText)
                             }
-                         
-                        Text(error)
-                            .foregroundStyle(.secondary)
-                            .primaryTitle()
-                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .background(AppColor.secondaryBackground, in: RoundedRectangle(cornerRadius: 10))
+                        }
                         
                         Spacer()
                         
                         VStack(spacing: 15){
-                            PrimaryButton(title: "Try Again", color: AppColor.journey, action: {
-                                Task { await repsService.fetchRepresentatives(forZip: appState.zipCode) }
-                            })
                             
-                            PrimaryButton(title: "Try different zip code", color: AppColor.info, action: {
+                            PrimaryButton(title: "Try a different zip code", color: AppColor.info, action: {
                                 editZipCode = true
                             })
                         }
                         
-                        Spacer()
                     }
                     .padding()
                 } else if let result = repsService.currentResult {
@@ -130,7 +129,7 @@ struct RepresentativesView: View {
     
     private func sectionHeader(_ title: String) -> some View {
         Text(title)
-            .font(.title3.bold())
+            .bodyText()
     }
 }
 

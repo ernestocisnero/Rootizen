@@ -34,5 +34,5 @@ struct DismissBtn: View {
 }
 
 #Preview {
-    DismissBtn(backgroundColor: AppColor.accentMuted, shadowBorderColor: AppColor.accent, action: {})
+    DismissBtn(backgroundColor: AppColor.secondaryBackground, shadowBorderColor: AppColor.primaryText, action: {})
 }

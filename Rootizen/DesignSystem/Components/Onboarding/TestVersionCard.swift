@@ -16,62 +16,61 @@ struct TestVersionCard: View {
     let isRecommended: Bool
     let isSelected: Bool
     let action: () -> Void
-
+    
     var body: some View {
         Button{
             action()
             feedbackTrigger.toggle()
         }label:{
             HStack(spacing: 16) {
-
+                
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 8) {
                         Text(title)
                             .font(.headline)
                             .foregroundStyle(AppColor.primaryText)
-
+                        
                         if isRecommended {
-                            Text("RECOMMENDED")
-                                .font(.caption2)
-                                .fontWeight(.bold)
-                                .foregroundStyle(AppColor.accent)
+                            HStack{
+                                Text("RECOMMENDED")
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 4)
+                                    .font(.caption2)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(AppColor.success)
+                                    .background(AppColor.success.muted(0.2), in: Capsule())
+                            }
                         }
                     }
-
+                    
                     Text(subtitle)
                         .font(.subheadline)
                         .foregroundStyle(AppColor.secondaryText)
-
+                    
                     Text(detail)
                         .font(.caption)
-                        .foregroundStyle(AppColor.secondaryText)
+                        .foregroundStyle(AppColor.tertiaryText)
                 }
-
+                
                 Spacer()
-
+                
                 Image(systemName: isSelected
                       ? "checkmark.circle.fill"
                       : "circle")
-                    .font(.title2)
+                    .font(.title3)
                     .foregroundStyle(
                         isSelected
-                        ? AppColor.accent
+                        ? AppColor.success
                         : AppColor.secondaryText
-                    )
-            }
+                    )            }
             .padding(20)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(AppColor.surface)
+            .background(
+                isSelected
+                ? AppColor.success.muted(0.2)
+                : AppColor.secondaryBackground
+            )
             .clipShape(RoundedRectangle(cornerRadius: 18))
-            .overlay {
-                RoundedRectangle(cornerRadius: 18)
-                    .stroke(
-                        isSelected
-                        ? AppColor.accent
-                        : AppColor.border,
-                        lineWidth: isSelected ? 2 : 1
-                    )
-            }
         }
         .buttonStyle(.plain)
         .sensoryFeedback(.selection, trigger: feedbackTrigger)
@@ -79,5 +78,5 @@ struct TestVersionCard: View {
 }
 
 #Preview {
-    TestVersionCard(title: "Title", subtitle: "Subtitle", detail: "Details", isRecommended: true, isSelected: true, action: {})
+    TestVersionCard(title: "Title", subtitle: "Subtitle", detail: "Details", isRecommended: true, isSelected: false, action: {})
 }

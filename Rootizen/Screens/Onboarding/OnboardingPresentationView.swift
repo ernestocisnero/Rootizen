@@ -19,8 +19,6 @@ struct OnboardingPresentationView: View {
         
         VStack(spacing: 24){
             
-            RootyTalk(rootyImageName: "Rooty", rootyWidth: 200, rootyTalkPhrases: Phrase.init(rootyTalksCases: .presentation).phrase)
-            
             VStack(spacing: 0) {
                 Text("Welcome to Rootizen")
                     .font(.system(size: 30, weight: .semibold))
@@ -54,6 +52,8 @@ struct OnboardingPresentationView: View {
                     onSelect(.spanish)
                 }
             }
+            
+            Spacer()
         }
     }
     

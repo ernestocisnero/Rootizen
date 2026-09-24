@@ -22,7 +22,7 @@ struct ProfileRow: View {
             HStack(spacing: 12) {
                 Image(systemName: icon)
                     .font(.system(size: 16, weight: .medium))
-                    .foregroundStyle(AppColor.thirdText)
+                    .foregroundStyle(AppColor.tertiaryText)
                     .frame(width: 22)
 
                 Text(title)

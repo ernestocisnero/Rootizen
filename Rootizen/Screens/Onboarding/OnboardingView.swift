@@ -29,38 +29,21 @@ struct OnboardingView: View {
             .highPriorityGesture(DragGesture())
         }
         
+        
         // MARK: Next button.
-        HStack{
+        VStack(spacing: 16){
             SlideBarCounter(currentSlide: currentStep)
-            Spacer()
-            Button{
+            
+            PrimaryButton(title: "Next", color: AppColor.success, action: {
                 handlesNext()
                 triggerFeedback.toggle()
-            }label:{
-                HStack{
-                    Text("Next")
-                        .foregroundStyle(AppColor.success)
-                        .primaryTitle()
-                }
-                .padding(.vertical, 8)
-                .padding(.horizontal, 10)
-                .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(AppColor.successBorder,
-                                lineWidth: 1
-                        )
-                }
-            }
-            .sensoryFeedback(.selection, trigger: triggerFeedback)
-            .buttonStyle(.plain)
+            })
         }
     }
     
     private func handlesNext(){
         if currentStep < 1 {
-            withAnimation(.smooth(duration: 0.4)){
+            withAnimation(.smooth(duration: 0.4)){ 
                 currentStep += 1
             }
         }else{

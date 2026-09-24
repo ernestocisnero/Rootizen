@@ -19,7 +19,7 @@ struct RepsOnboardingView: View {
             
             HStack{
                 Spacer()
-                DismissBtn(backgroundColor: AppColor.successMuted, shadowBorderColor: AppColor.success, action: { dismiss() })
+                DismissBtn(backgroundColor: AppColor.info.muted(0.2), shadowBorderColor: AppColor.info, action: { dismiss() })
             }
             
             Spacer()
@@ -30,16 +30,12 @@ struct RepsOnboardingView: View {
                     .font(.system(size: 40, weight: .light))
                     .padding(.horizontal, 10)
                     .padding(.vertical, 30)
-                    .foregroundStyle(AppColor.success)
-                    .background(AppColor.successMuted)
+                    .foregroundStyle(AppColor.info)
+                    .background(AppColor.info.muted(0.2))
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(AppColor.successMuted, lineWidth: 1)
-                    }
                 
                 Text("Find your representatives")
-                    .foregroundStyle(AppColor.success)
+                    .foregroundStyle(AppColor.info)
                     .headline()
                 
                 Text("The U.S. citizenship exam requires applicants to know the name of their U.S. representative. Enter your zip code to show yours.")
@@ -64,33 +60,27 @@ struct RepsOnboardingView: View {
                         isValid = newValue.count == 5 && newValue.allSatisfy { $0.isNumber }
                     }
                 
-                PrimaryButton(title: "Continue", color: AppColor.success, foreground: AppColor.secondaryBackground, action: {
-                    
+                PrimaryButton(title: "Continue", color: AppColor.info, foreground: AppColor.secondaryBackground, action: {
                     appState.setZipCode(zipCode)
                     print(zipCode)
                     appState.completeRepsOnboarding()
                 })
                 .disabled(!isValid)
-                
             }
             .padding(.vertical)
-            
             
             Spacer()
             
             HStack(alignment: .center){
                 
                 Image(systemName: "lock")
-                    .font(.system(size: 25, weight: .light))
+                    .headline(AppColor.secondaryText)
                 
                 VStack(alignment: .leading, spacing: 4){
                     Text("Your zip code is only used to look up public officials")
-
                     Text("Rootizen will never share or store personal data on a server")
                 }
                 .secondaryTitle()
-                
-                
             }
         }
     }

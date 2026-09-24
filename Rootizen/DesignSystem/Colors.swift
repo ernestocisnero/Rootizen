@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 enum AppColor {
 
     // MARK: - Backgrounds
@@ -15,57 +16,52 @@ enum AppColor {
 
     // MARK: - Text
     static let primaryText = Color(.label)
-    static let secondaryText = Color(.secondaryLabel) 
-    static let thirdText = Color(.secondaryLabel)
+    static let secondaryText = Color(.secondaryLabel)
+    static let tertiaryText = Color(.tertiaryLabel)
 
     // MARK: - Hairline borders / dividers
     static let border = Color(.separator)
 
-    // MARK: - Semantic
-    static let success = Color(red: 0.39, green: 0.60, blue: 0.13)   // #639922 green
-    static let successMuted = Color(red: 0.92, green: 0.95, blue: 0.87) // #EAF3DE
+    // MARK: - Brand accent (custom — define light/dark variants in Assets.xcassets)
+    static let accent = Color("AccentColor")
 
-    static let error = Color(red: 0.85, green: 0.35, blue: 0.19)     // #D85A30 coral
-    static let errorMuted = Color(red: 0.98, green: 0.92, blue: 0.91) // #FAECE7
+    // MARK: - Semantic feedback
+    static let success = Color(.systemGreen)
+    static let error = Color(.systemRed)
+    static let info = Color(.systemBlue)
 
-    static let accent = Color(red: 0.94, green: 0.62, blue: 0.15)    // #EF9F27 amber
-    static let accentMuted = Color(red: 0.98, green: 0.93, blue: 0.85) // #FAEEDA
+    // MARK: - Category / feature colors
+    static let highlight = Color(.systemPink)
+    static let journey = Color(.systemPurple)
+    static let listen = Color(.systemTeal)
+    static let speak = Color(.systemOrange)
+    static let neutral = Color(.systemGray)
 
-    // MARK: - Extra category colors (used for cards, tags, achievements)
-    static let info = Color(red: 0.09, green: 0.37, blue: 0.65)      // #185FA5 blue
-    static let infoMuted = Color(red: 0.90, green: 0.95, blue: 0.98) // #E6F1FB
+    // MARK: - Gamification
+    static let streak = Color(.systemOrange)   // flame
+    static let xp = Color(.systemYellow)       // coin/gold
 
-    static let highlight = Color(red: 0.60, green: 0.21, blue: 0.34) // #993556 pink
-    static let highlightMuted = Color(red: 0.98, green: 0.92, blue: 0.94) // #FBEAF0
+    /// League tier color — computed per-tier, not a single constant.
+    /// Placeholder LeagueTier below — replace with your real model once leagues are built.
+    static func leagueColor(for tier: LeagueTier) -> Color {
+        switch tier {
+        case .bronze: return Color(.systemBrown)
+        case .silver: return Color(.systemGray)
+        case .gold: return Color(.systemYellow)
+        case .diamond: return Color(.systemTeal)
+        }
+    }
+}
 
-    // Neutral — for categories that aren't semantically colored (e.g. "All Civics Questions")
-    static let neutral = Color(red: 0.37, green: 0.37, blue: 0.35)       // #5F5E5A warm gray
-    static let neutralMuted = Color(red: 0.94, green: 0.94, blue: 0.93)  // #F0EFED
-    
-    // MARK: - Premium Features
+// TODO: move to its own file once the leagues feature is built out.
+enum LeagueTier {
+    case bronze, silver, gold, diamond
+}
 
-    // MARK: - Premium Features
-
-    static let journey = Color(red: 0.36, green: 0.28, blue: 0.55)       // #5C478C purple
-    static let journeyMuted = Color(red: 0.94, green: 0.92, blue: 0.97)  // #F0EDF7
-
-    static let listen = Color(red: 0.12, green: 0.50, blue: 0.48)        // #1F807B teal
-    static let listenMuted = Color(red: 0.89, green: 0.95, blue: 0.94)   // #E3F2F0
-
-    static let speak = Color(red: 0.78, green: 0.39, blue: 0.18)         // #C7632E orange
-    static let speakMuted = Color(red: 0.98, green: 0.92, blue: 0.88)    // #FAEBE3
-
-    // MARK: - Borders
-    static let successBorder = Color(red: 0.23, green: 0.43, blue: 0.07)   // #3B6D11
-    static let errorBorder = Color(red: 0.60, green: 0.24, blue: 0.12)     // #993C1D (coral border)
-    static let accentBorder = Color(red: 0.39, green: 0.31, blue: 0.02)    // #633806 (amber border)
-    static let infoBorder = Color(red: 0.07, green: 0.25, blue: 0.43)      // #123F6E (blue border)
-    static let highlightBorder = Color(red: 0.40, green: 0.14, blue: 0.23) // #66233A (pink border)
-    static let neutralBorder = Color(red: 0.20, green: 0.20, blue: 0.18)   // #33322E (gray border)
-
-    // MARK: - Streak / gamification
-    static let streak = error        // coral flame color reused
-    static let xp = accent           // amber gem color reused
-    static let league = accent
-
+extension Color {
+    /// Tinted background fill derived from a semantic color — replaces hardcoded *Muted constants.
+    /// Usage: AppColor.success.muted() instead of AppColor.successMuted
+    func muted(_ opacity: Double = 0.15) -> Color {
+        self.opacity(opacity)
+    }
 }

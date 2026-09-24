@@ -69,9 +69,6 @@ struct OnboardingTestYearView: View {
                 
                 TestVersionInfoSection()
             }
-            
-            RootyTalk(rootyImageName: "Rooty", rootyWidth: 120, rootyTalkPhrases: Phrase.init(rootyTalksCases: .testVersionSelection).phrase)
-                .padding()
         }
         .background(AppColor.background)
         .navigationTitle("")

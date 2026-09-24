@@ -5,100 +5,142 @@
 //  Created by Ernesto Cisnero on 8/21/26.
 //
 
-enum Options: String, Identifiable{
-    case getPro
+import SwiftUI
+import StoreKit
+
+enum ProfileDestination: String, Identifiable, Hashable {
     case questionVersion
     case language
     case notification
     case faqs
-    case rateApp
+    case questionsCount
+    case share
     
     var id: String { rawValue }
 }
-
-
-import SwiftUI
 
 struct ProfileView: View {
     
     @Environment(AppState.self) private var appState
     @Environment(UserProgress.self) private var userProgress
+    @Environment(\.requestReview) private var requestReview
     
-    @State private var whichOption: Options?
+    @State private var showingPaywall = false
     @State private var soundEnabled = SoundManager.shared.isEnabled
-
+    
+    let isAppPlus: Bool = false
+    
     var totalXP: Int {
         userProgress.userXPoints
     }
     
     var body: some View {
-        
-        ScrollView {
-            
-            VStack(spacing: 24){
-
-                //User Stats
+        List {
+            Section {
                 RowStats(items: [
-                    StatItem(value: "\(totalXP)", label: "XP Earned", imageRow: "bolt", itemColor: AppColor.league),
-                    StatItem(value: "4", label: "Day streak",imageRow: "flame", itemColor: AppColor.league)
+                    StatItem(value: "\(totalXP)", label: "XP Earned", imageRow: "bolt", itemColor: AppColor.leagueColor(for: .gold)),
+                    StatItem(value: "4", label: "Day streak", imageRow: "flame", itemColor: AppColor.leagueColor(for: .gold))
                 ])
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.clear)
+            }
+            .listSectionSeparator(.hidden)
+            
+            Section("Preferences") {
                 
-                VStack(spacing: 18){
-                    PremiumCard( action: { whichOption = .getPro } )
+                Button {
+                    showingPaywall = true
+                } label: {
+                    Label("Get Rootizen Plus", systemImage: "star.hexagon")
+                    
+                    Spacer()
+                    
+                    Image(systemName: "arrow.up.forward")
+                        .font(.caption)
+                        .foregroundStyle(.tertiary)
+                }
+                .buttonStyle(.plain)
+                
+                NavigationLink(value: ProfileDestination.questionVersion) {
+                    Label("Questions version", systemImage: "doc.text")
                 }
                 
-                VStack(spacing: 16) {
-                    ProfileSection(
-                        title: "Preferences",
-                        rows: [
-                            ProfileRowItem(icon: "doc.text", title: "Questions version", action: {
-                                whichOption = .questionVersion
-                            }),
-                            ProfileRowItem(icon: "character.bubble", title: "Language", action: {
-                                whichOption = .language
-                            }),
-                            ProfileRowItem(icon: "bell", title: "Notifications", action: {
-                                whichOption = .notification
-                            })
-                        ]
-                    ){
-                        ProfileToggleRow(icon: "speaker.wave.2", title: "Sound effects", isOn: $soundEnabled)
-                            .onChange(of: soundEnabled) { _, newValue in
-                                SoundManager.shared.isEnabled = newValue
-                            }
+                NavigationLink(value: ProfileDestination.language) {
+                    Label("Language", systemImage: "character.bubble")
+                }
+                NavigationLink(value: ProfileDestination.notification) {
+                    Label("Notifications", systemImage: "bell")
+                }
+                
+                Toggle(isOn: $soundEnabled) {
+                    Label("Sound effects", systemImage: "speaker.wave.2")
+                }
+                .onChange(of: soundEnabled) { _, newValue in
+                    SoundManager.shared.isEnabled = newValue
+                }
+                
+                // MARK: -- If app plus version is paid, this option becomes available.
+                if isAppPlus{
+                    NavigationLink(value: ProfileDestination.questionsCount) {
+                        Label("Questions count", systemImage: "number")
                     }
-                    
-                    ProfileSection(
-                        title: "Support",
-                        rows: [
-                            ProfileRowItem(icon: "questionmark.circle", title: "FAQs", action: {
-                                whichOption = .faqs
-                            }),
-                            ProfileRowItem(icon: "star", title: "Rate this app", action: {
-                                whichOption = .rateApp
-                            })
-                        ]
-                    )
-#if DEBUG
-                    
-                    ProfileSection(
-                        rows: [
-                            ProfileRowItem(icon: "arrow.counterclockwise", title: "Reset onboarding", tint: AppColor.error, action: { appState.resetOnboarding() })
-                        ]
-                    )
-#endif
-                    
                 }
             }
             
-            
-        }
-        .scrollIndicators(.hidden)
-        .sheet(item: $whichOption){ sheet in
-            switch sheet {
+            Section("Support") {
                 
-            case .getPro:
-                Text("Get Pro")
+                NavigationLink(value: ProfileDestination.share) {
+                    Label("Share with friends", systemImage: "heart")
+                }
+                
+                Button {
+                    requestReview()
+                } label: {
+                    Label("Rate this app", systemImage: "star")
+                }
+                .buttonStyle(.plain)
+                
+                NavigationLink(value: ProfileDestination.faqs) {
+                    Label("FAQs", systemImage: "questionmark.circle")
+                }
+                
+            }
+            
+            Section("Legal"){
+                Link(destination: URL(string: "https://ernestocisnero.vercel.app")!) {
+                    HStack {
+                        
+                        Image(systemName: "document.badge.gearshape")
+                        Text("Terms and Privacy policy")
+                            .foregroundStyle(AppColor.primaryText)
+                        
+                        Spacer()
+                        Image(systemName: "arrow.up.right")
+                            .foregroundStyle(AppColor.secondaryText)
+                            .font(.caption)
+                            
+                    }
+                }
+ 
+                
+            }
+            
+            
+            
+            
+#if DEBUG
+            Section {
+                Button(role: .destructive) {
+                    appState.resetOnboarding()
+                } label: {
+                    Label("Reset onboarding", systemImage: "arrow.counterclockwise")
+                }
+            }
+#endif
+        }
+        .listStyle(.insetGrouped)
+        .navigationDestination(for: ProfileDestination.self) { destination in
+            switch destination {
             case .questionVersion:
                 Text("Questions Version")
             case .language:
@@ -107,16 +149,22 @@ struct ProfileView: View {
                 Text("Notifications")
             case .faqs:
                 Text("FAQs")
-            case .rateApp:
-                Text("Rate App")
+            case .questionsCount:
+                Text("Questions Count")
+            case .share:
+                Text("Share with friend")
             }
+        }
+        .sheet(isPresented: $showingPaywall) {
+            PaywallView()
         }
     }
 }
 
 #Preview {
-    ProfileView()
-        .padding()
-        .environment(AppState())
-        .environment(UserProgress())
+    NavigationStack {
+        ProfileView()
+            .environment(AppState())
+            .environment(UserProgress())
+    }
 }

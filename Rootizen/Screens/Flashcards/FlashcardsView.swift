@@ -26,8 +26,8 @@ struct FlashcardsView: View {
                 Spacer()
                 
                 DismissBtn(
-                    backgroundColor: AppColor.accentMuted,
-                    shadowBorderColor: AppColor.accent
+                    backgroundColor: AppColor.info,
+                    shadowBorderColor: AppColor.secondaryBackground
                 ) {
                     onClose()
                 }

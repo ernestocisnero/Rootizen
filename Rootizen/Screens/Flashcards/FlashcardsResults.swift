@@ -27,7 +27,7 @@ struct FlashcardsResults: View {
             // MARK: Icon + heading
             ZStack {
                 Circle()
-                    .fill(AppColor.successMuted)
+                    .fill(AppColor.success)
                     .frame(width: 88, height: 88)
 
                 Image(systemName: "party.popper.fill")
@@ -68,16 +68,16 @@ struct FlashcardsResults: View {
                     icon: "xmark",
                     value: "\(missed)",
                     label: "Missed",
-                    tint: AppColor.errorBorder,
-                    background: AppColor.errorMuted
+                    tint: AppColor.error,
+                    background: AppColor.error
                 )
 
                 statTile(
                     icon: "bolt.fill",
                     value: "+\(xpEarned)",
                     label: "XP earned",
-                    tint: AppColor.accentBorder,
-                    background: AppColor.accentMuted
+                    tint: AppColor.accent,
+                    background: AppColor.accent
                 )
             }
             .padding(.bottom, 22)
@@ -85,7 +85,7 @@ struct FlashcardsResults: View {
             Spacer()
 
             // MARK: Action
-            PrimaryButton(title: "Back to home", color: AppColor.neutralMuted, foreground: AppColor.primaryText) {
+            PrimaryButton(title: "Back to home", color: AppColor.neutral, foreground: AppColor.primaryText) {
                 onClose()
             }
         }

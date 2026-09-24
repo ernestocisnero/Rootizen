@@ -26,8 +26,10 @@ struct LeaderRow: View {
                     Circle()
                         .fill(.gray.opacity(0.2))
                         .frame(width: 48, height: 48)
-                        .overlay(Image(systemName: "person.fill")
-                            .foregroundStyle(.secondary))
+                        .overlay(
+                            Image(systemName: "person.fill")
+                            .foregroundStyle(.secondary)
+                        )
                     
                 @unknown default:
                     EmptyView()
@@ -37,10 +39,11 @@ struct LeaderRow: View {
             .clipShape(Circle())
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(leader.name).font(.headline)
+                Text(leader.name)
+                    .primaryTitle()
+                
                 Text(leader.role.replacingOccurrences(of: "_", with: " ").capitalized)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .secondaryTitle()
             }
             Spacer()
         }

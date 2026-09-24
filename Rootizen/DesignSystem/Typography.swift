@@ -60,7 +60,7 @@ struct SecondaryTitle: ViewModifier {
 // Short uppercase eyebrows/tags only ("AMERICAN HISTORY", section headers).
 // This is the one place tracking belongs — never apply to sentence-length text.
 struct Label_: ViewModifier {
-    var color: Color = AppColor.thirdText
+    var color: Color = AppColor.tertiaryText
 
     func body(content: Content) -> some View {
         content
@@ -84,7 +84,7 @@ extension View {
     func secondaryTitle(_ color: Color = AppColor.secondaryText) -> some View {
         modifier(SecondaryTitle(color: color))
     }
-    func label(_ color: Color = AppColor.thirdText) -> some View {
+    func label(_ color: Color = AppColor.tertiaryText) -> some View {
         modifier(Label_(color: color))
     }
 }

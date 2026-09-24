@@ -35,7 +35,7 @@ struct ProfileSection<Trailing: View>: View {
         VStack(alignment: .leading, spacing: 6) {
             if let title {
                 Text(title.uppercased())
-                    .foregroundStyle(AppColor.thirdText)
+                    .foregroundStyle(AppColor.tertiaryText)
                     .font(.system(size: 12, weight: .medium))
                     .padding(.leading, 4)
             }

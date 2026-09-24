@@ -16,7 +16,7 @@ struct AnswerFeedbackCard: View {
     }
 
     private var backgroundColor: Color {
-        isCorrect ? AppColor.successMuted : AppColor.errorMuted
+        isCorrect ? AppColor.success.muted(0.2) : AppColor.error.muted(0.2)
     }
 
     var body: some View {

@@ -24,13 +24,13 @@ struct RowStats: View {
                     HStack(spacing: 6){
                         Image(systemName: items[index].imageRow)
                         Text(items[index].value)
-                            .font(.system(size: 22, weight: .bold, design: .rounded))
+                            .headline()
                     }
                     .foregroundColor(items[index].itemColor)
                 
                     Text(items[index].label.uppercased())
-                        .font(.system(size: 11, weight: .medium))
-                        .foregroundColor(AppColor.thirdText)
+                        .secondaryTitle()
+                        .foregroundColor(AppColor.primaryText)
                 }
                 .frame(maxWidth: .infinity)
 
@@ -43,16 +43,13 @@ struct RowStats: View {
         .padding(.vertical, 16)
         .background(AppColor.background)
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(AppColor.border, lineWidth: 1)
-        }
+        
     }
 }
 
 #Preview {
     RowStats(items: [
-        StatItem(value: "14", label: "Xp Earned", imageRow: "bolt", itemColor: AppColor.league),
+        StatItem(value: "14", label: "Xp Earned", imageRow: "bolt", itemColor: AppColor.xp),
         StatItem(value: "80", label: "Accuracy", imageRow: "target", itemColor: AppColor.info),
         StatItem(value: "4", label: "Streak Days", imageRow: "flame", itemColor: AppColor.streak)
     ])

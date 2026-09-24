@@ -36,26 +36,18 @@ struct LanguageButton: View {
                     .foregroundStyle(
                         isSelected
                         ? AppColor.success
-                        : AppColor.border
+                        : AppColor.secondaryText
                     )
             }
             .padding(.horizontal, 18)
             .frame(height: 64)
             .background(
                 isSelected
-                ? AppColor.successMuted
-                : AppColor.background
+                ? AppColor.success.muted(0.2)
+                : AppColor.secondaryBackground
             )
             .clipShape(RoundedRectangle(cornerRadius: 14))
-            .overlay {
-                RoundedRectangle(cornerRadius: 14)
-                    .stroke(
-                        isSelected
-                        ? AppColor.success
-                        : AppColor.border,
-                        lineWidth: isSelected ? 1.5 : 1
-                    )
-            }
+            
         }
         .buttonStyle(.plain)
         .sensoryFeedback(.selection, trigger: triggerFeedback)

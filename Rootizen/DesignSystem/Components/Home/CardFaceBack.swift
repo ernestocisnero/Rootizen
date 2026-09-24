@@ -10,35 +10,59 @@ import SwiftUI
 struct CardFaceBack: View {
     let answers: LocalizedText
     let category: QuestionCategory
-    let background: Color
-    
+
     var body: some View {
-        
-        HStack{
-            
-            VStack(alignment: .leading){
+        VStack(alignment: .leading, spacing: 14) {
+            HStack {
+                Text(category.rawValue)
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+
                 Spacer()
-                Text(answers.english)
-                Divider()
-                Text(answers.spanish)
-                Spacer()
-                HStack{
-                    Spacer()
-                    Text(category.rawValue)
-                        .label()
-                }
+
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundStyle(AppColor.success)
             }
-            .primaryTitle()
-            .padding()
-            .multilineTextAlignment(.leading)
+
+            VStack(alignment: .leading, spacing: 10) {
+                Text(answers.english)
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(.primary)
+
+                Divider()
+
+                Text(answers.spanish)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer(minLength: 0)
+
+            HStack {
+                Spacer()
+                Label("Correct answer", systemImage: "checkmark.seal")
+                    .font(.caption2)
+                    .foregroundStyle(AppColor.success)
+            }
         }
-        .frame(minHeight: 200)
-        .background(background, in: RoundedRectangle(cornerRadius: 16))
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        
+        .multilineTextAlignment(.leading)
+        .padding(16)
+        .frame(minHeight: 200, alignment: .topLeading)
+        .frame(maxWidth: .infinity)
+        .background(AppColor.surface, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(AppColor.success.muted(0.35), lineWidth: 1)
+        )
+        .shadow(color: .black.opacity(0.05), radius: 8, y: 3)
     }
 }
 
 #Preview {
-    CardFaceBack(answers: LocalizedText(english: "The answer", spanish: "La respuesta"), category: .history1800s, background: AppColor.successMuted)
+    CardFaceBack(
+        answers: LocalizedText(english: "The answer", spanish: "La respuesta"),
+        category: .history1800s
+    )
+    .padding()
 }

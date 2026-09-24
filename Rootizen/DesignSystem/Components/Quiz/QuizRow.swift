@@ -27,8 +27,8 @@ struct QuizRow: View {
     }
 
     // Color variations variables
-    var colorSuccess = AppColor.success
-    var colorError = AppColor.error
+    var colorSuccess = AppColor.success.muted(0.2)
+    var colorError = AppColor.error.muted(0.2)
 
     private var stateBorderColor: Color {
         guard isSelected else { return AppColor.border }
@@ -37,7 +37,7 @@ struct QuizRow: View {
 
     private var stateBackgroundColor: Color {
         guard isSelected else { return AppColor.surface }
-        return isCorrect ? AppColor.successMuted : AppColor.errorMuted
+        return isCorrect ? colorSuccess : colorError
     }
 
     var body: some View {
@@ -52,11 +52,11 @@ struct QuizRow: View {
 
             if isSelected {
                 Image(systemName: isCorrect ? "checkmark.circle.fill": "x.circle.fill")
-                    .foregroundStyle( isCorrect ? colorSuccess: colorError )
+                    .foregroundStyle( isCorrect ? AppColor.success: AppColor.error )
                     .fontWeight(.bold)
             }else{
                 Image(systemName: "circle")
-                    .foregroundStyle(AppColor.thirdText)
+                    .foregroundStyle(AppColor.tertiaryText)
             }
         }
         .padding()
@@ -65,7 +65,7 @@ struct QuizRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .stroke(stateBorderColor, lineWidth: isSelected ? 2 : 1)
+                .stroke(stateBorderColor, lineWidth: isSelected ? 1 : 0.5)
         }
         .animation(.easeInOut(duration: 0.08).repeatCount(4, autoreverses: true), value: shouldShake)
         .sensoryFeedback(isCorrect ? .success: .error, trigger: isSelected)
@@ -80,7 +80,7 @@ struct QuizRow: View {
 }
 
 #Preview {
-    QuizRow(option: Answer(id: UUID(), text: LocalizedText(english: "A holiday to honor people who have served in the U.S. military", spanish: "Un día festivo para honrar a las personas que han servido en las fuerzas militares de los Estados Unidos"), isCorrect: true))
+    QuizRow(option: Answer(id: UUID(), text: LocalizedText(english: "A holiday to honor people who have served in the U.S. military", spanish: "Un día festivo para honrar a las personas que han servido en las fuerzas militares de los Estados Unidos"), isCorrect: false))
         .padding(.vertical)
         .environment(QuizManager(questions: q2025version))
 }

@@ -24,7 +24,6 @@ struct AppRootView: View {
                 .transition(.opacity)
             }else if appState.isOnboardingComplete{
                 MainTabView()
-                    .padding(.horizontal,16)
                     .transition(.opacity)
             }else{
                 OnboardingView()
@@ -41,26 +40,33 @@ struct AppRootView: View {
 struct MainTabView: View {
     @State private var selectedTab = 0
     var body: some View {
-         
+        
         TabView(selection: $selectedTab) {
+            NavigationStack{
+                HomeView()
+            }
 
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-                .tag(0)
+            .tabItem {
+                Label("Home", systemImage: "house")
+            }
+            .tag(0)
             
-            ResourcesView()
-                .tabItem {
-                    Label("Resources", systemImage: "book")
-                }
-                .tag(1)
+            NavigationStack{
+                ResourcesView()
+            }
             
-            ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person")
-                }
-                .tag(2)
+            .tabItem {
+                Label("Resources", systemImage: "book")
+            }
+            .tag(1)
+            
+            NavigationStack{
+                ProfileView()
+            }
+            .tabItem {
+                Label("Profile", systemImage: "person")
+            }
+            .tag(2)
         }
         .tint(AppColor.success)
         .sensoryFeedback(.selection, trigger: selectedTab)
