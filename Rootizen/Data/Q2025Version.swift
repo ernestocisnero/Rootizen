@@ -546,7 +546,7 @@ let q2025version: [Question] = [
                     english: "Everyone must follow the law",
                     spanish: "Todos deben cumplir la ley"
                 ),
-                isCorrect: false
+                isCorrect: true
             ),
             Answer(
                 id: UUID(),

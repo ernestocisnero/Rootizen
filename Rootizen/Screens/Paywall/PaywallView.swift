@@ -5,13 +5,6 @@
 //  Created by Ernesto Cisnero on 9/23/26.
 //
 
-//
-//  PaywallView.swift
-//  Rootizen
-//
-//  Created by Ernesto Cisnero on 9/23/26.
-//
-
 import SwiftUI
 
 struct PaywallView: View {

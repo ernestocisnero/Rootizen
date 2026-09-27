@@ -47,7 +47,7 @@ struct MainTabView: View {
             }
 
             .tabItem {
-                Label("Home", systemImage: "house")
+                Label("Home", systemImage: "house") 
             }
             .tag(0)
             

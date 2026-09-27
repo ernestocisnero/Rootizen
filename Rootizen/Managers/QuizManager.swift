@@ -22,6 +22,7 @@ final class QuizManager {
     private(set) var isFinished = false
     private(set) var answerResult: AnswerResult?
     private(set) var quizOptions: [Answer] = []
+    private(set) var numberOfQuestions: Int = 8
     
     init(questions: [Question]){
         startQuizSession(questionsVersion: questions)
@@ -38,7 +39,7 @@ final class QuizManager {
         selectedAnswer = nil
         isFinished = false
         
-        questions = Array(questionsVersion.shuffled().prefix(10)) //load questions here
+        questions = Array(questionsVersion.shuffled().prefix(numberOfQuestions))
         quizOptions = (questions[currentIndex].answers).shuffled()
     }
     

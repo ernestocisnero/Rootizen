@@ -22,12 +22,13 @@ struct QuizView: View {
             VStack {
                 HStack(spacing: 12){
                     
-                    Text("\(quizManager.currentIndex + 1)/10")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundStyle(AppColor.secondaryText)
+                    Text("Question \(quizManager.currentIndex + 1) out of \(quizManager.numberOfQuestions)")
+                        .font(.system(size: 18, weight: .medium))
+                        .foregroundStyle(AppColor.info)
+                        .textCase(.uppercase)
+                        .tracking(0.4)
                     
-                    //Progress bar
-                    ProgressBar(progressValue: CGFloat(quizManager.currentIndex + 1), progressColor: AppColor.info, customHeight: 6, basePercent: 10)
+                    Spacer()
                     
                     DismissBtn(
                         backgroundColor: AppColor.info,
@@ -43,11 +44,6 @@ struct QuizView: View {
             
             // MARK: Question
             VStack(alignment: .leading, spacing: 8) {
-                Text("Question")
-                    .font(.system(size: 18, weight: .medium))
-                    .foregroundStyle(AppColor.info)
-                    .textCase(.uppercase)
-                    .tracking(0.4)
                 
                 Text(quizManager.currentQuestion.question.english)
                     .font(.system(size: 20, weight: .medium))
