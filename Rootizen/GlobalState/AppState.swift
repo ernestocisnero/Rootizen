@@ -27,6 +27,7 @@ final class AppState {
     private(set) var appLanguage: AppLanguage
     private(set) var questionVersion: QuestionVersion
     private(set) var zipCode: String
+    private(set) var isAppPlus: Bool = true
     
     
     // MARK: - Initialization

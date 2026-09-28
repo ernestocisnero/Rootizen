@@ -23,8 +23,7 @@ struct QuizView: View {
                 HStack(spacing: 12){
                     
                     Text("Question \(quizManager.currentIndex + 1) out of \(quizManager.numberOfQuestions)")
-                        .font(.system(size: 18, weight: .medium))
-                        .foregroundStyle(AppColor.info)
+                        .secondaryTitle(AppColor.info)
                         .textCase(.uppercase)
                         .tracking(0.4)
                     

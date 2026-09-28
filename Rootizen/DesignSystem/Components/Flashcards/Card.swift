@@ -10,6 +10,7 @@ import SwiftData
 
 struct Card: View {
     @Environment(FlashcardsManager.self) private var fcManager
+    @State private var swipeFeedback: Bool = false
     
     let card: FlashCard
     
@@ -32,7 +33,7 @@ struct Card: View {
         case .symbols:
             return "flag"
         case .recentHistory:
-            return ""
+            return "person.building.classical"
         case .geography:
             return "globe.americas"
         }
@@ -61,10 +62,11 @@ struct Card: View {
                 
                 HStack{
                     Image(systemName: iconName)
-                        .label()
+                        .secondaryTitle()
                     Text(card.category.rawValue)
-                        .label()
+                        .secondaryTitle()
                         .multilineTextAlignment(.leading)
+                    
                     Spacer()
                 }
                 
@@ -76,31 +78,39 @@ struct Card: View {
                 Spacer()
                 
                 HStack{
-                    VStack{
-                        Image(systemName: "xmark.seal.fill")
+                    VStack(spacing: 6){
+                        Image(systemName: "arrow.turn.up.left")
+                            .headline(AppColor.error)
                         
                         Text("False")
+                            .label(AppColor.error)
                     }
-                    .label(AppColor.error)
+                    .padding(12)
+                    .background(AppColor.error.muted(0.1), in: Circle())
                     
                     Spacer()
                     
-                    VStack{
-                        Image(systemName: "checkmark.seal.fill")
+                    VStack(spacing: 6){
+                        Image(systemName: "arrow.turn.up.right")
+                            .headline(AppColor.success)
                         Text("True")
+                            .label(AppColor.success)
                     }
-                    .label(AppColor.success)
+                    .padding(12)
+                    .background(AppColor.success.muted(0.1), in: Circle())
                 }
                 
             }
             .padding(20)
             .multilineTextAlignment(.center)
+            
         }
         .clipShape(RoundedRectangle(cornerRadius: 25))
         .overlay {
             RoundedRectangle(cornerRadius: 25)
                 .stroke(AppColor.border, lineWidth: 1)
         }
+        .sensoryFeedback(.selection, trigger: swipeFeedback)
         .padding()
         .frame(width: 380, height: 380)
         .rotationEffect(.degrees(offset.width / 20.0))
@@ -137,15 +147,16 @@ struct Card: View {
         withAnimation(.easeOut(duration: 0.3)) {
             offset.width = answer ? 500 : -500
         } completion: {
+            swipeFeedback.toggle()
             fcManager.handleSwipe(userAnswer: answer)
-            offset = .zero // view resets visual offset
+            offset = .zero
         }
     }
 }
 
 #Preview {
     VStack{
-        Card(card: FlashCard(id: "fc_001", statement: "The Constitution is the supreme law of the land.", isTrue: true, category: .principlesOfGovernment))
+        Card(card: FlashCard(id: "fc_001", statement: "The Constitution is the supreme law of the land.", isTrue: true, category: .recentHistory))
             .environment(FlashcardsManager(flashcardVersionYear: flashCards2025))
     }
 }

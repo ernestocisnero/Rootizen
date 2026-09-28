@@ -4,6 +4,7 @@
 //
 //  Created by Ernesto Cisnero on 9/20/26.
 //
+import SwiftUI
 
 enum QuestionCategory: String, CaseIterable, Codable, Identifiable {
     case principlesOfGovernment = "Principles of American Government"
@@ -19,3 +20,14 @@ enum QuestionCategory: String, CaseIterable, Codable, Identifiable {
 
     var id: String { rawValue }
 }
+
+// MARK: -- Used when Plus version, to show the category questions accuracy as feedback
+struct CategoryAccuracyItem: Identifiable {
+    let id = UUID()
+    let category: QuestionCategory
+    let correct: Int
+    let total: Int
+ 
+    var accuracy: Double { total > 0 ? Double(correct) / Double(total) : 0 }
+}
+

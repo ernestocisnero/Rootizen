@@ -23,11 +23,12 @@ struct PrimaryButton: View {
         }label:{
             Text(title)
                 .font(.system(size: 16, weight: .bold))
-                .foregroundStyle(foreground)
                 .frame(maxWidth: .infinity)
+                .foregroundStyle(foreground)
                 .padding(.vertical, 15)
                 .background(color)
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: 50))
+                
         }
         .buttonStyle(.plain)
         .sensoryFeedback(.impact, trigger: feedbackTrigger)

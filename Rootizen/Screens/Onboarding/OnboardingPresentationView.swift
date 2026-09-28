@@ -11,50 +11,54 @@ import SwiftUI
 struct OnboardingPresentationView: View {
     
     @State private var isWaving: Bool = false
-    @State private var selectedLanguage: AppLanguage? = nil
+    @State private var selectedLanguage: AppLanguage? = .english
     
     let onSelect: (AppLanguage)-> Void
     
     var body: some View {
-        
-        VStack(spacing: 24){
-            
-            VStack(spacing: 0) {
-                Text("Welcome to Rootizen")
-                    .font(.system(size: 30, weight: .semibold))
-                    .foregroundStyle(AppColor.primaryText)
-                    .multilineTextAlignment(.center)
+        ScrollView{
+            VStack(spacing: 24){
                 
-                Text("Your friendly guide to the US citizenship test.")
-                    .font(.system(size: 16))
-                    .foregroundStyle(AppColor.secondaryText)
-                    .multilineTextAlignment(.center)
-            }
-            
-            VStack(spacing: 12) {
-                Text("Choose a language")
-                    .label()
-                LanguageButton(
-                    title: "English",
-                    flag: "🇺🇸",
-                    isSelected: selectedLanguage == .english
-                ) {
-                    selectedLanguage = .english
-                    onSelect(.english)
+                VStack(spacing: 0) {
+                    Text("Welcome to Rootizen")
+                        .font(.system(size: 30, weight: .semibold))
+                        .foregroundStyle(AppColor.primaryText)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("Your friendly guide to the US citizenship test.")
+                        .font(.system(size: 16))
+                        .foregroundStyle(AppColor.secondaryText)
+                        .multilineTextAlignment(.center)
                 }
                 
-                LanguageButton(
-                    title: "Español",
-                    flag: "🇪🇸",
-                    isSelected: selectedLanguage == .spanish
-                ) {
-                    selectedLanguage = .spanish
-                    onSelect(.spanish)
+                VStack(spacing: 12) {
+                    Text("Choose a language")
+                        .label()
+                    LanguageButton(
+                        title: "English",
+                        flag: "🇺🇸",
+                        isSelected: selectedLanguage == .english,
+                        isDefault: true
+                    ) {
+                        selectedLanguage = .english
+                        onSelect(.english)
+                    }
+                    
+                    LanguageButton(
+                        title: "Español",
+                        flag: "🇪🇸",
+                        isSelected: selectedLanguage == .spanish,
+                        isDefault: false
+                    ) {
+                        selectedLanguage = .spanish
+                        onSelect(.spanish)
+                    }
                 }
+                
+                Spacer()
             }
-            
-            Spacer()
         }
+        
     }
     
 }

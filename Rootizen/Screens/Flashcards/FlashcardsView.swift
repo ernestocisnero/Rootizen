@@ -20,8 +20,9 @@ struct FlashcardsView: View {
             HStack(spacing: 12){
                 
                 Text("Cards remaining: \(fcManager.flashcardsQuestions.count)")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundStyle(AppColor.secondaryText)
+                    .secondaryTitle(AppColor.info)
+                    .textCase(.uppercase)
+                    .tracking(0.4)
                 
                 Spacer()
                 
@@ -44,6 +45,9 @@ struct FlashcardsView: View {
                 }
             
             Spacer()
+            
+            Text("Swipe left to FALSE or Swipe right to TRUE")
+                .secondaryTitle()
         }
         .padding()
     }

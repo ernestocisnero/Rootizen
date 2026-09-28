@@ -21,20 +21,24 @@ struct OnboardingView: View {
                     onSelect: appState.setLanguage(_:)
                 )
                 .tag(0)
+                .transition(.opacity)
                 
                 OnboardingTestYearView(onSelect: appState.setQuestionVersion(_:))
-                    .tag(1)
+                .tag(1)
+                .transition(.opacity)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-            .highPriorityGesture(DragGesture())
+            .animation(.easeInOut, value: currentStep)
         }
+        
+        
         
         
         // MARK: Next button.
         VStack(spacing: 16){
             SlideBarCounter(currentSlide: currentStep)
             
-            PrimaryButton(title: "Next", color: AppColor.success, action: {
+            PrimaryButton(title: currentStep < 1 ? "Next": "Start", color: AppColor.success, action: {
                 handlesNext()
                 triggerFeedback.toggle()
             })
@@ -43,7 +47,7 @@ struct OnboardingView: View {
     
     private func handlesNext(){
         if currentStep < 1 {
-            withAnimation(.smooth(duration: 0.4)){ 
+            withAnimation(.smooth(duration: 0.4)){
                 currentStep += 1
             }
         }else{

@@ -12,6 +12,7 @@ struct LanguageButton: View {
     let title: String
     let flag: String
     let isSelected: Bool
+    let isDefault: Bool
     let action: () -> Void
 
     var body: some View {
@@ -26,6 +27,17 @@ struct LanguageButton: View {
                 Text(title)
                     .font(.headline)
                     .foregroundStyle(AppColor.primaryText)
+                
+                if isDefault{
+                    HStack{
+                        Text("Default")
+                            .padding(.horizontal)
+                            .padding(.vertical, 4)
+                            .label(AppColor.success)
+                            .background(AppColor.success.muted(0.2), in: Capsule())
+                    }
+                }
+                
 
                 Spacer()
 
@@ -55,5 +67,5 @@ struct LanguageButton: View {
 }
 
 #Preview {
-    LanguageButton(title: "Select a language", flag: "🇺🇸", isSelected: false){}
+    LanguageButton(title: "Select a language", flag: "🇺🇸", isSelected: false, isDefault: true){}
 }
