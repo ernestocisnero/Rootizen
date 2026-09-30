@@ -21,17 +21,14 @@ struct OnboardingView: View {
                     onSelect: appState.setLanguage(_:)
                 )
                 .tag(0)
-                .transition(.opacity)
                 
                 OnboardingTestYearView(onSelect: appState.setQuestionVersion(_:))
                 .tag(1)
-                .transition(.opacity)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .animation(.easeInOut, value: currentStep)
+            .highPriorityGesture(DragGesture())
         }
-        
-        
         
         
         // MARK: Next button.

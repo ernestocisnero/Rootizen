@@ -54,8 +54,6 @@ struct OnboardingPresentationView: View {
                         onSelect(.spanish)
                     }
                 }
-                
-                Spacer()
             }
         }
         

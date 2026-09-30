@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(AppState.self) private var appState
-    @Environment(UserProgress.self) private var userProgress
     @Environment(RepresentativesService.self) private var repService
 
     @State private var startQuiz: Bool = false
@@ -121,7 +120,6 @@ struct HomeView: View {
     NavigationStack {
         HomeView()
             .environment(AppState())
-            .environment(UserProgress())
             .environment(RepresentativesService())
     }
 }

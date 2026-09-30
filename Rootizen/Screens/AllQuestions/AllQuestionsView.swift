@@ -41,15 +41,16 @@ struct AllQuestionsView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
+                    DismissBtn(
+                        backgroundColor: AppColor.info,
+                        shadowBorderColor: AppColor.secondaryBackground
+                    ) {
                         dismiss()
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.title2)
-                            //.foregroundStyle(.secondary)
                     }
                 }
+                .sharedBackgroundVisibility(.hidden)
             }
+            
         }
     }
 }

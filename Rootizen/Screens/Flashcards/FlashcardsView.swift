@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct FlashcardsView: View {
     @Binding var path: [FlashDestination]
     @Environment(FlashcardsManager.self) private var fcManager
+    @Environment(AppState.self) private var appState
+    
     let onClose: () -> Void
     
     var body: some View {
@@ -38,8 +41,9 @@ struct FlashcardsView: View {
             Spacer()
             
             CardStack(cards: fcManager.flashcardsQuestions)
-                .onChange(of: fcManager.isFinished) { oldValue, newValue in
-                    if newValue == true{
+                .onChange(of: fcManager.isFinished) { _, newValue in
+                    if newValue {
+                        appState.recordFlashcardResult(score: fcManager.score)
                         path.append(.results)
                     }
                 }
@@ -56,5 +60,6 @@ struct FlashcardsView: View {
 #Preview {
     FlashcardsView(path: .constant([]), onClose: {})
         .environment(FlashcardsManager(flashcardVersionYear: flashCards2025))
-        .environment(UserProgress())
+        .environment(AppState())
+    
 }

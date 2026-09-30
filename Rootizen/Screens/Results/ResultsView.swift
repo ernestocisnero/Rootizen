@@ -9,15 +9,11 @@ import SwiftUI
 
 struct ResultsView: View {
     @Environment(AppState.self) private var appState
-    @Environment(UserProgress.self) private var userProgress
     @State private var showingPaywall: Bool = false
     
     let score: Int
     let total: Int
     let onClose: () -> Void
-    
-    private var missed: Int { total - score }
-    private var xpEarned: Int { score * 2 }
     
     var body: some View {
         List{
@@ -44,7 +40,6 @@ struct ResultsView: View {
                         .padding(.bottom, 22)
                     
                     RowStats(items: [
-                        StatItem(value: "\(xpEarned)", label: "XP Earned", imageRow: "bolt", itemColor: AppColor.leagueColor(for: .gold)),
                         StatItem(value: "\(Int(score*100/total))%", label: "Accuracy", imageRow: "target", itemColor: AppColor.info),
                         StatItem(value: "4", label: "Day streak",imageRow: "flame", itemColor: AppColor.streak)
                     ])
@@ -98,7 +93,7 @@ struct ResultsView: View {
         .background(AppColor.background)
         .onAppear {
             //SoundManager.shared.play(.quizComplete)
-            userProgress.incrementXpoints(points: xpEarned)
+           
         }
         .scrollIndicators(.hidden)
     }
@@ -106,6 +101,5 @@ struct ResultsView: View {
 
 #Preview {
     ResultsView(score: 8, total: 10, onClose: {})
-        .environment(UserProgress())
         .environment(AppState())
 }

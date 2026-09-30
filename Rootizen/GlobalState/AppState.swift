@@ -29,6 +29,7 @@ final class AppState {
     private(set) var zipCode: String
     private(set) var isAppPlus: Bool = true
     
+    private(set) var progress: UserProgressModel?
     
     // MARK: - Initialization
     
@@ -53,7 +54,7 @@ final class AppState {
         QuestionVersion(rawValue: savedVersion ?? "")
         ?? .v2025
         
-         zipCode = defaults.string(forKey: "zipCode") ?? "29301"
+        zipCode = defaults.string(forKey: "zipCode") ?? ""
         
     }
     
@@ -87,11 +88,23 @@ final class AppState {
             forKey: "questionVersion"
         )
     }
-
+    
     func setZipCode(_ zip: String){
         zipCode = zip
         UserDefaults.standard.set(zip, forKey: "zipCode")
     }
+    
+    // MARK: -- User Progress Data handling.
+    
+    func loadOrCreateProgress(userProgressModel: UserProgressModel){
+        progress = userProgressModel
+    }
+    
+    func recordFlashcardResult(score: Int){
+        progress?.totalFlashcardTaken += 1
+        progress?.totalCorrectFlashcard += score
+    }
+    
     
     // MARK: - This is for development only. DELETE BEFORE LAUNCH
 #if DEBUG
@@ -105,5 +118,5 @@ final class AppState {
 #endif // DEBUG
     
     
-   
+    
 }

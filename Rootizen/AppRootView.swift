@@ -78,6 +78,5 @@ struct MainTabView: View {
 #Preview {
     AppRootView()
         .environment(AppState())
-        .environment(UserProgress())
         .environment(RepresentativesService())
 }

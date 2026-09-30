@@ -14,6 +14,7 @@ final class FlashcardsManager: Identifiable {
     private(set) var flashcardsQuestions: [FlashCard] = []
     private(set) var score = 0
     private(set) var isFinished = false
+    private(set) var numberOfQuestions: Int = 10
     
     // True when the user has answered every card
     var isGameOver: Bool {
@@ -29,7 +30,7 @@ final class FlashcardsManager: Identifiable {
         score = 0
         isFinished = false
         
-        flashcardsQuestions = Array(flashcards.shuffled().prefix(10)) 
+        flashcardsQuestions = Array(flashcards.shuffled().prefix(numberOfQuestions)) 
     }
     
     func handleSwipe(userAnswer: Bool){

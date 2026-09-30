@@ -28,7 +28,7 @@ struct QuizView: View {
                         .tracking(0.4)
                     
                     Spacer()
-                    
+                     
                     DismissBtn(
                         backgroundColor: AppColor.info,
                         shadowBorderColor: AppColor.secondaryBackground
@@ -92,5 +92,5 @@ struct QuizView: View {
 #Preview {
     QuizView(path: .constant([]), onClose: {})
         .environment(QuizManager(questions: q2025version))
-        .environment(UserProgress())
+        
 }

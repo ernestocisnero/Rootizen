@@ -62,5 +62,5 @@ struct QuizFlowView: View {
 
 #Preview {
     QuizFlowView(isPresented: .constant(true), questionVersion: .v2025)
-        .environment(UserProgress())
+        
 }

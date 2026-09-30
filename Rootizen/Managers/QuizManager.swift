@@ -22,7 +22,7 @@ final class QuizManager {
     private(set) var isFinished = false
     private(set) var answerResult: AnswerResult?
     private(set) var quizOptions: [Answer] = []
-    private(set) var numberOfQuestions: Int = 8
+    private(set) var numberOfQuestions: Int = 10
     
     init(questions: [Question]){
         startQuizSession(questionsVersion: questions)

@@ -12,7 +12,7 @@ enum FlashDestination: Hashable {
 }
 
 struct FlashcardFlowView: View {
-    
+    @Environment(AppState.self) private var appState
     @Binding var isPresented: Bool
     @State private var path: [FlashDestination] = []
     @State private var fcManager: FlashcardsManager
@@ -26,7 +26,9 @@ struct FlashcardFlowView: View {
         self._isPresented = isPresented
         self.flashcardsVersion = flashcardsVersion
         
-        let flashcardsVersionYear = flashcardsVersion == .v2008 ? flashCards2008 : flashCards2025
+        let flashcardsVersionYear = flashcardsVersion == .v2008
+        ? flashCards2008
+        : flashCards2025
         
         self._fcManager = State(
             initialValue: FlashcardsManager(flashcardVersionYear: flashcardsVersionYear)
@@ -58,6 +60,5 @@ struct FlashcardFlowView: View {
 
 #Preview {
     FlashcardFlowView(isPresented: .constant(true), flashcardsVersion: .v2025)
-        .environment(UserProgress())
-        
+        .environment(AppState())
 }

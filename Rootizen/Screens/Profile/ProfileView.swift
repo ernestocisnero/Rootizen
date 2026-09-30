@@ -15,6 +15,7 @@ enum ProfileDestination: String, Identifiable, Hashable {
     case faqs
     case questionsCount
     case share
+    case progress
     
     var id: String { rawValue }
 }
@@ -22,7 +23,6 @@ enum ProfileDestination: String, Identifiable, Hashable {
 struct ProfileView: View {
     
     @Environment(AppState.self) private var appState
-    @Environment(UserProgress.self) private var userProgress
     @Environment(\.requestReview) private var requestReview
     
     @State private var showingPaywall = false
@@ -30,21 +30,32 @@ struct ProfileView: View {
     
     let isAppPlus: Bool = false
     
-    var totalXP: Int {
-        userProgress.userXPoints
+    var totalQuizTaken: Int {
+        appState.progress?.totalQuizTaken ?? 0
+    }
+    
+    var totalFlashcardTaken: Int {
+        appState.progress?.totalFlashcardTaken ?? 0
     }
     
     var body: some View {
         List {
             Section {
                 RowStats(items: [
-                    StatItem(value: "\(totalXP)", label: "XP Earned", imageRow: "bolt", itemColor: AppColor.leagueColor(for: .gold)),
-                    StatItem(value: "4", label: "Day streak", imageRow: "flame", itemColor: AppColor.leagueColor(for: .gold))
+                    StatItem(value: "\(totalQuizTaken)", label: "Quiz Session", imageRow: "book", itemColor: AppColor.leagueColor(for: .gold)),
+                    StatItem(value: "\(totalFlashcardTaken)", label: "Flashcards Sessions", imageRow: "lanyardcard", itemColor: AppColor.leagueColor(for: .diamond))
+                    
                 ])
                 .listRowInsets(EdgeInsets())
                 .listRowBackground(Color.clear)
             }
             .listSectionSeparator(.hidden)
+            
+            Section{
+                NavigationLink(value: ProfileDestination.progress) {
+                    Label("Your Progress", systemImage: "chart.line.uptrend.xyaxis")
+                }
+            }
             
             Section("Preferences") {
                 
@@ -153,6 +164,8 @@ struct ProfileView: View {
                 Text("Questions Count")
             case .share:
                 Text("Share with friend")
+            case .progress:
+                Text("Your Progress")
             }
         }
         .sheet(isPresented: $showingPaywall) {
@@ -165,6 +178,6 @@ struct ProfileView: View {
     NavigationStack {
         ProfileView()
             .environment(AppState())
-            .environment(UserProgress())
+            
     }
 }
