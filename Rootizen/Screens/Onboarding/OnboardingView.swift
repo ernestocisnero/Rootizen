@@ -27,7 +27,6 @@ struct OnboardingView: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .animation(.easeInOut, value: currentStep)
-            .highPriorityGesture(DragGesture())
         }
         
         

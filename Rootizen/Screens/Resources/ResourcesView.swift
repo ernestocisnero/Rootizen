@@ -8,7 +8,6 @@
 import SwiftUI
 
 enum ResourceDestination: String, Identifiable, Hashable {
-    case readingWriting
     case haveYouEver
     case vocabulary
     case anthem
@@ -24,9 +23,6 @@ struct ResourcesView: View {
     var body: some View {
         List {
             Section("Study Materials") {
-                NavigationLink(value: ResourceDestination.readingWriting) {
-                    Label("Reading & Writing", systemImage: "text.book.closed")
-                }
 
                 NavigationLink(value: ResourceDestination.haveYouEver) {
                     Label("Have You Ever Questions", systemImage: "bubble.left.and.bubble.right")
@@ -96,12 +92,10 @@ struct ResourcesView: View {
         .navigationTitle("Resources")
         .navigationDestination(for: ResourceDestination.self) { destination in
             switch destination {
-            case .readingWriting:
-                Text("Reading & Writing")
             case .haveYouEver:
-                Text("Have You Ever Questions")
+                HaveYouEverQuestionsView(questions: haveYouEverQuestions)
             case .vocabulary:
-                Text("Vocabulary")
+                VocabularyView()
             case .anthem:
                 Text("National Anthem")
             case .pledge:

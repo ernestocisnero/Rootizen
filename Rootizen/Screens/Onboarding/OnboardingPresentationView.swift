@@ -19,17 +19,27 @@ struct OnboardingPresentationView: View {
         ScrollView{
             VStack(spacing: 24){
                 
+                Spacer()
+                
                 VStack(spacing: 0) {
                     Text("Welcome to Rootizen")
                         .font(.system(size: 30, weight: .semibold))
                         .foregroundStyle(AppColor.primaryText)
                         .multilineTextAlignment(.center)
                     
-                    Text("Your friendly guide to the US citizenship test.")
+                    Text("Your native app guide to the US citizenship test.")
                         .font(.system(size: 16))
                         .foregroundStyle(AppColor.secondaryText)
                         .multilineTextAlignment(.center)
                 }
+                
+                Image("rootizenLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 200, maxHeight: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                
+                Spacer()
                 
                 VStack(spacing: 12) {
                     Text("Choose a language")

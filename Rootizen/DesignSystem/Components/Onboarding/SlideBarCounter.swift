@@ -15,7 +15,7 @@ struct SlideBarCounter: View {
             ForEach(0..<2){ index in
                 
                 RoundedRectangle(cornerRadius: 10)
-                    .frame(maxWidth: 16, maxHeight: 4)
+                    .frame(maxWidth: 18, maxHeight: 6)
                     .foregroundStyle(index == currentSlide ? AppColor.success: AppColor.secondaryBackground)
                 
             }

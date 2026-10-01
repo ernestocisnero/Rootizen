@@ -70,7 +70,7 @@ struct MainTabView: View {
         }
         .tint(AppColor.success)
         .sensoryFeedback(.selection, trigger: selectedTab)
-    }
+    } 
 }
 
 

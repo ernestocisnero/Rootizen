@@ -42,7 +42,7 @@ struct AllQuestionsView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     DismissBtn(
-                        backgroundColor: AppColor.info,
+                        backgroundColor: AppColor.success,
                         shadowBorderColor: AppColor.secondaryBackground
                     ) {
                         dismiss()
@@ -50,7 +50,6 @@ struct AllQuestionsView: View {
                 }
                 .sharedBackgroundVisibility(.hidden)
             }
-            
         }
     }
 }

@@ -23,14 +23,14 @@ struct QuizView: View {
                 HStack(spacing: 12){
                     
                     Text("Question \(quizManager.currentIndex + 1) out of \(quizManager.numberOfQuestions)")
-                        .secondaryTitle(AppColor.info)
+                        .secondaryTitle(AppColor.success)
                         .textCase(.uppercase)
                         .tracking(0.4)
                     
                     Spacer()
                      
                     DismissBtn(
-                        backgroundColor: AppColor.info,
+                        backgroundColor: AppColor.success,
                         shadowBorderColor: AppColor.secondaryBackground
                     ) {
                         onClose()
@@ -76,7 +76,7 @@ struct QuizView: View {
             // MARK: Action
             PrimaryButton(
                 title: "Next question",
-                color: AppColor.info
+                color: AppColor.success
             ) {
                 if quizManager.nextQuestion() {
                     path.append(.results)

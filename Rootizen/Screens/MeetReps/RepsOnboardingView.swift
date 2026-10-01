@@ -19,7 +19,7 @@ struct RepsOnboardingView: View {
             
             HStack{
                 Spacer()
-                DismissBtn(backgroundColor: AppColor.info.muted(0.2), shadowBorderColor: AppColor.info, action: { dismiss() })
+                DismissBtn(backgroundColor: AppColor.success, shadowBorderColor: AppColor.secondaryBackground, action: { dismiss() })
             }
             
             Spacer()
@@ -30,12 +30,12 @@ struct RepsOnboardingView: View {
                     .font(.system(size: 40, weight: .light))
                     .padding(.horizontal, 10)
                     .padding(.vertical, 30)
-                    .foregroundStyle(AppColor.info)
-                    .background(AppColor.info.muted(0.2))
+                    .foregroundStyle(AppColor.success)
+                    .background(AppColor.success.muted(0.2))
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 
                 Text("Find your representatives")
-                    .foregroundStyle(AppColor.info)
+                    .foregroundStyle(AppColor.success)
                     .headline()
                 
                 Text("The U.S. citizenship exam requires applicants to know the name of their U.S. representative. Enter your zip code to show yours.")
@@ -60,7 +60,7 @@ struct RepsOnboardingView: View {
                         isValid = newValue.count == 5 && newValue.allSatisfy { $0.isNumber }
                     }
                 
-                PrimaryButton(title: "Continue", color: AppColor.info, foreground: AppColor.secondaryBackground, action: {
+                PrimaryButton(title: "Continue", color: AppColor.success, foreground: AppColor.secondaryBackground, action: {
                     appState.setZipCode(zipCode)
                     print(zipCode)
                     appState.completeRepsOnboarding()

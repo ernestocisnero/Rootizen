@@ -32,13 +32,11 @@ struct TestVersionCard: View {
                         
                         if isRecommended {
                             HStack{
-                                Text("RECOMMENDED")
+                                Text("Default")
                                     .padding(.horizontal)
                                     .padding(.vertical, 4)
-                                    .font(.caption2)
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(AppColor.success)
-                                    .background(AppColor.success.muted(0.2), in: Capsule())
+                                    .secondaryTitle(AppColor.success)
+                                    .background(AppColor.success.muted(0.1), in: Capsule())
                             }
                         }
                     }

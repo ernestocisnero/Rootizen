@@ -23,14 +23,14 @@ struct FlashcardsView: View {
             HStack(spacing: 12){
                 
                 Text("Cards remaining: \(fcManager.flashcardsQuestions.count)")
-                    .secondaryTitle(AppColor.info)
+                    .secondaryTitle(AppColor.success)
                     .textCase(.uppercase)
                     .tracking(0.4)
                 
                 Spacer()
                 
                 DismissBtn(
-                    backgroundColor: AppColor.info,
+                    backgroundColor: AppColor.success,
                     shadowBorderColor: AppColor.secondaryBackground
                 ) {
                     onClose()

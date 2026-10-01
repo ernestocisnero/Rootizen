@@ -15,6 +15,11 @@ struct Question: Identifiable {
     let isSenior: Bool?
 }
 
+struct HaveYouEverQuestion: Identifiable {
+    let id: UUID
+    let text: LocalizedText
+}
+
 struct Answer: Identifiable, Equatable {
     let id: UUID
     let text: LocalizedText

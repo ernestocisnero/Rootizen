@@ -48,7 +48,7 @@ struct Card: View {
             
             ZStack{
                 Circle()
-                    .fill(AppColor.info.opacity(0.2))
+                    .fill(AppColor.success.opacity(0.18))
                     .frame(width: 120, height: 120)
                     .offset(x: 150, y: -150)
             }

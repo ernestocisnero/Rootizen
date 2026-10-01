@@ -32,9 +32,9 @@ struct LanguageButton: View {
                     HStack{
                         Text("Default")
                             .padding(.horizontal)
-                            .padding(.vertical, 4)
-                            .label(AppColor.success)
-                            .background(AppColor.success.muted(0.2), in: Capsule())
+                            .padding(.vertical, 2)
+                            .secondaryTitle(AppColor.success)
+                            .background(AppColor.success.muted(0.1), in: Capsule())
                     }
                 }
                 
