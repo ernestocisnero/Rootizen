@@ -36,12 +36,12 @@ struct HomeRow: View {
                 
                 if isPro {
                     Image(systemName: "star.hexagon")
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(AppColor.leagueColor(for: .gold))
                         .headline()
                 }
             }
         }
-        .foregroundStyle(isPro ? .secondary : .primary)
+        .foregroundStyle(isPro ? AppColor.secondaryText : AppColor.primaryText)
     }
 }
 

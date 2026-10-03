@@ -2,7 +2,7 @@
 //  SpeechRecognitionService.swift
 //  Rootizen
 //
-//  Created by Ernesto Cisnero on 9/30/26.
+//  Created by Ernesto Cisnero on 9/27/26.
 //
 //  Mic -> on-device transcript, for Reading practice. Deliberately
 //  requiresOnDeviceRecognition = true: free, offline, no server round
@@ -43,7 +43,11 @@ final class SpeechRecognitionService {
         return speechStatus == .authorized && micGranted
     }
 
-    func startRecording() throws {
+    /// `async` specifically so the audio session's setCategory/setActive
+    /// calls — the ones the console warned about — can run off the main
+    /// thread via the detached task below, instead of blocking the UI
+    /// thread that called this from a Button action.
+    func startRecording() async throws {
         guard let recognizer, recognizer.isAvailable else {
             throw RecognitionError.recognizerUnavailable
         }
@@ -52,9 +56,11 @@ final class SpeechRecognitionService {
         task = nil
         transcript = ""
 
-        let audioSession = AVAudioSession.sharedInstance()
-        try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
-        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        try await Task.detached(priority: .userInitiated) {
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.playAndRecord, mode: .measurement, options: [.duckOthers, .defaultToSpeaker])
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        }.value
 
         let request = SFSpeechAudioBufferRecognitionRequest()
         request.shouldReportPartialResults = true
@@ -90,5 +96,15 @@ final class SpeechRecognitionService {
         request?.endAudio()
         task = nil
         isRecording = false
+
+        // Release the session so AVSpeechSynthesizer can reclaim it for
+        // playback afterward — this is the actual fix for "Listen stops
+        // working after the first Speak." Fire-and-forget on a background
+        // queue, same reasoning as startRecording, to avoid the main-thread
+        // warning. Kept non-blocking/sync on the public API so existing
+        // call sites (finishListening, onDisappear) don't need to change.
+        DispatchQueue.global(qos: .userInitiated).async {
+            try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+        }
     }
 }

@@ -35,7 +35,7 @@ struct PaywallView: View {
 
                 VStack(alignment: .leading, spacing: 20) {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Plus - $4.99")
+                        Text("Plus - $9.99")
                             .font(.title2.weight(.bold))
                        
                     }

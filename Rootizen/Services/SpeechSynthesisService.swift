@@ -16,7 +16,7 @@ final class SpeechSynthesisService: NSObject {
     private(set) var isSpeaking = false
 
     private let synthesizer = AVSpeechSynthesizer()
-
+    
     override init() {
         super.init()
         synthesizer.delegate = self

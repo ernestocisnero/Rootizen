@@ -10,9 +10,22 @@
 		940D88603037AE1600490193 /* Rootizen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rootizen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		94152C343070883100005461 /* Exceptions for "Rootizen" folder in "Rootizen" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 940D885F3037AE1600490193 /* Rootizen */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		940D88623037AE1600490193 /* Rootizen */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				94152C343070883100005461 /* Exceptions for "Rootizen" folder in "Rootizen" target */,
+			);
 			path = Rootizen;
 			sourceTree = "<group>";
 		};
@@ -258,8 +271,11 @@
 				DEVELOPMENT_TEAM = UW4B67D4Z9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Rootizen/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Rootizen;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Rootizen uses the microphone so you can practice speaking your citizenship answers.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Rootizen uses speech recognition to evaluate your spoken citizenship answers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -292,8 +308,11 @@
 				DEVELOPMENT_TEAM = UW4B67D4Z9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Rootizen/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Rootizen;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Rootizen uses the microphone so you can practice speaking your citizenship answers.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Rootizen uses speech recognition to evaluate your spoken citizenship answers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

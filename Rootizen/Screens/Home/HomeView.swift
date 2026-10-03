@@ -17,6 +17,7 @@ struct HomeView: View {
     @State private var showRepsView: Bool = false
     @State private var showAllQuestions: Bool = false
     @State private var showReadingWriting: Bool = false
+    @State private var showingPaywall: Bool = false
     
     var body: some View {
         List {
@@ -37,25 +38,38 @@ struct HomeView: View {
                     isPro: false,
                     action: { startFlashcard = true }
                 )
-                
-                    HomeRow(
-                        title: "Reading & Writing",
-                        subtitle: "Practice your reading and writing",
-                        systemImage: "long.text.page.and.pencil",
-                        isPro: false,
-                        action: { showReadingWriting = true }
-                    )
-                
-                
             }
             
-            Section("Premium") {
+            Section("Plus") {
+                HomeRow(
+                    title: "Reading & Writing",
+                    subtitle: "Practice your reading and writing",
+                    systemImage: "long.text.page.and.pencil",
+                    isPro: true,
+                    action: {
+                        if appState.isAppPlus{
+                            showReadingWriting = true
+                        }else{
+                            showingPaywall = true
+                        }
+                        
+                    }
+                )
+                
                 HomeRow(
                     title: "Listen the questions",
                     subtitle: "Listen and memorize",
                     systemImage: "headphones",
                     isPro: true,
-                    action: { print("Listen the questions") }
+                    action: {
+                        
+                        if appState.isAppPlus{
+                            print("Listen the questions")
+                        }else{
+                            showingPaywall = true
+                        }
+
+                    }
                 )
                 
                 HomeRow(
@@ -63,7 +77,14 @@ struct HomeView: View {
                     subtitle: "Listen and speak",
                     systemImage: "waveform",
                     isPro: true,
-                    action: { print("Listen and speak") }
+                    action: {
+                        if appState.isAppPlus{
+                            print("Listen and speak")
+                        }else{
+                            showingPaywall = true
+                        }
+
+                    }
                 )
             }
             
@@ -122,6 +143,10 @@ struct HomeView: View {
                 .environment(appState)
                 .environment(repService)
         }
+        // MARK: -- Paywall
+        .sheet(isPresented: $showingPaywall) {
+            PaywallView()
+        }
     }
 }
 
@@ -130,5 +155,6 @@ struct HomeView: View {
         HomeView()
             .environment(AppState())
             .environment(RepresentativesService())
+            .environment(SpeechSynthesisService())
     }
 }

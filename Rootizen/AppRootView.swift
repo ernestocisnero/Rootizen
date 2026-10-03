@@ -11,7 +11,8 @@ struct AppRootView: View {
     
     @Environment(AppState.self) private var appState
     @State private var showingSplash =  true
-    
+    @State private var speechService = SpeechSynthesisService()
+    @State private var speechRecognitionService = SpeechRecognitionService()
     
     var body: some View {
         Group{
@@ -25,6 +26,8 @@ struct AppRootView: View {
             }else if appState.isOnboardingComplete{
                 MainTabView()
                     .transition(.opacity)
+                    .environment(speechService)
+                    .environment(speechRecognitionService)
             }else{
                 OnboardingView()
                     .padding(.horizontal, 16)
@@ -79,4 +82,6 @@ struct MainTabView: View {
     AppRootView()
         .environment(AppState())
         .environment(RepresentativesService())
+        .environment(SpeechSynthesisService())
+        .environment(SpeechRecognitionService())
 }

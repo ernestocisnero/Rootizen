@@ -4,10 +4,6 @@
 //
 //  Created by Ernesto Cisnero on 9/30/26.
 //
-//  Pure logic, no Apple frameworks — compares a candidate sentence
-//  (typed, or transcribed from speech) against a target sentence,
-//  word by word. Shared by both Reading and Writing practice.
-//
 
 import Foundation
 
