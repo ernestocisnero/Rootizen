@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ResultsView: View {
     @Environment(AppState.self) private var appState
+    @Environment(PurchaseManager.self) private var purchaseManager
+    
     @State private var showingPaywall: Bool = false
     
     let score: Int
@@ -47,15 +49,8 @@ struct ResultsView: View {
                 
             }
             
-            
-            
-            // MARK: --- Upgrade Card if user is not Plus version
-            if !appState.isAppPlus{
-                UpgradeCard(){ showingPaywall = true }
-            }
-            
             // MARK: -- Plus Version Zone
-            if appState.isAppPlus {
+            if purchaseManager.isPremiumUnlocked {
                 
                 Section{
                     CategoryAccuracySection(items: [
@@ -75,14 +70,21 @@ struct ResultsView: View {
                         )
                     ])
                 }
+            }else{
+                // MARK: --- Upgrade Card if user is not Plus version
+                Section{
+                    UpgradeCard(){ showingPaywall = true }
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
+                }
+                
             }
-            
             
             // MARK: Action
             PrimaryButton(title: "Back to home", color: AppColor.surface, foreground: AppColor.primaryText) {
                 onClose()
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.plain)
             .listRowInsets(EdgeInsets())
             .listRowBackground(Color.clear)
         }
@@ -92,8 +94,8 @@ struct ResultsView: View {
         
         .background(AppColor.background)
         .onAppear {
-            //SoundManager.shared.play(.quizComplete)
-           
+            SoundManager.shared.play(.quizComplete)
+            
         }
         .scrollIndicators(.hidden)
     }
@@ -102,4 +104,5 @@ struct ResultsView: View {
 #Preview {
     ResultsView(score: 8, total: 10, onClose: {})
         .environment(AppState())
+        .environment(PurchaseManager())
 }

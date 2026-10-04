@@ -18,12 +18,14 @@ struct RootizenApp: App {
     
     @State private var appState = AppState()
     @State private var repsService = RepresentativesService()
+    @State private var purchaseManager = PurchaseManager()
     
     var body: some Scene {
         WindowGroup {
             AppRootView()
                 .environment(appState)
                 .environment(repsService)
+                .environment(purchaseManager)
                 .modelContainer(container)
                 .task {
                     ensureProgressExists()

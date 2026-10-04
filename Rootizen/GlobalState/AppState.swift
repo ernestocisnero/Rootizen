@@ -27,7 +27,7 @@ final class AppState {
     private(set) var appLanguage: AppLanguage
     private(set) var questionVersion: QuestionVersion
     private(set) var zipCode: String
-    private(set) var isAppPlus: Bool = true
+    private(set) var isAppPlus: Bool = false
     
     private(set) var progress: UserProgressModel?
     
@@ -103,6 +103,11 @@ final class AppState {
     func recordFlashcardResult(score: Int){
         progress?.totalFlashcardTaken += 1
         progress?.totalCorrectFlashcard += score
+    }
+    
+    func recordQuizResult(score: Int){
+        progress?.totalQuizTaken += 1
+        progress?.totalCorrectQuiz += score
     }
     
     

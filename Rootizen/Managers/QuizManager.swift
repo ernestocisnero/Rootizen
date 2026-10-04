@@ -56,6 +56,7 @@ final class QuizManager {
         }
     }
     
+    
     func nextQuestion() -> Bool {
         guard selectedAnswer != nil else { return false }
 

@@ -37,9 +37,8 @@ struct MicListeningSheet: View {
         VStack(spacing: 20) {
             switch phase {
             case .requestingPermission:
-                reviewView
-//                ProgressView()
-//                    .padding(.top, 40)
+                ProgressView()
+                    .padding(.top, 40)
             case .permissionDenied:
                 permissionDeniedView
             case .listening:
@@ -124,7 +123,7 @@ struct MicListeningSheet: View {
                         .padding(.vertical, 8)
                         .background(AppColor.info.muted(0.1), in: Capsule())
                 }
-                
+                Spacer()
                 Button {
                     dismiss()
                 } label: {
@@ -136,6 +135,9 @@ struct MicListeningSheet: View {
                 }
             }
             .padding()
+        }
+        .onAppear{
+            SoundManager.shared.play(.quizComplete)
         }
     }
     
@@ -196,29 +198,6 @@ struct MicListeningSheet: View {
             candidate: speechRecognitionService.transcript
         )
         phase = .reviewing
-    }
-}
-
-private struct WordHighlightFlow: View {
-    let results: [WordMatchResult]
-    
-    var body: some View {
-        FlowLayout(spacing: 6) {
-            ForEach(results) { result in
-                VStack{
-                    Text(result.word)
-                        .bodyText(result.isCorrect ? AppColor.success : AppColor.error)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 6)
-                        .background(
-                            (result.isCorrect ? AppColor.success : AppColor.error).opacity(0.15),
-                            in: Capsule()
-                        )
-                }
-                .padding(.bottom)
-                
-            }
-        }
     }
 }
 

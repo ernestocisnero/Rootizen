@@ -11,6 +11,7 @@ import SwiftUI
 struct HomeView: View {
     @Environment(AppState.self) private var appState
     @Environment(RepresentativesService.self) private var repService
+    @Environment(PurchaseManager.self) private var purchaseManager
     
     @State private var startQuiz: Bool = false
     @State private var startFlashcard: Bool = false
@@ -45,9 +46,9 @@ struct HomeView: View {
                     title: "Reading & Writing",
                     subtitle: "Practice your reading and writing",
                     systemImage: "long.text.page.and.pencil",
-                    isPro: true,
+                    isPro: !purchaseManager.isPremiumUnlocked,
                     action: {
-                        if appState.isAppPlus{
+                        if purchaseManager.isPremiumUnlocked{
                             showReadingWriting = true
                         }else{
                             showingPaywall = true
@@ -60,10 +61,10 @@ struct HomeView: View {
                     title: "Listen the questions",
                     subtitle: "Listen and memorize",
                     systemImage: "headphones",
-                    isPro: true,
+                    isPro: !purchaseManager.isPremiumUnlocked,
                     action: {
                         
-                        if appState.isAppPlus{
+                        if purchaseManager.isPremiumUnlocked{
                             print("Listen the questions")
                         }else{
                             showingPaywall = true
@@ -76,9 +77,9 @@ struct HomeView: View {
                     title: "Speak your answers",
                     subtitle: "Listen and speak",
                     systemImage: "waveform",
-                    isPro: true,
+                    isPro: !purchaseManager.isPremiumUnlocked,
                     action: {
-                        if appState.isAppPlus{
+                        if purchaseManager.isPremiumUnlocked{
                             print("Listen and speak")
                         }else{
                             showingPaywall = true
@@ -156,5 +157,6 @@ struct HomeView: View {
             .environment(AppState())
             .environment(RepresentativesService())
             .environment(SpeechSynthesisService())
+            .environment(PurchaseManager())
     }
 }

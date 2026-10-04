@@ -20,6 +20,7 @@ struct ReadingWritingView: View {
 
     @State private var selectedMode: PracticeMode = .reading
     @State private var speakingSentence: SpeakingSentence?
+    @State private var writingSentence: WritingSentenceItem?
 
     private var sentences: [String] {
         selectedMode == .reading ? PracticeSentences.reading : PracticeSentences.writing
@@ -53,20 +54,15 @@ struct ReadingWritingView: View {
                                              actionSpeak: { speakingSentence = SpeakingSentence(text: sentence) })
                             }
                         } else {
-                            HStack {
-                                Text(sentences.first ?? "")
-                                Spacer()
-                                Button {
-                                    Task { try? await speechRecognitionService.startRecording() }
-                                } label: {
-                                    Image(systemName: "mic.fill")
-                                }
-
+                            ForEach(Array(sentences.enumerated()), id: \.offset) { index, sentence in
+                                WritingSentenceCard(number: index + 1, text: sentence,
+                                             actionListen: { speechService.speak(sentence) },
+                                             actionWrite: { writingSentence = WritingSentenceItem(text: sentence) })
                             }
-
                         }
 
                     }
+                    .id(selectedMode)
                     .padding(.horizontal)
                 }
                 .padding(.bottom, 24)
@@ -86,6 +82,11 @@ struct ReadingWritingView: View {
             }
             .sheet(item: $speakingSentence) { speaking in
                 MicListeningSheet(targetSentence: speaking.text)
+                    .presentationDetents([.medium, .large])
+                    .presentationBackground(AppColor.background)
+            }
+            .sheet(item: $writingSentence) { writing in
+                WritingEvaluationSheet(targetSentence: writing.text)
                     .presentationDetents([.medium, .large])
                     .presentationBackground(AppColor.background)
             }

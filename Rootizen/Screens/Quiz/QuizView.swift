@@ -11,6 +11,7 @@ struct QuizView: View {
     
     @Binding var path: [QuizDestination]
     @Environment(QuizManager.self) private var quizManager
+    @Environment(AppState.self) private var appState
     
     let onClose: () -> Void
     
@@ -78,7 +79,8 @@ struct QuizView: View {
                 title: "Next question",
                 color: AppColor.success
             ) {
-                if quizManager.nextQuestion() {
+                if quizManager.nextQuestion() {// nextQuesion returns True if it is the last question
+                    appState.recordQuizResult(score: quizManager.score)
                     path.append(.results)
                 }
             }
@@ -86,11 +88,13 @@ struct QuizView: View {
             .padding(.vertical)
         }
         .background(AppColor.background)
+        .padding()
     }
 }
 
 #Preview {
     QuizView(path: .constant([]), onClose: {})
         .environment(QuizManager(questions: q2025version))
+        .environment(AppState())
         
 }

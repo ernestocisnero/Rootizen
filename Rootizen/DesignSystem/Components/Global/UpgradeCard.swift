@@ -20,10 +20,6 @@ struct UpgradeCard: View {
             HStack(spacing: 14) {
                 Image(systemName: "star.hexagon")
                     .headline(AppColor.leagueColor(for: .gold))
-                    .background(
-                        AppColor.accent.muted(),
-                        in: RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    )
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text("See what you missed")
@@ -56,6 +52,6 @@ struct UpgradeCard: View {
 
 #Preview {
     UpgradeCard(action: {})
-        .padding()
+        //.padding()
         .background(AppColor.secondaryBackground)
 }

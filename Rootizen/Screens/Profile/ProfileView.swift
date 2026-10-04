@@ -24,9 +24,12 @@ struct ProfileView: View {
     
     @Environment(AppState.self) private var appState
     @Environment(\.requestReview) private var requestReview
+    @Environment(PurchaseManager.self) private var purchaseManager
     
     @State private var showingPaywall = false
     @State private var soundEnabled = SoundManager.shared.isEnabled
+    @State private var isRestoring = false
+    @State private var showConfirmation = false
     
     let isAppPlus: Bool = false
     
@@ -51,14 +54,13 @@ struct ProfileView: View {
             }
             .listSectionSeparator(.hidden)
             
-            Section{
+            Section("Rootizen"){
+                
                 NavigationLink(value: ProfileDestination.progress) {
                     Label("Your Progress", systemImage: "chart.line.uptrend.xyaxis")
                 }
-            }
-            
-            Section("Preferences") {
                 
+                //MARK: -- Purchase button
                 Button {
                     showingPaywall = true
                 } label: {
@@ -66,11 +68,53 @@ struct ProfileView: View {
                     
                     Spacer()
                     
-                    Image(systemName: "arrow.up.forward")
-                        .font(.caption)
-                        .foregroundStyle(.tertiary)
+                    if purchaseManager.isPremiumUnlocked{
+                        Text("Active")
+                            .bodyText(AppColor.success)
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .background(AppColor.success.muted(0.1), in: Capsule())
+                    }
+                    
                 }
                 .buttonStyle(.plain)
+                .disabled(purchaseManager.isPremiumUnlocked)
+                
+                //MARK: -- Restore Purchase button
+                Button {
+                    
+                    Task {
+                        isRestoring = true
+                        await purchaseManager.restorePurchases()
+                        isRestoring = false
+                        showConfirmation = true
+                    }
+                    
+                } label: {
+                    Label("Restore your Rootizen Plus", systemImage: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
+                    
+                    Spacer()
+                    
+                    
+                }
+                .buttonStyle(.plain)
+                .disabled(isRestoring)
+                .alert(
+                    purchaseManager.isPremiumUnlocked ? "Rootizen Plus purchases restored" : "No Rootizen Plus to restore",
+                    isPresented: $showConfirmation
+                ) {
+                    Button("OK", role: .cancel) { }
+                } message: {
+                    Text(
+                        purchaseManager.isPremiumUnlocked
+                        ? "Your Rootizen Plus has been restored."
+                        : "No previous purchase for Rootizen Plus was found for this Apple ID."
+                    )
+                }
+                
+            }
+            
+            Section("Preferences") {
                 
                 NavigationLink(value: ProfileDestination.questionVersion) {
                     Label("Questions version", systemImage: "doc.text")
@@ -129,14 +173,12 @@ struct ProfileView: View {
                         Image(systemName: "arrow.up.right")
                             .foregroundStyle(AppColor.secondaryText)
                             .font(.caption)
-                            
+                        
                     }
                 }
- 
+                
                 
             }
-            
-            
             
             
 #if DEBUG
@@ -178,6 +220,6 @@ struct ProfileView: View {
     NavigationStack {
         ProfileView()
             .environment(AppState())
-            
+            .environment(PurchaseManager())
     }
 }

@@ -84,4 +84,5 @@ struct MainTabView: View {
         .environment(RepresentativesService())
         .environment(SpeechSynthesisService())
         .environment(SpeechRecognitionService())
+        .environment(PurchaseManager())
 }

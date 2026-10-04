@@ -2,7 +2,11 @@
 //  WordMatchEvaluator.swift
 //  Rootizen
 //
-//  Created by Ernesto Cisnero on 9/30/26.
+//  Created by Ernesto Cisnero on 9/27/26.
+//
+//  Pure logic, no Apple frameworks — compares a candidate sentence
+//  (typed, or transcribed from speech) against a target sentence,
+//  word by word. Shared by both Reading and Writing practice.
 //
 
 import Foundation
@@ -20,27 +24,38 @@ enum WordMatchEvaluator {
     /// extra word doesn't cascade and mark every later word wrong too —
     /// a plain index-by-index comparison would do exactly that.
     static func evaluate(target: String, candidate: String) -> (results: [WordMatchResult], accuracy: Double) {
-        let targetWords = normalize(target)
-        let candidateWords = normalize(candidate)
+        let targetTokens = tokenize(target)
+        let candidateKeys = tokenize(candidate).map(\.key)
 
-        let matchedIndices = longestCommonSubsequenceIndices(targetWords, candidateWords)
+        let matchedIndices = longestCommonSubsequenceIndices(
+            targetTokens.map(\.key), candidateKeys
+        )
 
-        let results = targetWords.enumerated().map { index, word in
-            WordMatchResult(word: word, isCorrect: matchedIndices.contains(index))
+        let results = targetTokens.enumerated().map { index, token in
+            WordMatchResult(word: token.display, isCorrect: matchedIndices.contains(index))
         }
 
-        let accuracy = targetWords.isEmpty
+        let accuracy = targetTokens.isEmpty
             ? 0
-            : Double(matchedIndices.count) / Double(targetWords.count)
+            : Double(matchedIndices.count) / Double(targetTokens.count)
 
         return (results, accuracy)
     }
 
-    private static func normalize(_ sentence: String) -> [String] {
+    /// Splits on WHITESPACE only — that's the real word boundary. Within
+    /// each word, punctuation (periods, commas, etc.) is stripped rather
+    /// than treated as a split point, so "D.C." stays one word ("dc"),
+    /// matching "DC" or "d.c" typed without the real abbreviation's dots.
+    /// `display` keeps the original casing for the highlight chips;
+    /// `key` is the lowercased form actually used for comparison.
+    private static func tokenize(_ sentence: String) -> [(display: String, key: String)] {
         sentence
-            .lowercased()
-            .components(separatedBy: CharacterSet.alphanumerics.inverted)
-            .filter { !$0.isEmpty }
+            .split(separator: " ")
+            .compactMap { token -> (display: String, key: String)? in
+                let display = String(token).filter { $0.isLetter || $0.isNumber }
+                guard !display.isEmpty else { return nil }
+                return (display, display.lowercased())
+            }
     }
 
     /// Standard O(n·m) LCS dynamic-programming table, backtracked to the

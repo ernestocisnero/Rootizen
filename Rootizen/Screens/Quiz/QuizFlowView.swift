@@ -14,6 +14,7 @@ enum QuizDestination: Hashable {
 
 struct QuizFlowView: View {
     @Binding var isPresented: Bool
+    @Environment(AppState.self) private var appState
     @State private var path: [QuizDestination] = []
     @State private var quizManager: QuizManager
     
@@ -54,7 +55,6 @@ struct QuizFlowView: View {
                 }
             }
         }
-        .padding()
     }
 }
 
@@ -62,5 +62,6 @@ struct QuizFlowView: View {
 
 #Preview {
     QuizFlowView(isPresented: .constant(true), questionVersion: .v2025)
+        .environment(AppState())
         
 }

@@ -16,32 +16,56 @@ struct HomeRow: View {
     
     var body: some View {
         Button(action: action) {
-            HStack {
-                Label {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(title)
+            
+            if isPro{
+                HStack {
+                    Label {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(title)
+                                .bodyText(AppColor.secondaryText)
                             
-                        if !subtitle.isEmpty {
-                            Text(subtitle)
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
+                            if !subtitle.isEmpty {
+                                Text(subtitle)
+                                    .secondaryTitle()
+                            }
                         }
+                    } icon: {
+                        Image(systemName: systemImage)
+                            .foregroundStyle(AppColor.success)
                     }
-                } icon: {
-                    Image(systemName: systemImage)
-                        .foregroundStyle(AppColor.success)
-                }
-                
-                Spacer()
-                
-                if isPro {
+                    
+                    Spacer()
+                    
                     Image(systemName: "star.hexagon")
                         .foregroundStyle(AppColor.leagueColor(for: .gold))
                         .headline()
                 }
+                
+                
+            }else{
+                HStack {
+                    Label {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(title)
+                                .bodyText()
+                            
+                            if !subtitle.isEmpty {
+                                Text(subtitle)
+                                    .secondaryTitle()
+                            }
+                        }
+                    } icon: {
+                        Image(systemName: systemImage)
+                            .foregroundStyle(AppColor.success)
+                    }
+                    
+                    Spacer()
+                }
+                
             }
+            
         }
-        .foregroundStyle(isPro ? AppColor.secondaryText : AppColor.primaryText)
+        
     }
 }
 
