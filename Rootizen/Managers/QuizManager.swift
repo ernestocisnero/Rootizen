@@ -23,6 +23,8 @@ final class QuizManager {
     private(set) var answerResult: AnswerResult?
     private(set) var quizOptions: [Answer] = []
     private(set) var numberOfQuestions: Int = 10
+    private(set) var questionCategoryCorrectCounts: [QuestionCategory: Int] = [:]
+    private(set) var questionCategoryTotalCounts: [QuestionCategory: Int] = [:]
     
     init(questions: [Question]){
         startQuizSession(questionsVersion: questions)
@@ -47,9 +49,11 @@ final class QuizManager {
         guard selectedAnswer == nil else { return }
         
         selectedAnswer = answer
+        questionCategoryTotalCounts[currentQuestion.category, default: 0] += 1
         
         if answer.isCorrect {
             score += 1
+            questionCategoryCorrectCounts[currentQuestion.category, default: 0] += 1
             answerResult = .isCorrect
         }else{
             answerResult = .isWrong

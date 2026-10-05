@@ -90,6 +90,7 @@ struct ResourcesView: View {
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Resources")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(for: ResourceDestination.self) { destination in
             switch destination {
             case .haveYouEver:

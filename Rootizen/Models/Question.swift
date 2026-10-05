@@ -32,11 +32,3 @@ struct LocalizedText: Equatable {
 
 }
 
-// MARK: -- Used when Plus version, to show the missed questions as feedback
-struct MissedQuestionItem: Identifiable {
-    let id = UUID()
-    let category: QuestionCategory
-    let question: LocalizedText
-    let yourAnswer: LocalizedText
-    let correctAnswer: LocalizedText
-}

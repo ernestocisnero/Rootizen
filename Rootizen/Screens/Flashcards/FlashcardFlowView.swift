@@ -48,6 +48,8 @@ struct FlashcardFlowView: View {
                 case .results:
                     ResultsView(
                         score: fcManager.score, total: 10,
+                        categoryCorrectCounts: fcManager.questionCategoryCorrectCounts,
+                        categoryTotalCounts: fcManager.questionCategoryTotalCounts,
                         onClose: { isPresented = false }
                     )
                     .navigationBarBackButtonHidden(true)
@@ -61,4 +63,5 @@ struct FlashcardFlowView: View {
 #Preview {
     FlashcardFlowView(isPresented: .constant(true), flashcardsVersion: .v2025)
         .environment(AppState())
+        .environment(PurchaseManager())
 }

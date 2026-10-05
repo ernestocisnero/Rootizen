@@ -26,9 +26,7 @@ final class AppState {
     private(set) var repsFlowOnboardingComplete: Bool
     private(set) var appLanguage: AppLanguage
     private(set) var questionVersion: QuestionVersion
-    private(set) var zipCode: String
-    private(set) var isAppPlus: Bool = false
-    
+    private(set) var zipCode: String    
     private(set) var progress: UserProgressModel?
     
     // MARK: - Initialization
@@ -100,14 +98,18 @@ final class AppState {
         progress = userProgressModel
     }
     
-    func recordFlashcardResult(score: Int){
+    func recordFlashcardResult(score: Int, categoryTotalCounts: [QuestionCategory: Int], categoryCorrectCounts: [QuestionCategory: Int]){
         progress?.totalFlashcardTaken += 1
         progress?.totalCorrectFlashcard += score
+        progress?.categoryTotalCounts = categoryTotalCounts
+        progress?.categoryCorrectCounts = categoryCorrectCounts
     }
     
-    func recordQuizResult(score: Int){
+    func recordQuizResult(score: Int, categoryTotalCounts: [QuestionCategory: Int], categoryCorrectCounts: [QuestionCategory: Int]){
         progress?.totalQuizTaken += 1
         progress?.totalCorrectQuiz += score
+        progress?.categoryTotalCounts = categoryTotalCounts
+        progress?.categoryCorrectCounts = categoryCorrectCounts
     }
     
     

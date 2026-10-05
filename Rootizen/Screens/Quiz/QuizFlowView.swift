@@ -48,6 +48,8 @@ struct QuizFlowView: View {
                 case .results:
                     ResultsView(
                         score: quizManager.score, total: 10,
+                        categoryCorrectCounts: quizManager.questionCategoryCorrectCounts,
+                        categoryTotalCounts: quizManager.questionCategoryTotalCounts,
                         onClose: { isPresented = false }
                     )
                     .navigationBarBackButtonHidden(true)
@@ -63,5 +65,6 @@ struct QuizFlowView: View {
 #Preview {
     QuizFlowView(isPresented: .constant(true), questionVersion: .v2025)
         .environment(AppState())
+        .environment(PurchaseManager())
         
 }

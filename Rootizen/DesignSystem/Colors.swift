@@ -37,9 +37,6 @@ enum AppColor {
     static let speak = Color(.systemOrange)
     static let neutral = Color(.systemGray)
 
-    // MARK: - Gamification
-    static let streak = Color(.systemOrange)   // flame
-    static let xp = Color(.systemYellow)       // coin/gold
 
     /// League tier color — computed per-tier, not a single constant.
     /// Placeholder LeagueTier below — replace with your real model once leagues are built.

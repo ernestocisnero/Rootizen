@@ -13,7 +13,22 @@ struct QuizView: View {
     @Environment(QuizManager.self) private var quizManager
     @Environment(AppState.self) private var appState
     
-    let onClose: () -> Void
+    let onClose: () -> Void 
+    
+    private var categoryIconName: CategoryIconName {
+        switch quizManager.currentQuestion.category {
+        case .principlesOfGovernment: .principlesOfGovernment
+        case .principlesofAmericanDemocracy: .principlesofAmericanDemocracy
+        case .systemOfGovernment: .systemOfGovernment
+        case .rightsAndResponsibilities: .rightsAndResponsibilities
+        case .colonialPeriod: .colonialPeriod
+        case .history1800s: .history1800s
+        case .recentHistory: .recentHistory
+        case .geography: .geography
+        case .symbols: .symbols
+        case .holidays: .holidays
+        }
+    }
     
     var body: some View {
         
@@ -29,7 +44,7 @@ struct QuizView: View {
                         .tracking(0.4)
                     
                     Spacer()
-                     
+                    
                     DismissBtn(
                         backgroundColor: AppColor.success,
                         shadowBorderColor: AppColor.secondaryBackground
@@ -49,6 +64,10 @@ struct QuizView: View {
                     .font(.system(size: 20, weight: .medium))
                     .foregroundStyle(AppColor.primaryText)
                     .fixedSize(horizontal: false, vertical: true)
+                
+                    Label(quizManager.currentQuestion.category.rawValue, systemImage: categoryIconName.rawValue)
+                    .secondaryTitle()
+                
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, 12)
@@ -80,7 +99,7 @@ struct QuizView: View {
                 color: AppColor.success
             ) {
                 if quizManager.nextQuestion() {// nextQuesion returns True if it is the last question
-                    appState.recordQuizResult(score: quizManager.score)
+                    appState.recordQuizResult(score: quizManager.score,categoryTotalCounts: quizManager.questionCategoryTotalCounts, categoryCorrectCounts: quizManager.questionCategoryCorrectCounts)
                     path.append(.results)
                 }
             }
@@ -96,5 +115,5 @@ struct QuizView: View {
     QuizView(path: .constant([]), onClose: {})
         .environment(QuizManager(questions: q2025version))
         .environment(AppState())
-        
+    
 }

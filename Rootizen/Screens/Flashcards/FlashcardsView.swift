@@ -43,7 +43,11 @@ struct FlashcardsView: View {
             CardStack(cards: fcManager.flashcardsQuestions)
                 .onChange(of: fcManager.isFinished) { _, newValue in
                     if newValue {
-                        appState.recordFlashcardResult(score: fcManager.score)
+                        appState.recordFlashcardResult(
+                            score: fcManager.score,
+                            categoryTotalCounts: fcManager.questionCategoryTotalCounts,
+                            categoryCorrectCounts: fcManager.questionCategoryCorrectCounts
+                        )
                         path.append(.results)
                     }
                 }

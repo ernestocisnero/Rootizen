@@ -48,8 +48,6 @@ struct PaywallView: View {
                         benefitRow(icon: "list.bullet.below.rectangle", text: "Unlimited Quiz & Flashcard")
                         benefitRow(icon: "headphones", text: "Listening & speaking practice modes")
                         benefitRow(icon: "chart.bar", text: "Unlock accuracy breakdown by category")
-                        benefitRow(icon: "arrow.counterclockwise.circle", text: "Review every missed question")
-                        
                     }
                     
                     Spacer()

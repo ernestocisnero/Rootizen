@@ -8,24 +8,27 @@
 import SwiftUI
 
 struct UpgradeCard: View {
-    @State private var triggerFeedback: Bool = false
-    
+    var icon: String = "star.hexagon"
+    var title: String = "See your weak spots"
+    var subtitle: String = "Unlock accuracy by category and review every missed question with Plus."
     let action: () -> Void
 
     var body: some View {
-        Button{
-            action()
-            triggerFeedback.toggle()
-        }label: {
+        Button(action: action) {
             HStack(spacing: 14) {
-                Image(systemName: "star.hexagon")
-                    .headline(AppColor.leagueColor(for: .gold))
+                Image(systemName: icon)
+                    .primaryTitle(AppColor.leagueColor(for: .gold))
+                    .frame(width: 44, height: 44)
+                    .background(
+                        AppColor.leagueColor(for: .gold).muted(0.1),
+                        in: RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    )
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("See what you missed")
-                        .primaryTitle(AppColor.leagueColor(for: .gold))
+                    Text(title)
+                        .primaryTitle()
 
-                    Text("Unlock accuracy by category and review every missed question with Rootizen Plus.")
+                    Text(subtitle)
                         .secondaryTitle()
                         .multilineTextAlignment(.leading)
                 }
@@ -43,7 +46,6 @@ struct UpgradeCard: View {
                     .stroke(AppColor.border, lineWidth: 0.5)
             )
         }
-        .sensoryFeedback(.impact, trigger: triggerFeedback)
         .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
         .accessibilityHint("Opens the Plus upgrade screen")
@@ -51,7 +53,16 @@ struct UpgradeCard: View {
 }
 
 #Preview {
-    UpgradeCard(action: {})
-        //.padding()
-        .background(AppColor.secondaryBackground)
+    VStack(spacing: 16) {
+        UpgradeCard(action: {})
+
+        UpgradeCard(
+            icon: "star.hexagon",
+            title: "See your weak spots",
+            subtitle: "Unlock lifetime accuracy by category with Plus.",
+            action: {}
+        )
+    }
+    .padding()
+    .background(AppColor.secondaryBackground)
 }

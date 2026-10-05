@@ -10,36 +10,26 @@ import SwiftUI
 struct CardFaceFront: View {
     let question: LocalizedText
     let category: QuestionCategory
-
-    private var iconName: String {
+    
+    private var categoryIconName: CategoryIconName {
         switch category {
-        case .principlesOfGovernment:
-            return "building.columns"
-        case .principlesofAmericanDemocracy:
-            return "person.2"
-        case .colonialPeriod:
-            return "scroll"
-        case .history1800s:
-            return "clock"
-        case .rightsAndResponsibilities:
-            return "checklist"
-        case .systemOfGovernment:
-            return "building.columns.circle"
-        case .holidays:
-            return "calendar"
-        case .symbols:
-            return "flag"
-        case .recentHistory:
-            return "clock.arrow.circlepath"
-        case .geography:
-            return "globe.americas"
+        case .principlesOfGovernment: .principlesOfGovernment
+        case .principlesofAmericanDemocracy: .principlesofAmericanDemocracy
+        case .systemOfGovernment: .systemOfGovernment
+        case .rightsAndResponsibilities: .rightsAndResponsibilities
+        case .colonialPeriod: .colonialPeriod
+        case .history1800s: .history1800s
+        case .recentHistory: .recentHistory
+        case .geography: .geography
+        case .symbols: .symbols
+        case .holidays: .holidays
         }
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
-                Label(category.rawValue, systemImage: iconName)
+                Label(category.rawValue, systemImage: categoryIconName.rawValue)
                     .font(.caption)
                     .fontWeight(.semibold)
                     .foregroundStyle(.secondary)

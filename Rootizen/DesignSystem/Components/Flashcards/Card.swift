@@ -14,29 +14,8 @@ struct Card: View {
     
     let card: FlashCard
     
-    private var iconName: String {
-        switch card.category {
-        case .principlesOfGovernment:
-            return "building.columns"
-        case .principlesofAmericanDemocracy:
-            return "person.2"
-        case .colonialPeriod:
-            return "scroll"
-        case .history1800s:
-            return "clock"
-        case .rightsAndResponsibilities:
-            return "checklist"
-        case .systemOfGovernment:
-            return "building.columns.circle"
-        case .holidays:
-            return "calendar"
-        case .symbols:
-            return "flag"
-        case .recentHistory:
-            return "person.building.classical"
-        case .geography:
-            return "globe.americas"
-        }
+    private var categoryIconName: CategoryIconName {
+        CategoryIconName(rawValue: card.category.rawValue) ?? .principlesOfGovernment
     }
     
     @State private var offset = CGSize.zero
@@ -61,7 +40,7 @@ struct Card: View {
             VStack(alignment: .center, spacing: 8){
                 
                 HStack{
-                    Image(systemName: iconName)
+                    Image(systemName: categoryIconName.rawValue)
                         .secondaryTitle()
                     Text(card.category.rawValue)
                         .secondaryTitle()

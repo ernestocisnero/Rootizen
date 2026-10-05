@@ -118,6 +118,7 @@ struct HomeView: View {
         }
         .listStyle(.insetGrouped)  
         .navigationTitle("Home")
+        .navigationBarTitleDisplayMode(.inline)
         .listRowSeparator(.hidden)
         .scrollContentBackground(.hidden)
         .background(Color(.systemGroupedBackground))

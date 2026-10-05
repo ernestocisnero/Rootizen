@@ -15,7 +15,19 @@ struct ResultsView: View {
     
     let score: Int
     let total: Int
+    let categoryCorrectCounts: [QuestionCategory: Int]
+    let categoryTotalCounts: [QuestionCategory: Int]
     let onClose: () -> Void
+    
+    var sessionCategoryAccuracyItems: [CategoryAccuracyItem] {
+        categoryTotalCounts.keys.map { category in
+            CategoryAccuracyItem(
+                category: category,
+                correct: categoryCorrectCounts[category, default: 0],
+                total: categoryTotalCounts[category, default: 0]
+            )
+        }
+    }
     
     var body: some View {
         List{
@@ -43,33 +55,21 @@ struct ResultsView: View {
                     
                     RowStats(items: [
                         StatItem(value: "\(Int(score*100/total))%", label: "Accuracy", imageRow: "target", itemColor: AppColor.info),
-                        StatItem(value: "4", label: "Day streak",imageRow: "flame", itemColor: AppColor.streak)
                     ])
                 }
                 
             }
-            
+
             // MARK: -- Plus Version Zone
             if purchaseManager.isPremiumUnlocked {
                 
-                Section{
-                    CategoryAccuracySection(items: [
-                        CategoryAccuracyItem(category: .symbols, correct: 9, total: 10),
-                        CategoryAccuracyItem(category: .history1800s, correct: 7, total: 10),
-                        CategoryAccuracyItem(category: .geography, correct: 4, total: 8)
-                    ])
+                Section("ACCURACY BY CATEGORY"){
+                    ScrollView{
+                        CategoryAccuracySection(items: sessionCategoryAccuracyItems)
+                    }
+                    .frame(height: 300)
                 }
                 
-                Section{
-                    MissedQuestionsSection(items: [
-                        MissedQuestionItem(
-                            category: .holidays,
-                            question: LocalizedText(english: "What is Veterans Day?", spanish: "¿Qué es el Día de los Veteranos?"),
-                            yourAnswer: LocalizedText(english: "A day for soldiers who died", spanish: "Un día para los soldados que murieron"),
-                            correctAnswer: LocalizedText(english: "A holiday to honor people who have served in the U.S. military", spanish: "Un día festivo para honrar a las personas que han servido en las fuerzas militares de los Estados Unidos")
-                        )
-                    ])
-                }
             }else{
                 // MARK: --- Upgrade Card if user is not Plus version
                 Section{
@@ -78,6 +78,13 @@ struct ResultsView: View {
                         .listRowBackground(Color.clear)
                 }
                 
+                Section("ACCURACY BY CATEGORY"){
+                    ScrollView{
+                        CategoryAccuracySection(items: sessionCategoryAccuracyItems)
+                    }
+                    .frame(height: 300)
+                    .proLocked()
+                }
             }
             
             // MARK: Action
@@ -102,7 +109,21 @@ struct ResultsView: View {
 }
 
 #Preview {
-    ResultsView(score: 8, total: 10, onClose: {})
-        .environment(AppState())
-        .environment(PurchaseManager())
+    ResultsView(
+        score: 8,
+        total: 10,
+        categoryCorrectCounts: [
+            .principlesOfGovernment: 8,
+            .geography: 4,
+            .symbols: 9
+        ],
+        categoryTotalCounts: [
+            .principlesOfGovernment: 10,
+            .geography: 8,
+            .symbols: 10
+        ],
+        onClose: {}
+    )
+    .environment(AppState())
+    .environment(PurchaseManager())
 }

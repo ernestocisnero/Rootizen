@@ -33,31 +33,12 @@ struct ProfileView: View {
     
     let isAppPlus: Bool = false
     
-    var totalQuizTaken: Int {
-        appState.progress?.totalQuizTaken ?? 0
-    }
-    
-    var totalFlashcardTaken: Int {
-        appState.progress?.totalFlashcardTaken ?? 0
-    }
-    
     var body: some View {
         List {
-            Section {
-                RowStats(items: [
-                    StatItem(value: "\(totalQuizTaken)", label: "Quiz Session", imageRow: "book", itemColor: AppColor.leagueColor(for: .gold)),
-                    StatItem(value: "\(totalFlashcardTaken)", label: "Flashcards Sessions", imageRow: "lanyardcard", itemColor: AppColor.leagueColor(for: .diamond))
-                    
-                ])
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(Color.clear)
-            }
-            .listSectionSeparator(.hidden)
-            
             Section("Rootizen"){
                 
                 NavigationLink(value: ProfileDestination.progress) {
-                    Label("Your Progress", systemImage: "chart.line.uptrend.xyaxis")
+                    Label("My Progress", systemImage: "chart.line.uptrend.xyaxis")
                 }
                 
                 //MARK: -- Purchase button
@@ -192,6 +173,8 @@ struct ProfileView: View {
 #endif
         }
         .listStyle(.insetGrouped)
+        .navigationTitle("Profile")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(for: ProfileDestination.self) { destination in
             switch destination {
             case .questionVersion:
@@ -207,7 +190,9 @@ struct ProfileView: View {
             case .share:
                 Text("Share with friend")
             case .progress:
-                Text("Your Progress")
+                UserProgressView()
+                    .environment(appState)
+                    .environment(purchaseManager)
             }
         }
         .sheet(isPresented: $showingPaywall) {

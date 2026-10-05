@@ -12,13 +12,7 @@ struct CategoryAccuracySection: View {
     let items: [CategoryAccuracyItem]
  
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Accuracy by Category")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .textCase(.uppercase)
-                .padding(.horizontal, 4)
- 
+        VStack(alignment: .leading, spacing: 8) { 
             VStack(spacing: 0) {
                 ForEach(items) { item in
                     CategoryAccuracyRow(item: item)
@@ -42,12 +36,28 @@ private struct CategoryAccuracyRow: View {
         if item.accuracy >= 0.6 { return Color(.systemOrange) }
         return AppColor.error
     }
- 
+    
+    private var categoryIconName: CategoryIconName {
+        switch item.category {
+        case .principlesOfGovernment: .principlesOfGovernment
+        case .principlesofAmericanDemocracy: .principlesofAmericanDemocracy
+        case .systemOfGovernment: .systemOfGovernment
+        case .rightsAndResponsibilities: .rightsAndResponsibilities
+        case .colonialPeriod: .colonialPeriod
+        case .history1800s: .history1800s
+        case .recentHistory: .recentHistory
+        case .geography: .geography
+        case .symbols: .symbols
+        case .holidays: .holidays
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(item.category.rawValue)
-                    .bodyText()
+                
+                Label(item.category.rawValue, systemImage: categoryIconName.rawValue)
+                    .label()
  
                 Spacer()
  

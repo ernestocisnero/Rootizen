@@ -15,6 +15,8 @@ final class FlashcardsManager: Identifiable {
     private(set) var score = 0
     private(set) var isFinished = false
     private(set) var numberOfQuestions: Int = 10
+    private(set) var questionCategoryCorrectCounts: [QuestionCategory: Int] = [:]
+    private(set) var questionCategoryTotalCounts: [QuestionCategory: Int] = [:]
     
     // True when the user has answered every card
     var isGameOver: Bool {
@@ -37,7 +39,12 @@ final class FlashcardsManager: Identifiable {
         
         guard !flashcardsQuestions.isEmpty else { return }
         
+        let currentCard = flashcardsQuestions.last!
+        
+        questionCategoryTotalCounts[currentCard.category, default: 0] += 1
+        
         if(userAnswer == flashcardsQuestions.last?.isTrue){
+            questionCategoryCorrectCounts[currentCard.category, default: 0] += 1
             score += 1
         }
         

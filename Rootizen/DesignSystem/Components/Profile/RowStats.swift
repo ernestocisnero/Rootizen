@@ -29,8 +29,8 @@ struct RowStats: View {
                     .foregroundColor(items[index].itemColor)
                 
                     Text(items[index].label.uppercased())
-                        .secondaryTitle()
-                        .foregroundColor(AppColor.primaryText)
+                        .secondaryTitle(AppColor.secondaryText)
+                        
                 }
                 .frame(maxWidth: .infinity)
 
@@ -49,9 +49,9 @@ struct RowStats: View {
 
 #Preview {
     RowStats(items: [
-        StatItem(value: "14", label: "Xp Earned", imageRow: "bolt", itemColor: AppColor.xp),
+        StatItem(value: "14", label: "Quiz", imageRow: "bolt", itemColor: AppColor.error),
         StatItem(value: "80", label: "Accuracy", imageRow: "target", itemColor: AppColor.info),
-        StatItem(value: "4", label: "Streak Days", imageRow: "flame", itemColor: AppColor.streak)
+        StatItem(value: "4", label: "Flashcards", imageRow: "flame", itemColor: AppColor.leagueColor(for: .gold))
     ])
     .padding()
     
