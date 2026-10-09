@@ -6,6 +6,7 @@
 //
 
 import SwiftData
+import Foundation
 
 @Model
 class UserProgressModel{
@@ -14,6 +15,8 @@ class UserProgressModel{
     var totalFlashcardTaken: Int
     var totalCorrectQuiz: Int
     var totalCorrectFlashcard: Int
+    var lastQuizTaken: Date
+    var lastFlashcardTaken: Date
     var categoryCorrectCounts: [QuestionCategory: Int]
     var categoryTotalCounts: [QuestionCategory: Int]
     
@@ -22,6 +25,8 @@ class UserProgressModel{
         totalFlashcardTaken: Int = 0,
         totalCorrectQuiz: Int = 0,
         totalCorrectFlashcard: Int = 0,
+        lastQuizTaken: Date = .distantPast,
+        lastFlashcardTaken: Date = .distantPast,
         categoryCorrectCounts: [QuestionCategory: Int] = [:],
         categoryTotalCounts: [QuestionCategory: Int] = [:]
     ){
@@ -29,6 +34,8 @@ class UserProgressModel{
         self.totalFlashcardTaken = totalFlashcardTaken
         self.totalCorrectQuiz = totalCorrectQuiz
         self.totalCorrectFlashcard = totalCorrectFlashcard
+        self.lastQuizTaken = lastQuizTaken
+        self.lastFlashcardTaken = lastFlashcardTaken
         self.categoryCorrectCounts = categoryCorrectCounts
         self.categoryTotalCounts = categoryTotalCounts
     }

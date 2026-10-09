@@ -20,6 +20,20 @@ struct HomeView: View {
     @State private var showReadingWriting: Bool = false
     @State private var showingPaywall: Bool = false
     
+    var isQuizAllowed: Bool {
+        if !purchaseManager.isPremiumUnlocked && Calendar.current.isDateInToday(appState.progress?.lastQuizTaken ?? .distantPast){
+            return false
+        }
+        return true
+    }
+    
+    var isFlashcardsAllowed: Bool {
+        if !purchaseManager.isPremiumUnlocked && Calendar.current.isDateInToday(appState.progress?.lastFlashcardTaken ?? .distantPast){
+            return false
+        }
+        return true
+    }
+    
     var body: some View {
         List {
             Section("Practice") {
@@ -29,7 +43,13 @@ struct HomeView: View {
                     subtitle: "10 questions · Multiple selection",
                     systemImage: "book",
                     isPro: false,
-                    action: { startQuiz = true }
+                    action: {
+                        if isQuizAllowed{
+                            startQuiz = true
+                        }else{
+                            showingPaywall = true
+                        }
+                    }
                 )
                 
                 HomeRow(
@@ -37,7 +57,13 @@ struct HomeView: View {
                     subtitle: "10 questions · True / False",
                     systemImage: "lanyardcard",
                     isPro: false,
-                    action: { startFlashcard = true }
+                    action:{
+                        if isFlashcardsAllowed{
+                            startFlashcard = true
+                        }else{
+                            showingPaywall = true
+                        }
+                    }
                 )
             }
             
@@ -66,21 +92,6 @@ struct HomeView: View {
                         
                         if purchaseManager.isPremiumUnlocked{
                             print("Listen the questions")
-                        }else{
-                            showingPaywall = true
-                        }
-
-                    }
-                )
-                
-                HomeRow(
-                    title: "Speak your answers",
-                    subtitle: "Listen and speak",
-                    systemImage: "waveform",
-                    isPro: !purchaseManager.isPremiumUnlocked,
-                    action: {
-                        if purchaseManager.isPremiumUnlocked{
-                            print("Listen and speak")
                         }else{
                             showingPaywall = true
                         }
@@ -148,6 +159,9 @@ struct HomeView: View {
         // MARK: -- Paywall
         .sheet(isPresented: $showingPaywall) {
             PaywallView()
+                .presentationDetents([.fraction(0.75)])
+                .presentationDragIndicator(.visible)
+                .background(AppColor.background)
         }
     }
 }

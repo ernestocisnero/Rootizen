@@ -16,12 +16,6 @@ struct PaywallView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                DismissBtn(backgroundColor: AppColor.secondaryBackground, shadowBorderColor: AppColor.secondaryText, action: { dismiss() })
-                Spacer()
-            }
-            .padding(.horizontal)
-            .padding(.top, 8)
             
             ScrollView {
                 VStack(spacing: 4) {
@@ -39,7 +33,7 @@ struct PaywallView: View {
                 
                 VStack(alignment: .leading, spacing: 20) {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Plus - $9.99")
+                        Text("Plus - $4.99")
                             .font(.title2.weight(.bold))
                         
                     }

@@ -19,10 +19,10 @@ private struct ProLockedModifier: ViewModifier {
             .overlay {
                 Label(label, systemImage: "lock.fill")
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppColor.leagueColor(for: .gold))
                     .padding(.horizontal, 14)
                     .padding(.vertical, 8)
-                    .background(.black.opacity(0.85), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    .background(AppColor.leagueColor(for: .gold).muted(0.2), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
             }
     }
 }

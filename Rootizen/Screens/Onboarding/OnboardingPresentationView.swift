@@ -33,7 +33,7 @@ struct OnboardingPresentationView: View {
                         .multilineTextAlignment(.center)
                 }
                 
-                Image("rootizenLogo")
+                Image("RootizenLogo")
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 200, maxHeight: 200)

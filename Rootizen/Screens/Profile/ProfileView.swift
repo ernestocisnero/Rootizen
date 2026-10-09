@@ -45,17 +45,21 @@ struct ProfileView: View {
                 Button {
                     showingPaywall = true
                 } label: {
-                    Label("Get Rootizen Plus", systemImage: "star.hexagon")
+                    HStack{
+                        Label("Get Rootizen Plus", systemImage: "star.hexagon")
+                        Spacer()
+                        
+                        if purchaseManager.isPremiumUnlocked{
+                            Text("Active")
+                                .bodyText(AppColor.success)
+                                .padding(.horizontal)
+                                .padding(.vertical, 8)
+                                .background(AppColor.success.muted(0.1), in: Capsule())
+                        }
+                        
+                    }.frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(Rectangle())
                     
-                    Spacer()
-                    
-                    if purchaseManager.isPremiumUnlocked{
-                        Text("Active")
-                            .bodyText(AppColor.success)
-                            .padding(.horizontal)
-                            .padding(.vertical, 8)
-                            .background(AppColor.success.muted(0.1), in: Capsule())
-                    }
                     
                 }
                 .buttonStyle(.plain)
@@ -126,13 +130,19 @@ struct ProfileView: View {
             Section("Support") {
                 
                 NavigationLink(value: ProfileDestination.share) {
+                    
                     Label("Share with friends", systemImage: "heart")
                 }
                 
                 Button {
                     requestReview()
                 } label: {
-                    Label("Rate this app", systemImage: "star")
+                    HStack{
+                        Label("Rate this app", systemImage: "star")
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(Rectangle())
+                    
                 }
                 .buttonStyle(.plain)
                 
@@ -197,6 +207,9 @@ struct ProfileView: View {
         }
         .sheet(isPresented: $showingPaywall) {
             PaywallView()
+                .presentationDetents([.fraction(0.75)])
+                .background(AppColor.background)
+                .presentationDragIndicator(.visible)
         }
     }
 }

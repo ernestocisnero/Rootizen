@@ -21,16 +21,24 @@ struct SplashView: View {
             let targetScale = diagonal / circleDiameter
 
             ZStack {
-                Color(AppColor.success)
-
-                Text("Rootizen")
-                    .font(.system(size: 80, weight: .bold))
-                    .foregroundStyle(.white) 
-                    .scaleEffect(textScale)
-                    .opacity(textOpacity)
+                Color(AppColor.secondaryBackground)
+ 
+                VStack{
+                    Image("RootizenLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 100)
+                    
+                    Text("Rootizen")
+                        .font(.system(size: 80, weight: .bold))
+                        .foregroundStyle(AppColor.success)  
+                        .scaleEffect(textScale)
+                        .opacity(textOpacity)
+                }
+                
   
                 Circle()
-                    .fill(.white)
+                    .fill(AppColor.secondaryBackground)  
                     .frame(width: circleDiameter, height: circleDiameter)
                     .scaleEffect(circleScale)
                     .position(x: geo.size.width / 2, y: geo.size.height / 2)

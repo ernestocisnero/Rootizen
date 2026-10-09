@@ -103,6 +103,7 @@ final class AppState {
         progress?.totalCorrectFlashcard += score
         progress?.categoryTotalCounts = categoryTotalCounts
         progress?.categoryCorrectCounts = categoryCorrectCounts
+        progress?.lastFlashcardTaken = .now
     }
     
     func recordQuizResult(score: Int, categoryTotalCounts: [QuestionCategory: Int], categoryCorrectCounts: [QuestionCategory: Int]){
@@ -110,6 +111,7 @@ final class AppState {
         progress?.totalCorrectQuiz += score
         progress?.categoryTotalCounts = categoryTotalCounts
         progress?.categoryCorrectCounts = categoryCorrectCounts
+        progress?.lastQuizTaken = .now
     }
     
     

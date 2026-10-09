@@ -40,17 +40,17 @@ struct UserProgressView: View {
     
     var totalAccuracy: Double {
         let totalQuestions =
-            (totalQuizTaken + totalFlashcardTaken) * 10
-
+        (totalQuizTaken + totalFlashcardTaken) * 10
+        
         guard totalQuestions > 0 else {
             return 0.0
         }
-
+        
         return Double(totalCorrectQuiz + totalCorrectFlashcard)
-            / Double(totalQuestions)
-            * 100
+        / Double(totalQuestions)
+        * 100
     }
-
+    
     
     var body: some View {
         
@@ -59,12 +59,12 @@ struct UserProgressView: View {
                 RowStats(items: [
                     StatItem(value: "\(totalQuizTaken)", label: "Quiz", imageRow: "book", itemColor: AppColor.leagueColor(for: .gold)),
                     StatItem(value: "\(totalFlashcardTaken)", label: "Flashcards", imageRow: "lanyardcard", itemColor: AppColor.leagueColor(for: .diamond)),
-                    StatItem(value: "\(totalAccuracy)", label: "Accuracy", imageRow: "target", itemColor: AppColor.info)
+                    StatItem(value: "\(totalAccuracy)%", label: "Accuracy", imageRow: "target", itemColor: AppColor.info)
                     
                 ])
                 .listRowInsets(EdgeInsets())
                 .listRowBackground(Color.clear)
-
+                
             }
             .listSectionSeparator(.hidden)
             
@@ -81,11 +81,11 @@ struct UserProgressView: View {
                 Section("BY PRACTICE MODE"){
                     
                     ScrollView{
-                        //CategoryAccuracySection(items: categoryAccuracyItems)
-                            
+                        ByPracticeMode(title: "Quiz", total: (totalQuizTaken * 10), correct: totalCorrectQuiz)
+                        ByPracticeMode(title: "Flashcard", total: (totalFlashcardTaken * 10), correct: totalCorrectFlashcard)
                     }
                     .frame(height: 300)
-
+                    
                 }
                 
                 
@@ -108,11 +108,11 @@ struct UserProgressView: View {
                 
                 //MARK: --  By Practice Mode
                 Section("BY PRACTICE MODE"){
-                    ByCategoryAccuracy()
+                    ByPracticeMode(title: "Quiz", total: (totalQuizTaken * 10), correct: totalCorrectQuiz)
                         .proLocked()
                 }
                 
-
+                
             }
             
             
@@ -122,6 +122,9 @@ struct UserProgressView: View {
         .scrollIndicators(.hidden)
         .sheet(isPresented: $showingPaywall) {
             PaywallView()
+                .presentationDetents([.fraction(0.75)])
+                .background(AppColor.background)
+                .presentationDragIndicator(.visible)
         }
     }
 }

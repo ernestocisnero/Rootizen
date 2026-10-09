@@ -88,7 +88,7 @@ struct ResultsView: View {
             }
             
             // MARK: Action
-            PrimaryButton(title: "Back to home", color: AppColor.surface, foreground: AppColor.primaryText) {
+            PrimaryButton(title: "Back to home", color: AppColor.speak.muted(0.5), foreground: AppColor.primaryText) {
                 onClose()
             }
             .buttonStyle(.plain)
@@ -97,9 +97,10 @@ struct ResultsView: View {
         }
         .sheet(isPresented: $showingPaywall) {
             PaywallView()
+                .presentationDetents([.fraction(0.75)])
+                .background(AppColor.background)
+                .presentationDragIndicator(.visible)
         }
-        
-        .background(AppColor.background)
         .onAppear {
             SoundManager.shared.play(.quizComplete)
             
