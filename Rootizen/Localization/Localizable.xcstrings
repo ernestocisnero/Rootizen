@@ -5,7 +5,14 @@
 
     },
     "%@ accuracy" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ precisión"
+          }
+        }
+      }
     },
     "%@, %@" : {
       "localizations" : {
@@ -14,14 +21,34 @@
             "state" : "new",
             "value" : "%1$@, %2$@"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@"
+          }
         }
       }
     },
     "%lld" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "%lld Answered" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Respondidas"
+          }
+        }
+      }
     },
     "%lld of %lld correct" : {
       "localizations" : {
@@ -30,14 +57,34 @@
             "state" : "new",
             "value" : "%1$lld of %2$lld correct"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld de %2$lld correctas"
+          }
         }
       }
     },
     "ACCURACY BY CATEGORY" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PRECISIÓN POR CATEGORÍA"
+          }
+        }
+      }
     },
     "Active" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activo"
+          }
+        }
+      }
     },
     "BY PRACTICE MODE" : {
       "localizations" : {
@@ -50,13 +97,34 @@
       }
     },
     "Cards remaining: %lld" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarjetas restantes: %lld"
+          }
+        }
+      }
     },
     "Change" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar"
+          }
+        }
+      }
     },
     "Check" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verificar"
+          }
+        }
+      }
     },
     "Choose a language" : {
       "localizations" : {
@@ -159,7 +227,14 @@
       }
     },
     "English" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        }
+      }
     },
     "Enter 5-digit Zip Code" : {
       "localizations" : {
@@ -172,145 +247,453 @@
       }
     },
     "Español" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Español"
+          }
+        }
+      }
     },
     "Everything you need to pass with confidence" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo lo que necesitas para pasar con confianza"
+          }
+        }
+      }
     },
     "External Resources" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recursos externos"
+          }
+        }
+      }
     },
     "Extras" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extras"
+          }
+        }
+      }
     },
     "False" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falso"
+          }
+        }
+      }
     },
     "FAQs" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQs"
+          }
+        }
+      }
     },
     "Find your representatives" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encuentra tus representantes"
+          }
+        }
+      }
     },
     "Get Plus" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtenga Plus"
+          }
+        }
+      }
     },
     "Get Rootizen Plus" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtenga Rootizen Plus"
+          }
+        }
+      }
     },
     "Have You Ever" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alguna vez"
+          }
+        }
+      }
     },
     "Have You Ever Questions" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alguna vez"
+          }
+        }
+      }
     },
     "Hello, World!" : {
 
     },
     "Home" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        }
+      }
     },
     "Incorrect" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incorrecto"
+          }
+        }
+      }
     },
     "Language" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lenguaje"
+          }
+        }
+      }
     },
     "Legal" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legal"
+          }
+        }
+      }
     },
     "Listen" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escuchar"
+          }
+        }
+      }
     },
     "Listening…" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escuchando…"
+          }
+        }
+      }
     },
     "Microphone access is needed to practice speaking." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se necesita acceso al micrófono para practicar el habla."
+          }
+        }
+      }
     },
     "Mode" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo"
+          }
+        }
+      }
     },
     "My Progress" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mi progreso"
+          }
+        }
+      }
     },
     "N-400 · Question %lld" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preguntas N-400 %lld"
+          }
+        }
+      }
     },
     "National Anthem" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "himno Nacional"
+          }
+        }
+      }
     },
     "Naturalization Interview Example" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejemplo de entrevista de naturalización"
+          }
+        }
+      }
     },
     "Naturalization Interview Video Player" : {
 
     },
     "Next question" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente pregunta"
+          }
+        }
+      }
     },
     "Nice Work" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buen trabajo"
+          }
+        }
+      }
     },
     "No previous purchase for Rootizen Plus was found for this Apple ID." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró ninguna compra previa de Rootizen Plus para este ID de Apple."
+          }
+        }
+      }
     },
     "No Rootizen Plus to restore" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay Rootizen Plus para restaurar"
+          }
+        }
+      }
     },
     "Notifications" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones"
+          }
+        }
+      }
     },
     "Now Playing" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reproduciendo ahora"
+          }
+        }
+      }
     },
     "Official USCIS walkthrough video" : {
 
     },
     "OK" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "One time payment. Access for life." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pago único. Acceso de por vida."
+          }
+        }
+      }
     },
     "Open Settings" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir ajustes"
+          }
+        }
+      }
     },
     "Opens the Plus upgrade screen" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre la pantalla de actualización Plus"
+          }
+        }
+      }
     },
     "Overall" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        }
+      }
     },
     "Pause" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausa"
+          }
+        }
+      }
     },
     "Play" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reproducir"
+          }
+        }
+      }
     },
     "Playing…" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reproduciendo…"
+          }
+        }
+      }
     },
     "Pledge of Allegiance" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juramento de lealtad(Pledge of Allegiance)"
+          }
+        }
+      }
     },
     "Plus" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        }
+      }
     },
     "Plus - $4.99" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus - $4.99"
+          }
+        }
+      }
     },
     "Practice" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Práctica"
+          }
+        }
+      }
     },
     "Preferences" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferencias"
+          }
+        }
+      }
     },
     "Previous question" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pregunta anterior"
+          }
+        }
+      }
     },
     "Profile" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfil"
+          }
+        }
+      }
     },
     "Question %lld of %lld" : {
       "localizations" : {
@@ -318,6 +701,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Question %1$lld of %2$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pregunta %1$lld de %2$lld"
           }
         }
       }
@@ -329,6 +718,12 @@
             "state" : "new",
             "value" : "Question %1$lld out of %2$lld"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pregunta %1$lld de %2$lld"
+          }
         }
       }
     },
@@ -339,131 +734,403 @@
             "state" : "new",
             "value" : "Question %1$lld: %2$@"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pregunta %1$lld: %2$@"
+          }
         }
       }
     },
     "Questions version" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión de preguntas"
+          }
+        }
+      }
     },
     "Rate this app" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Califica esta aplicación"
+          }
+        }
+      }
     },
     "Reading & Writing" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lectura y escritura"
+          }
+        }
+      }
     },
     "Reference" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Referencias"
+          }
+        }
+      }
     },
     "Resources" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recursos"
+          }
+        }
+      }
     },
     "Restore your Rootizen Plus" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaura tu Rootizen Plus"
+          }
+        }
+      }
     },
     "Rootizen" : {
 
     },
     "Rootizen lets you study with either version so you can prepare for the test that applies to you." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rootizen te permite estudiar con cualquiera de las versiones para que puedas prepararte para el examen que se aplica a ti."
+          }
+        }
+      }
     },
     "Rootizen Plus" : {
 
     },
     "Rootizen Plus purchases restored" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se restablecieron las compras de Rootizen Plus"
+          }
+        }
+      }
     },
     "Rootizen will never share or store personal data on a server" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rootizen nunca compartirá ni almacenará datos personales en un servidor"
+          }
+        }
+      }
     },
     "Select App Language" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccione el idioma de la aplicación"
+          }
+        }
+      }
     },
     "Sentence %lld" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oración %lld"
+          }
+        }
+      }
     },
     "Share with friend" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir con amigos"
+          }
+        }
+      }
     },
     "Share with friends" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir con amigos"
+          }
+        }
+      }
     },
     "Sound effects" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efectos de sonido"
+          }
+        }
+      }
     },
     "Speak" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hablar"
+          }
+        }
+      }
     },
     "Study Materials" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Material de estudio"
+          }
+        }
+      }
     },
     "Support" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soporte"
+          }
+        }
+      }
     },
     "Swipe left to FALSE or Swipe right to TRUE" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desliza el dedo hacia la izquierda hasta FALSO o Desliza el dedo hacia la derecha hasta VERDADERO"
+          }
+        }
+      }
     },
     "Tap each card to see the answer" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque cada tarjeta para ver la respuesta"
+          }
+        }
+      }
     },
     "Tap to listen again" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque para escuchar nuevamente"
+          }
+        }
+      }
     },
     "Tap to reveal" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque para revelar"
+          }
+        }
+      }
     },
     "Terms and Privacy policy" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Términos y política de privacidad"
+          }
+        }
+      }
     },
     "The citizenship test changed in 2025." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La prueba de ciudadanía cambió en 2025."
+          }
+        }
+      }
     },
     "The U.S. citizenship exam requires applicants to know the name of their U.S. representative. Enter your zip code to show yours." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El examen de ciudadanía estadounidense requiere que los solicitantes sepan el nombre de su representante estadounidense. Ingrese su código postal para mostrar el suyo."
+          }
+        }
+      }
     },
     "The version you take depends on when you filed your Form N-400." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La versión que tome dependerá de cuándo presentó su Formulario N-400."
+          }
+        }
+      }
     },
     "True" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verdadero"
+          }
+        }
+      }
     },
     "Try Again" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intente nuevamente"
+          }
+        }
+      }
     },
     "Type what you heard" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escribe lo que escuchaste"
+          }
+        }
+      }
     },
     "Upsss purchase failed" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error en la compra"
+          }
+        }
+      }
     },
     "USCIS Naturalization Example" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejemplo de naturalización del USCIS"
+          }
+        }
+      }
     },
     "USCIS.gov" : {
 
     },
     "Vocabulary" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vocabulario"
+          }
+        }
+      }
     },
     "Vocabulary Type" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de vocabulario"
+          }
+        }
+      }
     },
     "Welcome to Rootizen" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenidos a Rootizen"
+          }
+        }
+      }
     },
     "Which citizenship test are you preparing for?" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Para qué examen de ciudadanía te estás preparando?"
+          }
+        }
+      }
     },
     "Why are there two versions?" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Por qué hay dos versiones?"
+          }
+        }
+      }
     },
     "Write the sentence" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escribe la oración"
+          }
+        }
+      }
     },
     "You can change your test version later in your preferences." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede cambiar su versión de prueba más adelante en sus preferencias."
+          }
+        }
+      }
     },
     "You may be asked to read or write sentences in you exam. Practice with the examples below." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may be asked to read or write sentences in your exam. Practice with the examples below."
+          }
+        }
+      }
     },
     "You've got %lld of %lld correct" : {
       "localizations" : {
@@ -472,23 +1139,64 @@
             "state" : "new",
             "value" : "You've got %1$lld of %2$lld correct"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tienes %1$lld de %2$lld correcto"
+          }
         }
       }
     },
     "Your Government" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu gobierno"
+          }
+        }
+      }
     },
     "Your native app guide to the US citizenship test." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu aplicación nativa guía para el examen de ciudadanía estadounidense."
+          }
+        }
+      }
     },
     "Your Rootizen Plus has been restored." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su Rootizen Plus ha sido restaurado."
+          }
+        }
+      }
     },
     "Your zip code is only used to look up public officials" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su código postal sólo se utiliza para buscar funcionarios públicos"
+          }
+        }
+      }
     },
     "Zip code: %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código Zip"
+          }
+        }
+      }
     }
   },
   "version" : "1.3"
