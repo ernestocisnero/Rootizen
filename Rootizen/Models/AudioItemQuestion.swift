@@ -7,20 +7,15 @@
 
 import Foundation
 
-enum AudioLanguage {
-    case english, spanish
-    var voiceCode: String { self == .english ? "en-US" : "es-MX" }
-}
-
 extension AudioItem {
 
     /// Every question in the selected year's bank, in the selected language.
-    static func items(for version: QuestionVersion, language: AudioLanguage) -> [AudioItem] {
+    static func items(for version: QuestionVersion, language: AppLanguage) -> [AudioItem] {
         version.ListenQuestions.compactMap { AudioItem(question: $0, language: language) }
     }
 
     /// Fails (returns nil) only if a question has no correct answer marked.
-    init?(question: Question, language: AudioLanguage) {
+    init?(question: Question, language: AppLanguage) {
         guard let correct = question.answers.first(where: \.isCorrect) else {
             #if DEBUG
             print("⚠️ No correct answer marked for:", question.question.english)
@@ -35,7 +30,7 @@ extension AudioItem {
 }
 
 private extension LocalizedText {
-    func text(in language: AudioLanguage) -> String {
+    func text(in language: AppLanguage) -> String {
         language == .english ? english : spanish
     }
 }
@@ -48,5 +43,7 @@ private extension String {
             .replacingOccurrences(of: #"\s*\(\d+\)"#, with: "", options: .regularExpression)
             .replacingOccurrences(of: "(", with: "")
             .replacingOccurrences(of: ")", with: "")
+            .replacingOccurrences(of: "EE. UU", with: "Los Estados Unidos")
+            .replacingOccurrences(of: "U.S.", with: "United States")
     }
 }

@@ -15,14 +15,17 @@ enum QuestionVersion: String {
 extension QuestionVersion {
     var ListenQuestions: [Question] {
         switch self {
-        case .v2008: q2008version 
+        case .v2008: q2008version
         case .v2025: q2025version
         }
     }
 }
-enum AppLanguage: String {
+enum AppLanguage: String, CaseIterable, Codable {
     case english = "en"
     case spanish = "es"
+    
+    var locale: Locale { Locale(identifier: rawValue) }
+    var voiceCode: String { self == .english ? "en-US" : "es-MX" }
 }
 
 @Observable
@@ -34,7 +37,7 @@ final class AppState {
     private(set) var repsFlowOnboardingComplete: Bool
     private(set) var appLanguage: AppLanguage
     private(set) var questionVersion: QuestionVersion
-    private(set) var zipCode: String    
+    private(set) var zipCode: String
     private(set) var progress: UserProgressModel?
     
     // MARK: - Initialization

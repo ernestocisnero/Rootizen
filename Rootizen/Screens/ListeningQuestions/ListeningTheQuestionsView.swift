@@ -25,7 +25,7 @@ struct ListeningTheQuestionsView: View {
                 ProgressView()
             }
         }
-        .task(id: appState.questionVersion) { // reruns when the year changes
+        .task(id: "\(appState.questionVersion.rawValue)-\(appState.appLanguage.rawValue)") { // reruns when the year changes
             loadPlayer()
         }
         .onDisappear {
@@ -55,8 +55,8 @@ struct ListeningTheQuestionsView: View {
     
     private func loadPlayer() {
         let version = appState.questionVersion
-        let language = AudioLanguage.english // swap in your selected-language setting
-        let key = "audioLastIndex_\(version.rawValue)_\(language.voiceCode)"
+        let language = appState.appLanguage // swap in your selected-language setting
+        let key = "audioLastIndex_\(version.rawValue)"
         
         let p = player ?? QuestionAudioPlayer(engine: speechService)
         p.onIndexChanged = { UserDefaults.standard.set($0, forKey: key) }

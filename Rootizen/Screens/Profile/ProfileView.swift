@@ -13,7 +13,6 @@ enum ProfileDestination: String, Identifiable, Hashable {
     case language
     case notification
     case faqs
-    case questionsCount
     case share
     case progress
     
@@ -118,13 +117,8 @@ struct ProfileView: View {
                 .onChange(of: soundEnabled) { _, newValue in
                     SoundManager.shared.isEnabled = newValue
                 }
-                
-                // MARK: -- If app plus version is paid, this option becomes available.
-                if isAppPlus{
-                    NavigationLink(value: ProfileDestination.questionsCount) {
-                        Label("Questions count", systemImage: "number")
-                    }
-                }
+
+               
             }
             
             Section("Support") {
@@ -188,15 +182,14 @@ struct ProfileView: View {
         .navigationDestination(for: ProfileDestination.self) { destination in
             switch destination {
             case .questionVersion:
-                Text("Questions Version")
+                QuestionVersionView()
             case .language:
-                Text("Language")
+                SelectLanguageView()
+                    .environment(appState)
             case .notification:
                 Text("Notifications")
             case .faqs:
                 Text("FAQs")
-            case .questionsCount:
-                Text("Questions Count")
             case .share:
                 Text("Share with friend")
             case .progress:

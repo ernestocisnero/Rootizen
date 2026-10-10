@@ -23,6 +23,7 @@ struct RootizenApp: App {
     var body: some Scene {
         WindowGroup {
             AppRootView()
+                .environment(\.locale, appState.appLanguage.locale)
                 .environment(appState)
                 .environment(repsService)
                 .environment(purchaseManager)

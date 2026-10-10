@@ -9,8 +9,6 @@ import SwiftUI
 
 
 struct OnboardingPresentationView: View {
-    
-    @State private var isWaving: Bool = false
     @State private var selectedLanguage: AppLanguage? = .english
     
     let onSelect: (AppLanguage)-> Void
