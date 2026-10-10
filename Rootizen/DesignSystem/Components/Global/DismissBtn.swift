@@ -14,21 +14,30 @@ struct DismissBtn: View {
     let action: () -> Void
 
     var body: some View {
+//        Button {
+//            feedbackTrigger.toggle()
+//            action()
+//        } label: {
+//            Image(systemName: "xmark")
+//                .font(.system(size: 14, weight: .semibold))
+//                .foregroundStyle(shadowBorderColor)
+//                .frame(width: 36, height: 36)
+//                .background(backgroundColor)
+//                .clipShape(Circle())
+//                .overlay {
+//                    Circle()
+//                        .stroke(AppColor.border, lineWidth: 0.5)
+//                }
+//        }
         Button {
             feedbackTrigger.toggle()
             action()
         } label: {
-            Image(systemName: "xmark")
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundStyle(shadowBorderColor)
-                .frame(width: 36, height: 36)
-                .background(backgroundColor)
-                .clipShape(Circle())
-                .overlay {
-                    Circle()
-                        .stroke(AppColor.border, lineWidth: 0.5)
-                }
+            Image(systemName: "chevron.down")
+                .headline(AppColor.secondaryText)
+                .padding(.horizontal)
         }
+        .accessibilityLabel("Close")
         .sensoryFeedback(.impact, trigger: feedbackTrigger)
     }
 }

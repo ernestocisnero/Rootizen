@@ -12,6 +12,14 @@ enum QuestionVersion: String {
     case v2025
 }
 
+extension QuestionVersion {
+    var ListenQuestions: [Question] {
+        switch self {
+        case .v2008: q2008version 
+        case .v2025: q2025version
+        }
+    }
+}
 enum AppLanguage: String {
     case english = "en"
     case spanish = "es"

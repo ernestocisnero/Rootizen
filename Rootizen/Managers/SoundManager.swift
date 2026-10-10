@@ -30,24 +30,16 @@ final class SoundManager {
  
     private var player: AVAudioPlayer?
  
-    // Dedicated serial queue — audio session setup and AVAudioPlayer
-    // creation/playback all happen here, off the main thread, which is
-    // what the console warning is asking for.
     private let queue = DispatchQueue(label: "com.rootizen.soundmanager", qos: .userInitiated)
  
     private init() {
         configureAudioSession()
     }
- 
-    /// Configured once, lazily, off the main thread. .ambient is the
-    /// right category for short UI sound effects specifically — unlike
-    /// the .playAndRecord / .playback categories the Reading & Writing
-    /// feature uses, .ambient respects the silent switch and mixes with
-    /// any other audio (e.g. Music) instead of interrupting it.
+    
     private func configureAudioSession() {
         queue.async {
             let session = AVAudioSession.sharedInstance()
-            try? session.setCategory(.ambient, mode: .default, options: [.mixWithOthers])
+            try? session.setCategory(.playback, mode: .spokenAudio, options: [.mixWithOthers])
             try? session.setActive(true)
         }
     }

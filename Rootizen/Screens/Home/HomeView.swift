@@ -19,6 +19,7 @@ struct HomeView: View {
     @State private var showAllQuestions: Bool = false
     @State private var showReadingWriting: Bool = false
     @State private var showingPaywall: Bool = false
+    @State private var showListeningQuestions: Bool = false
     
     var isQuizAllowed: Bool {
         if !purchaseManager.isPremiumUnlocked && Calendar.current.isDateInToday(appState.progress?.lastQuizTaken ?? .distantPast){
@@ -69,8 +70,8 @@ struct HomeView: View {
             
             Section("Plus") {
                 HomeRow(
-                    title: "Reading & Writing",
-                    subtitle: "Practice your reading and writing",
+                    title: "Reading & Writing Vocabulary",
+                    subtitle: "Practice your listening and writing",
                     systemImage: "long.text.page.and.pencil",
                     isPro: !purchaseManager.isPremiumUnlocked,
                     action: {
@@ -85,13 +86,13 @@ struct HomeView: View {
                 
                 HomeRow(
                     title: "Listen the questions",
-                    subtitle: "Listen and memorize",
+                    subtitle: "Listen all the questions at your pace",
                     systemImage: "headphones",
                     isPro: !purchaseManager.isPremiumUnlocked,
                     action: {
                         
                         if purchaseManager.isPremiumUnlocked{
-                            print("Listen the questions")
+                            showListeningQuestions = true
                         }else{
                             showingPaywall = true
                         }
@@ -112,7 +113,7 @@ struct HomeView: View {
                 
                 HomeRow(
                     title: "Meet your representatives",
-                    subtitle: "Who your reps are? · Meet and memorize",
+                    subtitle: "Federal and State representatives",
                     systemImage: "person.2",
                     isPro: false,
                     action: { showRepsView = true }
@@ -146,6 +147,10 @@ struct HomeView: View {
         .fullScreenCover(isPresented: $showReadingWriting){
             ReadingWritingView()
         }
+        // MARK: Listening the questions
+        .fullScreenCover(isPresented: $showListeningQuestions){
+            ListeningTheQuestionsView()
+        }
         // MARK: All Questions sheet.
         .fullScreenCover(isPresented: $showAllQuestions) {
             AllQuestionsView(questionsVersion: appState.questionVersion)
@@ -159,7 +164,7 @@ struct HomeView: View {
         // MARK: -- Paywall
         .sheet(isPresented: $showingPaywall) {
             PaywallView()
-                .presentationDetents([.fraction(0.75)])
+                .presentationDetents([.fraction(0.7)])
                 .presentationDragIndicator(.visible)
                 .background(AppColor.background)
         }

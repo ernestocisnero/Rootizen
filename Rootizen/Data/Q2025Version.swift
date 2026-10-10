@@ -965,18 +965,18 @@ let q2025version: [Question] = [
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Lindsey Graham",
-                    spanish: "Lindsey Graham"
+                    english: "John Doe",
+                    spanish: "John Doe"
                 ),
-                isCorrect: true
+                isCorrect: false
             ),
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Tim Scott",
-                    spanish: "Tim Scott"
+                    english: "Jane Doe",
+                    spanish: "Jane Doe"
                 ),
-                isCorrect: true
+                isCorrect: false
             ),
             Answer(
                 id: UUID(),
@@ -990,7 +990,7 @@ let q2025version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "Varies by State (Look in Representatives section)",
-                    spanish: "Las respuestas varían según el estado (consulte la sección de Representantes)"
+                    spanish: "Las respuestas varían según el estado (consultar la sección de Representantes)"
                 ),
                 isCorrect: true
             )
@@ -2094,7 +2094,7 @@ let q2025version: [Question] = [
                     english: "It decides who is elected president",
                     spanish: "Decide quién es elegido presidente"
                 ),
-                isCorrect: false
+                isCorrect: true
             ),
             Answer(
                 id: UUID(),
@@ -2599,16 +2599,16 @@ let q2025version: [Question] = [
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Henry McMaster",
-                    spanish: "Henry McMaster"
+                    english: "John Doe",
+                    spanish: "John Doe"
                 ),
                 isCorrect: false
             ),
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Nikki Haley",
-                    spanish: "Nikki Haley"
+                    english: "Jane Doe",
+                    spanish: "Jane Doe"
                 ),
                 isCorrect: false
             ),
@@ -2623,8 +2623,8 @@ let q2025version: [Question] = [
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Varies by State.",
-                    spanish: "Las respuestas varían según el estado"
+                    english: "Varies by State (Look in Representatives section)",
+                    spanish: "Las respuestas varían según el estado (consultar la sección de Representantes)"
                 ),
                 isCorrect: true
             )
@@ -2650,8 +2650,8 @@ let q2025version: [Question] = [
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Columbia",
-                    spanish: "Columbia"
+                    english: "Miami",
+                    spanish: "Miami"
                 ),
                 isCorrect: false
             ),
@@ -3599,7 +3599,7 @@ let q2025version: [Question] = [
                     english: "They helped people understand the (U.S.) Constitution",
                     spanish: "Ayudaron a la gente a entender la Constitución de EE. UU."
                 ),
-                isCorrect: false
+                isCorrect: true
             ),
             Answer(
                 id: UUID(),
@@ -3771,7 +3771,7 @@ let q2025version: [Question] = [
                     english: "Father of the Constitution",
                     spanish: "Padre de la Constitución"
                 ),
-                isCorrect: false
+                isCorrect: true
             ),
             Answer(
                 id: UUID(),
@@ -4330,7 +4330,7 @@ let q2025version: [Question] = [
                     english: "Germany attacked U.S. civilian ships",
                     spanish: "Alemania atacó barcos civiles estadounidenses"
                 ),
-                isCorrect: false
+                isCorrect: true
             ),
             Answer(
                 id: UUID(),
@@ -4406,7 +4406,7 @@ let q2025version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "A major earthquake",
-                    spanish: "Un major earthquake"
+                    spanish: "Un gran terremoto"
                 ),
                 isCorrect: false
             ),
@@ -4414,7 +4414,7 @@ let q2025version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "Longest economic recession in modern history",
-                    spanish: "Longest económicun recession en modern history"
+                    spanish: "La recesión económica más larga de la historia moderna"
                 ),
                 isCorrect: true
             ),
@@ -4430,7 +4430,7 @@ let q2025version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "A war with the Soviet Union",
-                    spanish: "Un guerrun con el Soviet Union"
+                    spanish: "Una guerra con la Unión Soviética"
                 ),
                 isCorrect: false
             )

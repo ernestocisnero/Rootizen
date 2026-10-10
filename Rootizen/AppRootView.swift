@@ -18,7 +18,7 @@ struct AppRootView: View {
         Group{
             if showingSplash{
                 SplashView(){
-                    withAnimation(.easeInOut(duration: 0.4)){
+                    withAnimation(.easeInOut(duration: 0.4)){ 
                         showingSplash = false
                     }
                 }

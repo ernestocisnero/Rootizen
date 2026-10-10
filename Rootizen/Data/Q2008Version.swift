@@ -836,18 +836,18 @@ let q2008version: [Question] = [
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Lindsey Graham",
-                    spanish: "Lindsey Graham"
+                    english: "John Doe",
+                    spanish: "John Doe"
                 ),
-                isCorrect: true
+                isCorrect: false
             ),
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Tim Scott",
-                    spanish: "Tim Scott"
+                    english: "Jane Doe",
+                    spanish: "Jane Doe"
                 ),
-                isCorrect: true
+                isCorrect: false
             ),
             Answer(
                 id: UUID(),
@@ -860,8 +860,8 @@ let q2008version: [Question] = [
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Varies by State (Find yours in Representatives section)",
-                    spanish: "Varía según el estado (encuentre el suyo en la sección de Representantes)"
+                    english: "Varies by State (Look in Representatives section)",
+                    spanish: "Las respuestas varían según el estado (consultar la sección de Representantes)"
                 ),
                 isCorrect: true
             )
@@ -1825,16 +1825,16 @@ let q2008version: [Question] = [
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Henry McMaster",
-                    spanish: "Henry McMaster"
+                    english: "John Doe",
+                    spanish: "John Doe"
                 ),
                 isCorrect: false
             ),
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Nikki Haley",
-                    spanish: "Nikki Haley"
+                    english: "Jane Doe",
+                    spanish: "Jane Doe"
                 ),
                 isCorrect: false
             ),
@@ -1849,8 +1849,8 @@ let q2008version: [Question] = [
             Answer(
                 id: UUID(),
                 text: LocalizedText(
-                    english: "Varies by State (Find yours in Representatives section)",
-                    spanish: "Varía según el estado (encuentre el suyo en la sección de Representantes)"
+                    english: "Varies by State (Look in Representatives section)",
+                    spanish: "Las respuestas varían según el estado (consultar la sección de Representantes)"
                 ),
                 isCorrect: true
             )
@@ -3546,7 +3546,7 @@ let q2008version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "Climate change",
-                    spanish: "el cambio climático"
+                    spanish: "El cambio climático"
                 ),
                 isCorrect: false
             ),
@@ -3554,7 +3554,7 @@ let q2008version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "Communism",
-                    spanish: "el comunismo"
+                    spanish: "El comunismo"
                 ),
                 isCorrect: true
             ),
@@ -3562,7 +3562,7 @@ let q2008version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "The Great Depression",
-                    spanish: "la Gran Depresión"
+                    spanish: "La Gran Depresión"
                 ),
                 isCorrect: false
             ),
@@ -3570,7 +3570,7 @@ let q2008version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "Slavery",
-                    spanish: "la esclavitud"
+                    spanish: "La esclavitud"
                 ),
                 isCorrect: false
             )
@@ -4277,7 +4277,7 @@ let q2008version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "Easter and Halloween",
-                    spanish: "el Día de Año Nuevo"
+                    spanish: "El Día de Año Nuevo"
                 ),
                 isCorrect: false
             ),
@@ -4285,7 +4285,7 @@ let q2008version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "Thanksgiving and Christmas",
-                    spanish: "el Día de Acción de Gracias"
+                    spanish: "El Día de Acción de Gracias"
                 ),
                 isCorrect: true
             ),
@@ -4293,7 +4293,7 @@ let q2008version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "Valentine's Day and Earth Day",
-                    spanish: "el Día de la Independencia"
+                    spanish: "El Día de la Independencia"
                 ),
                 isCorrect: false
             ),
@@ -4301,7 +4301,7 @@ let q2008version: [Question] = [
                 id: UUID(),
                 text: LocalizedText(
                     english: "St. Patrick's Day and Good Friday",
-                    spanish: "el Día de Navidad"
+                    spanish: "El Día de Navidad"
                 ),
                 isCorrect: false
             )
