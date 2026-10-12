@@ -14,8 +14,8 @@ struct SlideBarCounter: View {
         HStack(spacing: 8){
             ForEach(0..<2){ index in
                 
-                RoundedRectangle(cornerRadius: 10)
-                    .frame(maxWidth: 18, maxHeight: 6)
+                RoundedRectangle(cornerRadius: 6)
+                    .frame(maxWidth: 15, maxHeight:4)
                     .foregroundStyle(index == currentSlide ? AppColor.success: AppColor.secondaryBackground)
                 
             }

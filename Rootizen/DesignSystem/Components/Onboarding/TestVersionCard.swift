@@ -27,8 +27,7 @@ struct TestVersionCard: View {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 8) {
                         Text(title)
-                            .font(.headline)
-                            .foregroundStyle(AppColor.primaryText)
+                            .headline(AppColor.primaryText)
                         
                         if isRecommended {
                             HStack{
@@ -36,7 +35,7 @@ struct TestVersionCard: View {
                                     .padding(.horizontal)
                                     .padding(.vertical, 4)
                                     .secondaryTitle(AppColor.success)
-                                    .background(AppColor.success.muted(0.1), in: Capsule())
+                                    .background(AppColor.secondaryBackground, in: Capsule())
                             }
                         }
                     }
@@ -66,7 +65,7 @@ struct TestVersionCard: View {
             .background(
                 isSelected
                 ? AppColor.success.muted(0.2)
-                : AppColor.secondaryBackground
+                : AppColor.secondaryBackground.muted(0.2)
             )
             .clipShape(RoundedRectangle(cornerRadius: 18))
         }

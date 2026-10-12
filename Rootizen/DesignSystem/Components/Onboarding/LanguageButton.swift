@@ -34,7 +34,7 @@ struct LanguageButton: View {
                             .padding(.horizontal)
                             .padding(.vertical, 2)
                             .secondaryTitle(AppColor.success)
-                            .background(AppColor.success.muted(0.1), in: Capsule())
+                            .background(AppColor.secondaryBackground, in: Capsule())
                     }
                 }
                 
@@ -56,7 +56,7 @@ struct LanguageButton: View {
             .background(
                 isSelected
                 ? AppColor.success.muted(0.2)
-                : AppColor.secondaryBackground
+                : AppColor.secondaryBackground.muted(0.2)
             )
             .clipShape(RoundedRectangle(cornerRadius: 14))
             

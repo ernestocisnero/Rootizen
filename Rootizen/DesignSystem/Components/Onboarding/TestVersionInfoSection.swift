@@ -38,13 +38,22 @@ struct TestVersionInfoSection: View {
             .sensoryFeedback(.impact, trigger: isExpanded)
             
             if isExpanded {
-                ScrollView{  
+                ScrollView{
                     VStack(alignment: .leading, spacing: 10) {
                         Text("The citizenship test changed in 2025.")
                         
                         Text("The version you take depends on when you filed your Form N-400.")
                         
                         Text("Rootizen lets you study with either version so you can prepare for the test that applies to you.")
+                        
+                        Link(destination: URL(string: "https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test")!) {
+                            HStack(spacing: 10) {
+                                Image(systemName: "arrow.up.right.square")
+                                Text("View official USCIS information")
+                            }
+                            .label(AppColor.info)
+                        }
+                        
                     }
                     .font(.subheadline)
                     .foregroundStyle(AppColor.secondaryText)

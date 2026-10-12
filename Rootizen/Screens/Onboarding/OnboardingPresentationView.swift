@@ -62,6 +62,7 @@ struct OnboardingPresentationView: View {
                         onSelect(.spanish)
                     }
                 }
+               
             }
         }
         

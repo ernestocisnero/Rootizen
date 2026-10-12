@@ -20,6 +20,7 @@ struct HomeView: View {
     @State private var showReadingWriting: Bool = false
     @State private var showingPaywall: Bool = false
     @State private var showListeningQuestions: Bool = false
+    @State private var showSeniorQuestions: Bool = false
     
     var isQuizAllowed: Bool {
         if !purchaseManager.isPremiumUnlocked && Calendar.current.isDateInToday(appState.progress?.lastQuizTaken ?? .distantPast){
@@ -124,7 +125,7 @@ struct HomeView: View {
                     subtitle: "65/20 Exemption · Read and memorize",
                     systemImage: "magazine",
                     isPro: false,
-                    action: { print("Senior Questions") }
+                    action: { showSeniorQuestions = true }
                 )
             }
         }
@@ -160,6 +161,10 @@ struct HomeView: View {
             RepsFlowView()
                 .environment(appState)
                 .environment(repService)
+        }
+        // MARK: Senior Questions sheet.
+        .fullScreenCover(isPresented: $showSeniorQuestions) {
+            SeniorQuestionsView(questionsVersion: appState.questionVersion)
         }
         // MARK: -- Paywall
         .sheet(isPresented: $showingPaywall) {

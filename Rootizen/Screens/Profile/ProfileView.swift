@@ -46,6 +46,7 @@ struct ProfileView: View {
                 } label: {
                     HStack{
                         Label("Get Rootizen Plus", systemImage: "star.hexagon")
+                            .foregroundStyle(AppColor.leagueColor(for: .gold))
                         Spacer()
                         
                         if purchaseManager.isPremiumUnlocked{

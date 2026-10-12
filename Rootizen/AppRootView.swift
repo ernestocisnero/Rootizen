@@ -14,7 +14,7 @@ struct AppRootView: View {
     @State private var speechService = SpeechSynthesisService()
     @State private var speechRecognitionService = SpeechRecognitionService()
     
-    var body: some View {
+    var body: some View { 
         Group{
             if showingSplash{
                 SplashView(){
