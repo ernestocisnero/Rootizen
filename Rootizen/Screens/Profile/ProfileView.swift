@@ -102,11 +102,39 @@ struct ProfileView: View {
             Section("Preferences") {
                 
                 NavigationLink(value: ProfileDestination.questionVersion) {
-                    Label("Questions version", systemImage: "doc.text")
+                    
+                    HStack{
+                        Label("Questions version", systemImage: "doc.text")
+                        Spacer()
+                        HStack{
+                            if (appState.questionVersion == .v2008){
+                                Text("Version 2008")
+                                    .label()
+                            }else{
+                                Text("Version 2025")
+                                    .label()
+                            }
+                        }.padding(.horizontal)
+                        
+                    }
+                    
                 }
                 
                 NavigationLink(value: ProfileDestination.language) {
-                    Label("Language", systemImage: "character.bubble")
+                    HStack{
+                        Label("Language", systemImage: "character.bubble")
+                        Spacer()
+                        HStack{
+                            if (appState.appLanguage == .spanish){
+                                Text("Español")
+                                    .label()
+                            }else{
+                                Text("English")
+                                    .label()
+                            }
+                        }.padding(.horizontal)
+                    }
+                    
                 }
                 NavigationLink(value: ProfileDestination.notification) {
                     Label("Notifications", systemImage: "bell")
@@ -118,8 +146,7 @@ struct ProfileView: View {
                 .onChange(of: soundEnabled) { _, newValue in
                     SoundManager.shared.isEnabled = newValue
                 }
-
-               
+                
             }
             
             Section("Support") {
@@ -184,6 +211,7 @@ struct ProfileView: View {
             switch destination {
             case .questionVersion:
                 QuestionVersionView()
+                    .environment(appState)
             case .language:
                 SelectLanguageView()
                     .environment(appState)

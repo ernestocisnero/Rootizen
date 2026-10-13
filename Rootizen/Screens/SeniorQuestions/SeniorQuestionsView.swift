@@ -59,10 +59,10 @@ private struct SeniorInfoBanner: View {
                 .foregroundStyle(AppColor.info)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text("65/20 Exemption")
+                Text("65/20 Special Consideration")
                     .primaryTitle()
 
-                Text("If you are 65 or older and have been a permanent resident for 20 years or more, you study a shorter list of 20 questions.")
+                Text("If you are 65 years old or older and have been living in the United States as a lawful permanent resident of the United States for 20 or more years, USCIS will continue to administer a test with 10 questions from a specially selected bank of 20 test questions from either the 2008 or 2025 Naturalization Civics Test. ")
                     .secondaryTitle()
             }
         }

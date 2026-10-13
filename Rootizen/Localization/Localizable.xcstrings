@@ -66,8 +66,35 @@
         }
       }
     },
-    "65/20 Exemption" : {
-
+    "65/20 Special Consideration" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "65/20 Consideración especial"
+          }
+        }
+      }
+    },
+    "2008 Exam Version" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión del examen de 2008"
+          }
+        }
+      }
+    },
+    "2025 Exam Version" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión del examen de 2025"
+          }
+        }
+      }
     },
     "ACCURACY BY CATEGORY" : {
       "localizations" : {
@@ -319,17 +346,6 @@
         }
       }
     },
-    "Get Plus" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obtenga Plus"
-          }
-        }
-      }
-    },
     "Get Rootizen Plus" : {
       "localizations" : {
         "es" : {
@@ -341,7 +357,14 @@
       }
     },
     "Great! Your Rootizen Plus has been restored." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Genial! Tu Rootizen Plus ha sido restaurado."
+          }
+        }
+      }
     },
     "Have You Ever" : {
       "localizations" : {
@@ -363,9 +386,6 @@
         }
       }
     },
-    "Hello, World!" : {
-
-    },
     "Home" : {
       "localizations" : {
         "es" : {
@@ -376,8 +396,15 @@
         }
       }
     },
-    "If you are 65 or older and have been a permanent resident for 20 years or more, you study a shorter list of 20 questions." : {
-
+    "If you are 65 years old or older and have been living in the United States as a lawful permanent resident of the United States for 20 or more years, USCIS will continue to administer a test with 10 questions from a specially selected bank of 20 test questions from either the 2008 or 2025 Naturalization Civics Test. " : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si usted tiene 65 años o más y ha residido en los Estados Unidos como residente permanente legal durante 20 años o más, USCIS continuará administrando una prueba de 10 preguntas seleccionadas de un banco especial de 20 preguntas, provenientes ya sea de la Prueba de Educación Cívica para la Naturalización de 2008 o de la de 2025."
+          }
+        }
+      }
     },
     "Incorrect" : {
       "localizations" : {
@@ -523,7 +550,14 @@
       }
     },
     "No previous purchase for Rootizen Plus was found for this Apple ID. Upgrade to get full access." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró ninguna compra anterior de Rootizen Plus para este ID de Apple. Actualiza para obtener acceso completo."
+          }
+        }
+      }
     },
     "No Rootizen Plus to restore" : {
       "localizations" : {
@@ -658,17 +692,6 @@
         }
       }
     },
-    "Plus - $4.99" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plus - $4.99"
-          }
-        }
-      }
-    },
     "Practice" : {
       "localizations" : {
         "es" : {
@@ -700,7 +723,14 @@
       }
     },
     "Privacy Policy" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de Privacidad"
+          }
+        }
+      }
     },
     "Profile" : {
       "localizations" : {
@@ -811,7 +841,14 @@
       }
     },
     "Restore Purchase" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar compra"
+          }
+        }
+      }
     },
     "Restore your Rootizen Plus" : {
       "localizations" : {
@@ -847,7 +884,14 @@
       }
     },
     "Rootizen Plus restored" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rootizen Plus restaurado"
+          }
+        }
+      }
     },
     "Rootizen will never share or store personal data on a server" : {
       "localizations" : {
@@ -869,8 +913,25 @@
         }
       }
     },
+    "Select Exam Version" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccione la versión del examen"
+          }
+        }
+      }
+    },
     "Senior Questions" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preguntas para mayores de 65"
+          }
+        }
+      }
     },
     "Sentence %lld" : {
       "localizations" : {
@@ -993,7 +1054,14 @@
       }
     },
     "Terms of Use" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condiciones de uso"
+          }
+        }
+      }
     },
     "The citizenship test changed in 2025." : {
       "localizations" : {
@@ -1056,7 +1124,14 @@
       }
     },
     "Upgrade to Plus $4.99" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualiza a Plus por 4,99 $"
+          }
+        }
+      }
     },
     "Upsss purchase failed" : {
       "localizations" : {
@@ -1080,6 +1155,26 @@
     },
     "USCIS.gov" : {
 
+    },
+    "Version 2008" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión 2008"
+          }
+        }
+      }
+    },
+    "Version 2025" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión 2025"
+          }
+        }
+      }
     },
     "View official USCIS information" : {
       "localizations" : {

@@ -122,7 +122,7 @@ struct HomeView: View {
                 
                 HomeRow(
                     title: "Senior Questions",
-                    subtitle: "65/20 Exemption · Read and memorize",
+                    subtitle: "65/20 Special Consideration · Read and memorize",
                     systemImage: "magazine",
                     isPro: false,
                     action: { showSeniorQuestions = true }
