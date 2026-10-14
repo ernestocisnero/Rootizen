@@ -169,7 +169,8 @@ struct HomeView: View {
         // MARK: -- Paywall
         .sheet(isPresented: $showingPaywall) {
             PaywallView()
-                .presentationDetents([.fraction(0.7)])
+                .presentationDetents([.large])
+                .padding()
                 .presentationDragIndicator(.visible)
                 .background(AppColor.background)
         }

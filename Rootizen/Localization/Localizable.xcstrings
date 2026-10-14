@@ -426,6 +426,9 @@
         }
       }
     },
+    "Learn more" : {
+
+    },
     "Legal" : {
       "localizations" : {
         "es" : {
@@ -507,6 +510,7 @@
       }
     },
     "Naturalization Interview Example" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -515,9 +519,6 @@
           }
         }
       }
-    },
-    "Naturalization Interview Video Player" : {
-
     },
     "Next question" : {
       "localizations" : {
@@ -588,9 +589,6 @@
           }
         }
       }
-    },
-    "Official USCIS walkthrough video" : {
-
     },
     "OK" : {
       "localizations" : {
@@ -943,6 +941,12 @@
         }
       }
     },
+    "Share Rootizen App with friends" : {
+
+    },
+    "Share Rootizen with friends" : {
+
+    },
     "Share with friend" : {
       "localizations" : {
         "es" : {
@@ -954,6 +958,7 @@
       }
     },
     "Share with friends" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -982,6 +987,9 @@
           }
         }
       }
+    },
+    "Stop" : {
+
     },
     "Study Materials" : {
       "localizations" : {
@@ -1144,6 +1152,7 @@
       }
     },
     "USCIS Naturalization Example" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

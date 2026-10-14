@@ -97,9 +97,10 @@ struct ResultsView: View {
         }
         .sheet(isPresented: $showingPaywall) {
             PaywallView()
-                .presentationDetents([.fraction(0.75)])
-                .background(AppColor.background)
+                .presentationDetents([.large])
+                .padding()
                 .presentationDragIndicator(.visible)
+                .background(AppColor.background)
         }
         .onAppear {
             SoundManager.shared.play(.quizComplete)

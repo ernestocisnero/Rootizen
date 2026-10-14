@@ -19,6 +19,12 @@ enum ProfileDestination: String, Identifiable, Hashable {
     var id: String { rawValue }
 }
 
+enum sharemessage: String{
+    case english = "Hey! I'm using Rootizen! 🇺🇸 to practice civics questions. Test your knowledge, and build confidence at your own pace. Download Rootizen and take the next step toward becoming a U.S. citizen. Share it with friends and family who are preparing, too!"
+    
+    case spanish = "Hey estoy usando Rootizen para practicar las preguntas de educación cívica, pon a prueba tus conocimientos y gana confianza a tu propio ritmo. Descarga Rootizen y da el siguiente paso hacia tu ciudadanía estadounidense. ¡Compártela con amigos y familiares que también se estén preparando!"
+}
+
 struct ProfileView: View {
     
     @Environment(AppState.self) private var appState
@@ -57,8 +63,9 @@ struct ProfileView: View {
                                 .background(AppColor.success.muted(0.1), in: Capsule())
                         }
                         
-                    }.frame(maxWidth: .infinity, alignment: .leading)
-                        .contentShape(Rectangle())
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(Rectangle())
                     
                     
                 }
@@ -151,10 +158,22 @@ struct ProfileView: View {
             
             Section("Support") {
                 
-                NavigationLink(value: ProfileDestination.share) {
-                    
-                    Label("Share with friends", systemImage: "heart")
+                ShareLink(
+                    item: URL(string: "https://apps.apple.com/app/idXXXXXXXXXX")!,
+                    subject: Text("Rootizen"),
+                    message: appState.appLanguage == .spanish ? Text(sharemessage.spanish.rawValue) : Text(sharemessage.english.rawValue),
+                    preview: SharePreview("Share Rootizen with friends", image: "rootizen-plus-paywall")
+                ) {
+                    Label {
+                        Text("Share Rootizen with friends")
+                            .foregroundStyle(AppColor.primaryText)
+                    } icon: {
+                        Image(systemName: "square.and.arrow.up")
+                    }
+                        
                 }
+                
+                
                 
                 Button {
                     requestReview()
@@ -168,13 +187,13 @@ struct ProfileView: View {
                 }
                 .buttonStyle(.plain)
                 
+            }
+            
+            Section("Legal"){
                 NavigationLink(value: ProfileDestination.faqs) {
                     Label("FAQs", systemImage: "questionmark.circle")
                 }
                 
-            }
-            
-            Section("Legal"){
                 Link(destination: URL(string: "https://ernestocisnero.vercel.app")!) {
                     HStack {
                         
@@ -189,8 +208,6 @@ struct ProfileView: View {
                         
                     }
                 }
-                
-                
             }
             
             
@@ -229,9 +246,10 @@ struct ProfileView: View {
         }
         .sheet(isPresented: $showingPaywall) {
             PaywallView()
-                .presentationDetents([.fraction(0.75)])
-                .background(AppColor.background)
+                .presentationDetents([.large])
+                .padding()
                 .presentationDragIndicator(.visible)
+                .background(AppColor.background)
         }
     }
 }

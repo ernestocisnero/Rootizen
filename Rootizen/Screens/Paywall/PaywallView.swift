@@ -18,14 +18,13 @@ struct PaywallView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            
-            Image("RootizenLogo")
+  
+            Image("rootizen-plus-paywall")
                 .resizable()
-                .scaledToFit()
-                .frame(maxWidth: 159)
-                .padding()
+                .scaledToFill()
+                .padding(20)
                 
-            
+            Spacer()
             
             VStack(spacing: 4) {
                 Text("Get Rootizen Plus")
@@ -37,8 +36,9 @@ struct PaywallView: View {
                 Text("One time payment. Access for life.")
                     .bodyText(AppColor.secondaryText)
             }
-            .padding(.top, 15)
             .frame(maxWidth: .infinity)
+            
+            Spacer()
             
             VStack{
                 VStack(alignment: .leading, spacing: 18) {
@@ -54,8 +54,8 @@ struct PaywallView: View {
             )
             .shadow(color: .black.opacity(0.05), radius: 8, y: 3)
             
-            
             Spacer()
+            
             
             VStack{
                 Button {
@@ -139,7 +139,7 @@ struct PaywallView: View {
             }
             
         }
-        .padding()
+        .padding(20)
         .alert(
             "Upsss purchase failed",
             isPresented: $showErrorAlert

@@ -122,9 +122,10 @@ struct UserProgressView: View {
         .scrollIndicators(.hidden)
         .sheet(isPresented: $showingPaywall) {
             PaywallView()
-                .presentationDetents([.fraction(0.75)])
-                .background(AppColor.background)
+                .presentationDetents([.large])
+                .padding()
                 .presentationDragIndicator(.visible)
+                .background(AppColor.background)
         }
     }
 }

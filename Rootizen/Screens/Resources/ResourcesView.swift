@@ -12,50 +12,36 @@ enum ResourceDestination: String, Identifiable, Hashable {
     case vocabulary
     case anthem
     case pledge
-
+    
     var id: String { rawValue }
 }
 
 struct ResourcesView: View {
-
-    @State private var showingVideo = false
-
+    @Environment(SpeechSynthesisService.self) private var speechService
+    
     var body: some View {
         List {
             Section("Study Materials") {
-
+                
                 NavigationLink(value: ResourceDestination.haveYouEver) {
                     Label("Have You Ever Questions", systemImage: "bubble.left.and.bubble.right")
                 }
-
+                
                 NavigationLink(value: ResourceDestination.vocabulary) {
                     Label("Vocabulary", systemImage: "textformat.abc")
                 }
             }
-
+            
             Section("Extras") {
                 NavigationLink(value: ResourceDestination.anthem) {
                     Label("National Anthem", systemImage: "music.note")
                 }
-
+                
                 NavigationLink(value: ResourceDestination.pledge) {
                     Label("Pledge of Allegiance", systemImage: "flag")
                 }
             }
-
-            Section {
-                Button {
-                    showingVideo = true
-                } label: {
-                    Label("Naturalization Interview Example", systemImage: "play.rectangle")
-                }
-                .buttonStyle(.plain)
-            } header: {
-                Text("USCIS Naturalization Example")
-            } footer: {
-                Text("Official USCIS walkthrough video")
-            }
-
+            
             Section("External Resources") {
                 Link(destination: URL(string: "https://www.uscis.gov")!) {
                     HStack {
@@ -70,16 +56,16 @@ struct ResourcesView: View {
                     }
                 }
                 
-
+                
                 Link(destination: URL(string: "https://my.uscis.gov/prep/test/civics")!) {
                     HStack {
                         Image(systemName: "link")
                         
                         Text("Civics Practice Test")
                             .foregroundStyle(AppColor.primaryText)
-
+                        
                         Spacer()
-
+                        
                         Image(systemName: "arrow.up.right")
                             .font(.caption)
                             .foregroundStyle(AppColor.secondaryText)
@@ -98,13 +84,16 @@ struct ResourcesView: View {
             case .vocabulary:
                 VocabularyView()
             case .anthem:
-                Text("National Anthem")
+                CivicPassageView(passage: .anthem, isPlaying: speechService.isSpeaking){
+                    speechService.isSpeaking ? speechService.stop(): speechService.speak(CivicPassage.anthem.english)
+                }
+                .onDisappear { speechService.stop() }
             case .pledge:
-                Text("Pledge of Allegiance")
+                CivicPassageView(passage: .pledge, isPlaying: speechService.isSpeaking){
+                    speechService.isSpeaking ? speechService.stop(): speechService.speak(CivicPassage.pledge.english)
+                }
+                .onDisappear { speechService.stop() }
             }
-        }
-        .sheet(isPresented: $showingVideo) {
-            Text("Naturalization Interview Video Player")
         }
     }
 }
@@ -112,5 +101,6 @@ struct ResourcesView: View {
 #Preview {
     NavigationStack {
         ResourcesView()
+            .environment(SpeechSynthesisService())
     }
 }
