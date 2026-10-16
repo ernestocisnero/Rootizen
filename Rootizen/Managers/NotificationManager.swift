@@ -5,12 +5,15 @@
 //  Created by Ernesto Cisnero on 10/15/26.
 //
 
+enum ReminderPermission { case allowed, notAsked, denied }
+
 import SwiftUI
 import UserNotifications
 
 class NotificationManager{
     
     static let shared = NotificationManager()
+    let identifier = "rootizen-daily-reminder"
     
     func checkForPermission(){
         let notificationCenter = UNUserNotificationCenter.current()
@@ -40,7 +43,7 @@ class NotificationManager{
     }
     
     func dispatchNotification(hour: Int = 18, minute: Int = 00){
-        let identifier = "rootizen-daily-reminder"
+        
         let notificationCenter = UNUserNotificationCenter.current()
 
         // Fill the content first
@@ -58,8 +61,22 @@ class NotificationManager{
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
 
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
+        cancelReminder()
         notificationCenter.add(request)
+    }
+    
+    func permission() async -> ReminderPermission {
+        switch await UNUserNotificationCenter.current().notificationSettings().authorizationStatus {
+        case .authorized, .provisional: return .allowed
+        case .notDetermined: return .notAsked
+        default: return .denied
+        }
+    }
+    func requestPermission() async -> Bool {
+        (try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])) ?? false
+    }
+    func cancelReminder() {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
     }
     
     func openNotificationSettings() {

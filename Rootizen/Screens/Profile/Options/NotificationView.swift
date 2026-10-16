@@ -9,88 +9,101 @@ import SwiftUI
 
 struct NotificationView: View {
     @Environment(\.scenePhase) private var scenePhase
-    @State private var notificationsAuthorized: Bool = false
-    @State private var selectedTime: Date = .now
+    
+    @AppStorage("reminderEnabled") private var reminderEnabled = false
+    @AppStorage("reminderMinutes") private var reminderMinutes = 18 * 60
+    @State private var systemAllowed = false
+    
+    private var timeBinding: Binding<Date> {
+        Binding(
+            get: { Calendar.current.date(bySettingHour: reminderMinutes / 60,
+                                         minute: reminderMinutes % 60, second: 0, of: .now) ?? .now },
+            set: { new in
+                let c = Calendar.current.dateComponents([.hour, .minute], from: new)
+                reminderMinutes = (c.hour ?? 18) * 60 + (c.minute ?? 0)
+            }
+        )
+    }
+    
+    private var toggleBinding: Binding<Bool> {
+        Binding(get: { reminderEnabled && systemAllowed },
+                set: { on in Task { await setReminder(on) } })
+    }
     
     
     var body: some View {
         List{
             
             // Shows banned when notifications are off
-            if !notificationsAuthorized{
-                Button{
-                    handleBannerNotificationTap()
-                } label:{
-                    HStack {
-                        Image(systemName: "bell.slash.fill")
-                        Text("Notifications are off — tap to enable")
-                            .font(.footnote)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.caption2)
+            Section{
+                if !systemAllowed{
+                    Button{
+                        NotificationManager.shared.openNotificationSettings()
+                    } label:{
+                        HStack {
+                            Image(systemName: "bell.slash.fill")
+                            Text("Notifications are off — tap to enable")
+                                .font(.footnote)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption2)
+                        }
+                        .foregroundStyle(.white)
+                        .padding(.horizontal)
+                        .padding(.vertical, 10)
+                        .background(AppColor.speak)
                     }
-                    .foregroundStyle(.white)
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
-                    .background(Color.orange)
                 }
             }
+            .listRowInsets(EdgeInsets())
+            .listRowBackground(AppColor.speak)
             
             
-            Section(){
-                Toggle(isOn: $notificationsAuthorized) {
+            
+            Section{
+                Toggle(isOn: toggleBinding) {
                     Label("Daily Reminder", systemImage: "bell")
                 }
             }
             
-            if notificationsAuthorized{
+            if reminderEnabled && systemAllowed{
                 Section{
-                    DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
+                    DatePicker("Select Time", selection: timeBinding, displayedComponents: .hourAndMinute)
                 }
             }
-
+            
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Notifications")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear{
-            Task{
-                let setting = await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
-                
-                if setting == .authorized{
-                    notificationsAuthorized = true
-                }else{
-                    notificationsAuthorized = false
-                }
-                
-            }
-        }
-        .onDisappear{
-            Task{
-                let components = Calendar.current.dateComponents([.hour, .minute], from: selectedTime)
-                let hour = components.hour ?? 18 + 12
-                let minute = components.minute ?? 00
-                NotificationManager.shared.dispatchNotification(hour: hour, minute: minute )
-            }
-            
-        }
-        .onChange(of: scenePhase) { _,newPhase in
-            if newPhase == .active {
-                NotificationManager.shared.checkForPermission()
-            }
+        .task { await refresh() }
+        .onChange(of: scenePhase) { _, phase in if phase == .active { Task { await refresh() } } }
+        .onChange(of: reminderMinutes) { _, _ in
+            if reminderEnabled && systemAllowed { reschedule() }
         }
     }
     
-    func handleBannerNotificationTap(){
-        Task{
-            let setting = await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
-            
-            if setting == .notDetermined{
-                NotificationManager.shared.checkForPermission()
-            }else{
-                NotificationManager.shared.openNotificationSettings()
-            }
+    private func setReminder(_ wantsOn: Bool) async {
+        let manager = NotificationManager.shared
+        guard wantsOn else { reminderEnabled = false; manager.cancelReminder(); return }
+        
+        switch await manager.permission() {
+        case .allowed: break
+        case .notAsked: guard await manager.requestPermission() else { return }
+        case .denied: manager.openNotificationSettings(); return
         }
+        systemAllowed = true
+        reminderEnabled = true
+        reschedule()
+    }
+    
+    private func reschedule() {
+        NotificationManager.shared.dispatchNotification(hour: reminderMinutes / 60,
+                                                        minute: reminderMinutes % 60)
+    }
+    
+    private func refresh() async {
+        systemAllowed = await NotificationManager.shared.permission() == .allowed
     }
     
 }
