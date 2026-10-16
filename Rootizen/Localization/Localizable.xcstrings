@@ -236,6 +236,9 @@
         }
       }
     },
+    "Daily Reminder" : {
+
+    },
     "Default" : {
       "localizations" : {
         "es" : {
@@ -580,6 +583,9 @@
         }
       }
     },
+    "Notifications are off — tap to enable" : {
+
+    },
     "Now Playing" : {
       "localizations" : {
         "es" : {
@@ -921,6 +927,9 @@
         }
       }
     },
+    "Select Time" : {
+
+    },
     "Senior Questions" : {
       "localizations" : {
         "es" : {
@@ -940,9 +949,6 @@
           }
         }
       }
-    },
-    "Share Rootizen App with friends" : {
-
     },
     "Share Rootizen with friends" : {
 

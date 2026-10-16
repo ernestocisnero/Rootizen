@@ -28,6 +28,7 @@ enum AppLanguage: String, CaseIterable, Codable {
     var voiceCode: String { self == .english ? "en-US" : "es-MX" }
 }
 
+
 @Observable
 final class AppState {
     
@@ -53,7 +54,6 @@ final class AppState {
         
         // MARK: Language
         let savedAppLanguage = defaults.string( forKey: "appLanguage")
-        
         appLanguage = AppLanguage(rawValue: savedAppLanguage ?? "en") ?? .english
         
         // MARK: -- Exam Version
@@ -64,7 +64,7 @@ final class AppState {
         ?? .v2025
         
         zipCode = defaults.string(forKey: "zipCode") ?? ""
-        
+    
     }
     
     // MARK: - Methods
@@ -102,6 +102,7 @@ final class AppState {
         zipCode = zip
         UserDefaults.standard.set(zip, forKey: "zipCode")
     }
+    
     
     // MARK: -- User Progress Data handling.
     

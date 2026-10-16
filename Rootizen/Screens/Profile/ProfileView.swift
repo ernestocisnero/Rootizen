@@ -173,8 +173,6 @@ struct ProfileView: View {
                         
                 }
                 
-                
-                
                 Button {
                     requestReview()
                 } label: {
@@ -233,7 +231,7 @@ struct ProfileView: View {
                 SelectLanguageView()
                     .environment(appState)
             case .notification:
-                Text("Notifications")
+                NotificationView()
             case .faqs:
                 Text("FAQs")
             case .share:
