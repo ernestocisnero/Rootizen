@@ -17,31 +17,26 @@ struct OnboardingPresentationView: View {
         ScrollView{
             VStack(spacing: 24){
                 
-                Spacer()
-                
-                VStack(spacing: 0) {
-                    Text("Welcome to Rootizen")
-                        .font(.system(size: 30, weight: .semibold))
-                        .foregroundStyle(AppColor.primaryText)
-                        .multilineTextAlignment(.center)
-                    
-                    Text("Your native app guide to the US citizenship test.")
-                        .font(.system(size: 16))
-                        .foregroundStyle(AppColor.secondaryText)
-                        .multilineTextAlignment(.center)
-                }
-                
-                Image("RootizenLogo")
+                Image("welcomeScreenImage")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: 200, maxHeight: 200)
+                    .frame(maxWidth: .infinity)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                 
-                Spacer()
                 
-                VStack(spacing: 12) {
-                    Text("Choose a language")
-                        .label()
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Your journey to U.S. citizenship starts here")
+                        .font(.system(size: 28, weight: .semibold))
+                        .foregroundStyle(AppColor.primaryText)
+                        .multilineTextAlignment(.leading)
+                    
+                    Text("Learn the civics questions, practice at your own pace, and prepare with confidence")
+                        .secondaryTitle(AppColor.secondaryText)
+                        .multilineTextAlignment(.leading)
+                }
+                
+                HStack(spacing: 12) {
+                    
                     LanguageButton(
                         title: "English",
                         flag: "🇺🇸",

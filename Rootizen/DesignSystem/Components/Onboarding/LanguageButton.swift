@@ -22,43 +22,23 @@ struct LanguageButton: View {
         }label: {
             HStack(spacing: 14) {
                 Text(flag)
-                    .font(.system(size: 28))
+                    .headline()
 
                 Text(title)
-                    .font(.headline)
-                    .foregroundStyle(AppColor.primaryText)
-                
-                if isDefault{
-                    HStack{
-                        Text("Default")
-                            .padding(.horizontal)
-                            .padding(.vertical, 2)
-                            .secondaryTitle(AppColor.success)
-                            .background(AppColor.secondaryBackground, in: Capsule())
-                    }
-                }
-                
+                    .primaryTitle(AppColor.primaryText)
 
-                Spacer()
-
-                Image(systemName: isSelected
-                      ? "checkmark.circle.fill"
-                      : "circle")
-                    .font(.title3)
-                    .foregroundStyle(
-                        isSelected
-                        ? AppColor.success
-                        : AppColor.secondaryText
-                    )
             }
-            .padding(.horizontal, 18)
-            .frame(height: 64)
-            .background(
-                isSelected
-                ? AppColor.success.muted(0.2)
-                : AppColor.secondaryBackground.muted(0.2)
+            .padding(.horizontal)
+            .frame(height: 50)
+            .background(AppColor.secondaryBackground.muted())
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(isSelected
+                            ? AppColor.success
+                            : AppColor.surface
+                                , lineWidth: 1)
             )
-            .clipShape(RoundedRectangle(cornerRadius: 14))
             
         }
         .buttonStyle(.plain)
@@ -67,5 +47,9 @@ struct LanguageButton: View {
 }
 
 #Preview {
-    LanguageButton(title: "Select a language", flag: "🇺🇸", isSelected: false, isDefault: true){}
+    HStack{
+        LanguageButton(title: "English", flag: "🇺🇸", isSelected: true, isDefault: true){}
+        LanguageButton(title: "Spanish", flag: "🇺🇸", isSelected: false, isDefault: true){}
+    }
+    
 }

@@ -62,12 +62,15 @@ struct TestVersionCard: View {
                     )            }
             .padding(20)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(
-                isSelected
-                ? AppColor.success.muted(0.2)
-                : AppColor.secondaryBackground.muted(0.2)
+            .background(AppColor.secondaryBackground.muted())
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(isSelected
+                            ? AppColor.success
+                            : AppColor.surface
+                                , lineWidth: 1)
             )
-            .clipShape(RoundedRectangle(cornerRadius: 18))
         }
         .buttonStyle(.plain)
         .sensoryFeedback(.selection, trigger: feedbackTrigger)
@@ -75,5 +78,5 @@ struct TestVersionCard: View {
 }
 
 #Preview {
-    TestVersionCard(title: "Title", subtitle: "Subtitle", detail: "Details", isRecommended: true, isSelected: false, action: {})
+    TestVersionCard(title: "Title", subtitle: "Subtitle", detail: "Details", isRecommended: true, isSelected: true, action: {})
 }

@@ -42,7 +42,7 @@ struct NotificationView: View {
                     } label:{
                         HStack {
                             Image(systemName: "bell.slash.fill")
-                            Text("Notifications are off — tap to enable")
+                            Text("Notifications are off. Tap to enable")
                                 .font(.footnote)
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -64,7 +64,10 @@ struct NotificationView: View {
                 Toggle(isOn: toggleBinding) {
                     Label("Daily Reminder", systemImage: "bell")
                 }
+            }footer: {
+                Text("Set daily time reminder. Rootizen will notify you everyday at your selected time.")
             }
+            
             
             if reminderEnabled && systemAllowed{
                 Section{

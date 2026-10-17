@@ -19,11 +19,10 @@ struct OnboardingTestYearView: View {
                 // MARK: Header
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Choose your test")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                    Text("Choose your exam version")
+                        .headline()
                     
-                    Text("Which citizenship test are you preparing for?")
+                    Text("Choose the version that matches your citizenship application.")
                         .font(.body)
                         .foregroundStyle(AppColor.secondaryText)
                 }
@@ -32,7 +31,7 @@ struct OnboardingTestYearView: View {
                 
                 VStack(spacing: 12) {
                     TestVersionCard(
-                        title: "2025 Test",
+                        title: "2025 Exam",
                         subtitle: "The current civics test",
                         detail: "128 questions",
                         isRecommended: true,
@@ -43,7 +42,7 @@ struct OnboardingTestYearView: View {
                     }
                     
                     TestVersionCard(
-                        title: "2008 Test",
+                        title: "2008 Exam",
                         subtitle: "Previous version of the test",
                         detail: "100 questions",
                         isRecommended: false,
@@ -54,20 +53,11 @@ struct OnboardingTestYearView: View {
                     }
                 }
                 
-                // MARK: Change Later
-                
-                HStack(spacing: 8) {
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                        .foregroundStyle(AppColor.secondaryText)
-                    
-                    Text("You can change your test version later in your preferences.")
-                        .font(.footnote)
-                        .foregroundStyle(AppColor.secondaryText)
-                }
-                
-                // MARK: Information
-                
-                TestVersionInfoSection()
+                Image("welcomeScreenImage")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
             }
         }
         .background(AppColor.background)

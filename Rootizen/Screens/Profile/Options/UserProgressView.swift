@@ -104,12 +104,18 @@ struct UserProgressView: View {
                     }
                     .frame(height: 300)
                     .proLocked()
+                    .onTapGesture{
+                        showingPaywall = true
+                    }
                 }
                 
                 //MARK: --  By Practice Mode
                 Section("BY PRACTICE MODE"){
                     ByPracticeMode(title: "Quiz", total: (totalQuizTaken * 10), correct: totalCorrectQuiz)
                         .proLocked()
+                        .onTapGesture{
+                            showingPaywall = true
+                        }
                 }
                 
                 

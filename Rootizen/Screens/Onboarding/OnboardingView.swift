@@ -32,12 +32,13 @@ struct OnboardingView: View {
         
         // MARK: Next button.
         VStack(spacing: 16){
-            SlideBarCounter(currentSlide: currentStep)
-            
+
             PrimaryButton(title: currentStep < 1 ? "Next": "Start", color: AppColor.success, action: {
                 handlesNext()
                 triggerFeedback.toggle()
             })
+            
+            SlideBarCounter(currentSlide: currentStep)
         }
     }
     
@@ -48,6 +49,9 @@ struct OnboardingView: View {
             }
         }else{
             withAnimation(.smooth(duration: 0.4)){
+                Task{
+                    NotificationManager.shared.checkForPermission()
+                }
                 appState.completeOnboarding()
             }
         }

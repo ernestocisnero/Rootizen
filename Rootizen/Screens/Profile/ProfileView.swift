@@ -233,7 +233,7 @@ struct ProfileView: View {
             case .notification:
                 NotificationView()
             case .faqs:
-                Text("FAQs")
+                FAQView()
             case .share:
                 Text("Share with friend")
             case .progress:

@@ -68,7 +68,10 @@ struct QuestionVersionView: View {
                 }
                 .buttonStyle(.plain)
             }
+            // MARK: Information
             
+            TestVersionInfoSection()
+                .listRowInsets(EdgeInsets())
         }
         .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)

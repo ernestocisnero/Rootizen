@@ -96,6 +96,16 @@
         }
       }
     },
+    "A few answers depend on who is in office or where you live, like your senators and your governor. Use Meet your representatives with your ZIP code, and check uscis.gov before your interview for the latest." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algunas respuestas dependen de quién esté en el cargo o de dónde viva, como sus senadores y su gobernador. Use Conozca a sus representantes con su código postal y consulte uscis.gov antes de su entrevista para conocer las últimas novedades."
+          }
+        }
+      }
+    },
     "ACCURACY BY CATEGORY" : {
       "localizations" : {
         "es" : {
@@ -156,22 +166,22 @@
         }
       }
     },
-    "Choose a language" : {
+    "Choose the version that matches your citizenship application." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Selecciona Lenguaje"
+            "value" : "Elija la versión que corresponda a su solicitud de ciudadanía"
           }
         }
       }
     },
-    "Choose your test" : {
+    "Choose your exam version" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Selecciona tu examen"
+            "value" : "Elige tu versión del examen"
           }
         }
       }
@@ -192,6 +202,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cerrar"
+          }
+        }
+      }
+    },
+    "Contact support" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contactar con el soporte técnico"
           }
         }
       }
@@ -237,7 +257,14 @@
       }
     },
     "Daily Reminder" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorio diario"
+          }
+        }
+      }
     },
     "Default" : {
       "localizations" : {
@@ -349,6 +376,16 @@
         }
       }
     },
+    "For most applicants, yes. That's why Rootizen shows Spanish as a study aid, and why Reading & Writing helps you practice in English. Some applicants qualify for exemptions based on age and years as a permanent resident. Check with USCIS to see if you do." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para la mayoría de los solicitantes, sí. Es por eso que Rootizen muestra el español como una ayuda para el estudio y por qué Reading & Writing te ayuda a practicar en inglés. Algunos solicitantes califican para exenciones basadas en la edad y los años como residente permanente. Consulte con USCIS para ver si es así."
+          }
+        }
+      }
+    },
     "Get Rootizen Plus" : {
       "localizations" : {
         "es" : {
@@ -419,18 +456,65 @@
         }
       }
     },
+    "Is my information private?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Es privada mi información?"
+          }
+        }
+      }
+    },
+    "Is Rootizen an official USCIS app?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Es Rootizen una aplicación oficial de USCIS?"
+          }
+        }
+      }
+    },
+    "It depends on when you filed your N-400. If you filed on or after October 20, 2025, you take the 2025 test: 128 questions in the bank, up to 20 asked, and 12 correct to pass. If you filed earlier, you take the 2008 test: 100 questions, 10 asked, and 6 correct to pass. Choose yours in Profile > Preferences. Not sure? Check your USCIS notice." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depende de cuándo presentó su formulario N-400. Si lo presentó el 20 de octubre de 2025 o después, deberá realizar la prueba de 2025: consta de un banco de 128 preguntas, de las cuales se formulan hasta 20, y se requieren 12 respuestas correctas para aprobar. Si lo presentó antes de esa fecha, deberá realizar la prueba de 2008: consta de 100 preguntas, de las cuales se formulan 10, y se requieren 6 respuestas correctas para aprobar. Seleccione la opción que le corresponda en Perfil > Preferencias. ¿No está seguro? Consulte la notificación que recibió de USCIS."
+          }
+        }
+      }
+    },
     "Language" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lenguaje"
+            "value" : "Idioma"
           }
         }
       }
     },
     "Learn more" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más información"
+          }
+        }
+      }
+    },
+    "Learn the civics questions, practice at your own pace, and prepare with confidence" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda las preguntas de educación cívica, practique a su propio ritmo y prepárese con confianza."
+          }
+        }
+      }
     },
     "Legal" : {
       "localizations" : {
@@ -512,17 +596,6 @@
         }
       }
     },
-    "Naturalization Interview Example" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ejemplo de entrevista de naturalización"
-          }
-        }
-      }
-    },
     "Next question" : {
       "localizations" : {
         "es" : {
@@ -573,6 +646,16 @@
         }
       }
     },
+    "No. Rootizen is an independent study app. It is not affiliated with, endorsed by, or sponsored by USCIS or any government agency. Always confirm the latest requirements at uscis.gov." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No. Rootizen es una aplicación de estudio independiente. No está afiliada, respaldada ni patrocinada por el USCIS ni por ninguna agencia gubernamental. Consulta siempre los requisitos más recientes en uscis.gov."
+          }
+        }
+      }
+    },
     "Notifications" : {
       "localizations" : {
         "es" : {
@@ -583,8 +666,15 @@
         }
       }
     },
-    "Notifications are off — tap to enable" : {
-
+    "Notifications are off. Tap to enable" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones desactivadas. Toca para activarlas."
+          }
+        }
+      }
     },
     "Now Playing" : {
       "localizations" : {
@@ -692,6 +782,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plus"
+          }
+        }
+      }
+    },
+    "Plus is a one time purchase with no subscription. It unlocks unlimited quizzes and flashcards, Reading & Writing practice, listening, and accuracy by category. New phone or reinstalled the app? Open Profile and tap Restore Purchases." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Además, es una compra única sin suscripción. Desbloquea pruebas y tarjetas didácticas ilimitadas, práctica de lectura y escritura, comprensión auditiva y precisión por categoría. ¿Teléfono nuevo o reinstalaste la aplicación? Abra Perfil y toque Restaurar compras."
           }
         }
       }
@@ -865,7 +965,14 @@
       }
     },
     "Rootizen" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rootizen"
+          }
+        }
+      }
     },
     "Rootizen lets you study with either version so you can prepare for the test that applies to you." : {
       "localizations" : {
@@ -928,7 +1035,14 @@
       }
     },
     "Select Time" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar hora"
+          }
+        }
+      }
     },
     "Senior Questions" : {
       "localizations" : {
@@ -950,8 +1064,25 @@
         }
       }
     },
+    "Set daily time reminder. Rootizen will notify you everyday at your selected time." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establecer recordatorio de hora diaria. Rootizen le notificará todos los días a la hora seleccionada."
+          }
+        }
+      }
+    },
     "Share Rootizen with friends" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comparte Rootizen con tus amigos"
+          }
+        }
+      }
     },
     "Share with friend" : {
       "localizations" : {
@@ -963,13 +1094,12 @@
         }
       }
     },
-    "Share with friends" : {
-      "extractionState" : "stale",
+    "Some answers change. How do I stay current?" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compartir con amigos"
+            "value" : "Algunas respuestas cambian. ¿Cómo me mantengo al día?"
           }
         }
       }
@@ -994,8 +1124,25 @@
         }
       }
     },
+    "Still have a question? We read every message." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Aún tienes alguna pregunta? Leemos todos los mensajes."
+          }
+        }
+      }
+    },
     "Stop" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
     },
     "Study Materials" : {
       "localizations" : {
@@ -1157,19 +1304,15 @@
         }
       }
     },
-    "USCIS Naturalization Example" : {
-      "extractionState" : "stale",
+    "USCIS.gov" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ejemplo de naturalización del USCIS"
+            "value" : "USCIS.gov"
           }
         }
       }
-    },
-    "USCIS.gov" : {
-
     },
     "Version 2008" : {
       "localizations" : {
@@ -1221,22 +1364,22 @@
         }
       }
     },
-    "Welcome to Rootizen" : {
+    "What does Plus include, and how do I restore it?" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenidos a Rootizen"
+            "value" : "¿Qué incluye Plus y cómo puedo restaurarlo?"
           }
         }
       }
     },
-    "Which citizenship test are you preparing for?" : {
+    "Which test version should I study?" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Para qué examen de ciudadanía te estás preparando?"
+            "value" : "¿Qué versión del examen debería estudiar?"
           }
         }
       }
@@ -1251,6 +1394,16 @@
         }
       }
     },
+    "Will my interview be in English?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Será mi entrevista en inglés?"
+          }
+        }
+      }
+    },
     "Write the sentence" : {
       "localizations" : {
         "es" : {
@@ -1261,12 +1414,12 @@
         }
       }
     },
-    "You can change your test version later in your preferences." : {
+    "You don't need an account. Your progress is saved on your device, and your ZIP code is only used to find your representatives. Rootizen collects anonymous usage statistics, such as which features are used, to help us improve the app. This data isn't linked to your name, zip code or identity." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Puede cambiar su versión de prueba más adelante en sus preferencias."
+            "value" : "No necesitas una cuenta. Su progreso se guarda en su dispositivo y su código postal solo se usa para encontrar a sus representantes. Rootizen recopila estadísticas de uso anónimas, como qué funciones se utilizan, para ayudarnos a mejorar la aplicación. Estos datos no están vinculados a su nombre, código postal o identidad."
           }
         }
       }
@@ -1307,12 +1460,12 @@
         }
       }
     },
-    "Your native app guide to the US citizenship test." : {
+    "Your journey to U.S. citizenship starts here" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu aplicación nativa guía para el examen de ciudadanía estadounidense."
+            "value" : "Tu camino hacia la ciudadanía comienza aquí"
           }
         }
       }

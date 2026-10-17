@@ -136,9 +136,6 @@ struct HomeView: View {
         .scrollContentBackground(.hidden)
         .background(Color(.systemGroupedBackground))
         .scrollIndicators(.hidden)
-        .onAppear{
-            NotificationManager.shared.checkForPermission()
-        }
         // MARK: Quiz sheet.
         .fullScreenCover(isPresented: $startQuiz) {
             QuizFlowView(isPresented: $startQuiz, questionVersion: appState.questionVersion)
