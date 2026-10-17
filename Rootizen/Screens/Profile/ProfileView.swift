@@ -73,37 +73,42 @@ struct ProfileView: View {
                 .disabled(purchaseManager.isPremiumUnlocked)
                 
                 //MARK: -- Restore Purchase button
-                Button {
+                
+                if !purchaseManager.isPremiumUnlocked{
                     
-                    Task {
-                        isRestoring = true
-                        await purchaseManager.restorePurchases()
-                        isRestoring = false
-                        showConfirmation = true
+                    Button {
+                        
+                        Task {
+                            isRestoring = true
+                            await purchaseManager.restorePurchases()
+                            isRestoring = false
+                            showConfirmation = true
+                        }
+                        
+                    } label: {
+                        Label("Restore your Rootizen Plus", systemImage: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
+                        
+                        Spacer()
+                        
+                        
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(isRestoring)
+                    .alert(
+                        purchaseManager.isPremiumUnlocked ? "Rootizen Plus purchases restored" : "No Rootizen Plus to restore",
+                        isPresented: $showConfirmation
+                    ) {
+                        Button("OK", role: .cancel) { }
+                    } message: {
+                        Text(
+                            purchaseManager.isPremiumUnlocked
+                            ? "Your Rootizen Plus has been restored."
+                            : "No previous purchase for Rootizen Plus was found for this Apple ID."
+                        )
                     }
                     
-                } label: {
-                    Label("Restore your Rootizen Plus", systemImage: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
-                    
-                    Spacer()
-                    
-                    
                 }
-                .buttonStyle(.plain)
-                .disabled(isRestoring)
-                .alert(
-                    purchaseManager.isPremiumUnlocked ? "Rootizen Plus purchases restored" : "No Rootizen Plus to restore",
-                    isPresented: $showConfirmation
-                ) {
-                    Button("OK", role: .cancel) { }
-                } message: {
-                    Text(
-                        purchaseManager.isPremiumUnlocked
-                        ? "Your Rootizen Plus has been restored."
-                        : "No previous purchase for Rootizen Plus was found for this Apple ID."
-                    )
-                }
-                
+
             }
             
             Section("Preferences") {
@@ -170,7 +175,7 @@ struct ProfileView: View {
                     } icon: {
                         Image(systemName: "square.and.arrow.up")
                     }
-                        
+                    
                 }
                 
                 Button {

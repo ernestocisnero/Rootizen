@@ -59,6 +59,7 @@ final class PurchaseManager {
     @MainActor
     func refreshEntitlements() async {
         for await result in Transaction.currentEntitlements {
+            
             guard case .verified(let transaction) = result else { continue }
 
             if transaction.productID == premiumProductID {
@@ -67,12 +68,11 @@ final class PurchaseManager {
             }
         }
         // No matching verified entitlement found.
-        isPremiumUnlocked = false
     }
-
-    // Exposed for a "Restore Purchases" button in Settings — same call,
-    // just triggered manually so the user gets a moment of confirmation.
+    
     func restorePurchases() async {
+        guard !isPremiumUnlocked else { return }
+        try? await AppStore.sync()
         await refreshEntitlements()
     }
 

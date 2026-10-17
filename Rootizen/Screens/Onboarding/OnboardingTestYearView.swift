@@ -52,17 +52,19 @@ struct OnboardingTestYearView: View {
                         onSelect(.v2008)
                     }
                 }
-                
-                Image("welcomeScreenImage")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                VStack{
+                    Image("examVersionScreen")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                }
+                .frame(maxWidth: .infinity)
             }
         }
         .background(AppColor.background)
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .scrollIndicators(.hidden)
     }
 }
 

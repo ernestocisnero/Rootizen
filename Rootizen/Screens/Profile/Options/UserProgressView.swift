@@ -84,7 +84,7 @@ struct UserProgressView: View {
                         ByPracticeMode(title: "Quiz", total: (totalQuizTaken * 10), correct: totalCorrectQuiz)
                         ByPracticeMode(title: "Flashcard", total: (totalFlashcardTaken * 10), correct: totalCorrectFlashcard)
                     }
-                    .frame(height: 300)
+                    
                     
                 }
                 

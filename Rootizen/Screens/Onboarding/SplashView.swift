@@ -24,10 +24,6 @@ struct SplashView: View {
                 Color(AppColor.secondaryBackground)
  
                 VStack{
-                    Image("RootizenLogo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: 100)
                     
                     Text("Rootizen")
                         .font(.system(size: 80, weight: .bold))
